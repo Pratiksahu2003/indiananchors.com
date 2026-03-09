@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Hero staggered entrance animations
-    const hero = document.querySelector('.hero-notion, .hero-split, .hero-premium');
+    const hero = document.querySelector('.hero-v2, .hero-notion, .hero-split, .hero-premium');
     if (hero) {
         hero.classList.add('hero-visible');
         const animateEls = hero.querySelectorAll('[data-hero-animate]');
