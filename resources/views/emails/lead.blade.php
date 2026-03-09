@@ -51,7 +51,7 @@
                 </div>
                 <div class="field">
                     <div class="label">Message</div>
-                    <div class="message-box">{{ $message }}</div>
+                    <div class="message-box">{{ $inquiry }}</div>
                 </div>
             </div>
             <div class="footer">

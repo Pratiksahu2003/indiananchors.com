@@ -54,7 +54,7 @@ class BookingController extends Controller
                 phone: $validated['phone'],
                 event: $validated['event'],
                 location: $validated['location'],
-                message: $validated['message'],
+                inquiry: $validated['message'],
                 submittedAt: now()->format('d M Y, h:i A'),
             ));
             $lead->update(['email_sent' => true]);

@@ -18,7 +18,7 @@ class LeadEmail extends Mailable
         public string $phone,
         public string $event,
         public string $location,
-        public string $message,
+        public string $inquiry,
         public string $submittedAt,
     ) {}
 
