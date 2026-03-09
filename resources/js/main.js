@@ -14,11 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // AOS
     AOS.init({ duration: 800, once: true, offset: 50 });
 
-    // Header scroll effect (modern UI)
-    const header = document.querySelector('.header-modern');
+    // Header scroll effect
+    const header = document.querySelector('.hdr');
     if (header) {
-        const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 50);
-        window.addEventListener('scroll', onScroll);
+        const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 40);
+        window.addEventListener('scroll', onScroll, { passive: true });
         onScroll();
     }
 
@@ -39,21 +39,21 @@ document.addEventListener('DOMContentLoaded', () => {
         loop: true,
     });
 
-    // Mobile nav toggle - open/close on click
-    const mobileToggle = document.querySelector('.mobile-nav-toggle');
-    const navList = document.querySelector('.nav-modern ul');
-    if (mobileToggle && navList) {
-        mobileToggle.addEventListener('click', () => {
-            const isOpen = navList.classList.toggle('mobile-open');
-            mobileToggle.classList.toggle('active', isOpen);
-            mobileToggle.setAttribute('aria-expanded', isOpen);
+    // Mobile burger toggle
+    const burger = document.getElementById('hdr-burger');
+    const hdrNav = document.getElementById('hdr-nav');
+    if (burger && hdrNav) {
+        burger.addEventListener('click', () => {
+            const isOpen = hdrNav.classList.toggle('open');
+            burger.classList.toggle('active', isOpen);
+            burger.setAttribute('aria-expanded', String(isOpen));
         });
-        // Close menu when clicking a nav link (smooth scroll will handle navigation)
-        navList.querySelectorAll('a').forEach((link) => {
+        // Close menu on link click
+        hdrNav.querySelectorAll('.hdr__link').forEach((link) => {
             link.addEventListener('click', () => {
-                navList.classList.remove('mobile-open');
-                mobileToggle.classList.remove('active');
-                mobileToggle.setAttribute('aria-expanded', 'false');
+                hdrNav.classList.remove('open');
+                burger.classList.remove('active');
+                burger.setAttribute('aria-expanded', 'false');
             });
         });
     }

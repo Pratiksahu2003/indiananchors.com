@@ -25,30 +25,41 @@
     <div class="orb orb-3"></div>
 </div>
 
-<header id="header" class="header-modern">
-    <div class="container header-inner">
-        <a href="{{ url('/') }}" class="logo-modern">
-            <img src="{{ asset(config('site.logo')) }}" alt="{{ config('site.name') }}" class="logo-img">
+<header id="header" class="hdr">
+    <div class="container hdr__inner">
+
+        <!-- Logo -->
+        <a href="{{ url('/') }}" class="hdr__logo" aria-label="{{ config('site.name') }}">
+            <img src="{{ asset(config('site.logo')) }}" alt="{{ config('site.name') }}" class="hdr__logo-img">
         </a>
-        <nav class="nav-modern">
-            <ul>
-                <li><a href="#what">What I Offer</a></li>
-                <li><a href="#corporate-event-anchors">Services</a></li>
-                <li><a href="#why">Why Choose Us</a></li>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#testi">Testimonials</a></li>
-            </ul>
-            <button class="mobile-nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
+
+        <!-- Desktop Nav -->
+        <nav class="hdr__nav" id="hdr-nav" aria-label="Main navigation">
+            <a href="#what" class="hdr__link">What I Offer</a>
+            <a href="#corporate-event-anchors" class="hdr__link">Services</a>
+            <a href="#why" class="hdr__link">Why Us</a>
+            <a href="#about" class="hdr__link">About</a>
+            <a href="#gallery" class="hdr__link">Gallery</a>
+            <a href="#testi" class="hdr__link">Testimonials</a>
+        </nav>
+
+        <!-- Right: CTA + Burger -->
+        <div class="hdr__right">
+            <a href="#contact" class="hdr__cta">
+                <i class="bi bi-calendar-check-fill"></i>
+                <span class="hdr__cta-text">Book Now</span>
+            </a>
+            <a href="tel:{{ config('site.phone') }}" class="hdr__phone">
+                <i class="bi bi-telephone-fill"></i>
+                <span class="hdr__phone-text">{{ config('site.phone_display') }}</span>
+            </a>
+            <button class="hdr__burger" id="hdr-burger" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="hdr-nav">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-        </nav>
-        <a class="cta-modern" href="tel:{{ config('site.phone') }}">
-            <span class="cta-text">Call {{ config('site.phone_display') }}</span>
-            <span class="cta-icon"><i class="bi bi-telephone-fill"></i></span>
-        </a>
+        </div>
+
     </div>
 </header>
 
