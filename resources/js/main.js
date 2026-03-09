@@ -22,6 +22,16 @@ document.addEventListener('DOMContentLoaded', () => {
         onScroll();
     }
 
+    // Hero staggered entrance animations
+    const hero = document.querySelector('.hero-notion, .hero-split, .hero-premium');
+    if (hero) {
+        hero.classList.add('hero-visible');
+        const animateEls = hero.querySelectorAll('[data-hero-animate]');
+        animateEls.forEach((el, i) => {
+            el.style.animationDelay = `${0.12 + i * 0.1}s`;
+        });
+    }
+
     // GLightbox - gallery lightbox (data-glightbox groups images for prev/next)
     GLightbox({
         selector: '#gallery [data-glightbox]',
@@ -29,21 +39,22 @@ document.addEventListener('DOMContentLoaded', () => {
         loop: true,
     });
 
-    // Mobile nav (legacy + modern)
-    const toggle = document.querySelector('.mobile-nav-toggle');
-    const navmenu = document.querySelector('#navmenu');
-    const navModern = document.querySelector('.nav-modern ul');
-    if (toggle && navmenu) {
-        toggle.addEventListener('click', () => {
-            navmenu.classList.toggle('mobile-nav-active');
-            toggle.classList.toggle('bi-list');
-            toggle.classList.toggle('bi-x');
+    // Mobile nav toggle - open/close on click
+    const mobileToggle = document.querySelector('.mobile-nav-toggle');
+    const navList = document.querySelector('.nav-modern ul');
+    if (mobileToggle && navList) {
+        mobileToggle.addEventListener('click', () => {
+            const isOpen = navList.classList.toggle('mobile-open');
+            mobileToggle.classList.toggle('active', isOpen);
+            mobileToggle.setAttribute('aria-expanded', isOpen);
         });
-    }
-    if (toggle && navModern) {
-        toggle.addEventListener('click', () => {
-            navModern.classList.toggle('mobile-open');
-            toggle.classList.toggle('active');
+        // Close menu when clicking a nav link (smooth scroll will handle navigation)
+        navList.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => {
+                navList.classList.remove('mobile-open');
+                mobileToggle.classList.remove('active');
+                mobileToggle.setAttribute('aria-expanded', 'false');
+            });
         });
     }
 

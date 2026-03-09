@@ -25,6 +25,20 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Hero Section
+    |--------------------------------------------------------------------------
+    */
+
+    'hero' => [
+        'title' => 'Indian Anchors',
+        'subtitle' => "India's National Award Winner",
+        'tagline' => 'Best Anchor & Entertainer — Weddings • Corporate • Award Shows • Brand Launches',
+        'badge' => 'National Award Winner',
+        'image' => 'img/gallery/vidhu_front.jpeg',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Images & Assets
     |--------------------------------------------------------------------------
     */

@@ -39,7 +39,11 @@
                 <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#testi">Testimonials</a></li>
             </ul>
-            <button class="mobile-nav-toggle d-xl-none" aria-label="Menu"><span></span><span></span><span></span></button>
+            <button class="mobile-nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </nav>
         <a class="cta-modern" href="tel:{{ config('site.phone') }}">
             <span class="cta-text">Call {{ config('site.phone_display') }}</span>
@@ -49,25 +53,25 @@
 </header>
 
 <main class="main-modern">
-    <!-- Hero Section - Cinematic -->
-    <section id="hero" class="hero-modern">
-        <div class="hero-bg" style="background-image: url('https://picsum.photos/1920/1080?random=1');"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-noise"></div>
-        <div class="hero-content-modern">
-            <div class="hero-badge animate-fade-in">National Award Winner</div>
-            <h1 class="hero-title">
-                <span class="line line-1"><span class="word">VIDHU</span></span>
-                <span class="line line-2"><span class="word">SLATHIA</span></span>
-            </h1>
-            <p class="hero-tagline animate-slide-up">Best Anchor & Entertainer — Weddings • Corporate • Events</p>
-            <div class="hero-cta-group animate-slide-up">
-                <a href="#contact" class="btn-hero btn-primary">Book Now</a>
-                <a href="#about" class="btn-hero btn-outline">Discover More</a>
+    <!-- Hero Section - Notion-style Split (Project Colors) -->
+    @php $hero = config('site.hero', []); @endphp
+    <section id="hero" class="hero-notion" aria-label="Hero">
+        <div class="hero-notion__content">
+            <div class="hero-notion__inner">
+                <h1 class="hero-notion__title" data-hero-animate aria-label="{{ $hero['title'] ?? config('site.name') }}">
+                    Powerful event hosting,<br>without the chaos
+                </h1>
+                <p class="hero-notion__body" data-hero-animate>
+                    Events are complex. Let {{ $hero['title'] ?? config('site.name') }} bring energy, clarity, and unforgettable moments — from weddings and corporate gatherings to award nights and brand launches.
+                </p>
+                <a href="#contact" class="hero-notion__cta" data-hero-animate>
+                    Get Started
+                </a>
             </div>
-            <div class="hero-scroll">
-                <span class="scroll-text">Scroll</span>
-                <div class="scroll-line"></div>
+        </div>
+        <div class="hero-notion__media">
+            <div class="hero-notion__image-frame">
+                <img src="{{ asset($hero['image'] ?? config('site.about_image')) }}" alt="{{ $hero['title'] ?? config('site.name') }}" class="hero-notion__image" fetchpriority="high">
             </div>
         </div>
     </section>
@@ -482,40 +486,85 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer-modern">
+    <footer class="footer-new">
         <div class="container">
-            <div class="footer-top">
-                <a href="{{ url('/') }}" class="footer-logo">
-                    <img src="{{ asset(config('site.logo')) }}" alt="{{ config('site.name') }}">
-                </a>
-                <nav class="footer-nav">
-                    <a href="#what">What I Offer</a>
-                    <a href="#corporate-event-anchors">Services</a>
-                    <a href="#why">Why Choose Us</a>
-                    <a href="#about">About Me</a>
-                    <a href="#gallery">Gallery</a>
-                    <a href="#testi">Testimonials</a>
-                </nav>
-                <div class="footer-social">
-                    <a href="{{ config('site.social.instagram') }}" target="_blank" rel="noopener"><i class="bi bi-instagram"></i></a>
-                    <a href="{{ config('site.social.facebook') }}" target="_blank" rel="noopener"><i class="bi bi-facebook"></i></a>
-                    <a href="{{ config('site.social.youtube_shorts') }}" target="_blank" rel="noopener"><i class="bi bi-youtube"></i></a>
+
+            <!-- Footer Grid: Brand + Links + Contact -->
+            <div class="footer-new__grid">
+
+                <!-- Brand Column -->
+                <div class="footer-new__brand">
+                    <a href="{{ url('/') }}" class="footer-new__logo">
+                        <img src="{{ asset(config('site.logo')) }}" alt="{{ config('site.name') }}">
+                    </a>
+                    <p class="footer-new__tagline">Indian Anchors connects professional event anchors with brands, event planners, and production houses across India. We provide experienced hosts for corporate events, weddings, award shows, podcasts and live productions.</p>
+                    <div class="footer-new__social">
+                        <a href="{{ config('site.social.instagram') }}" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="{{ config('site.social.facebook') }}" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="{{ config('site.social.youtube_shorts') }}" target="_blank" rel="noopener" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                    </div>
                 </div>
+
+                <!-- Navigation Column -->
+                <div class="footer-new__col">
+                    <h4 class="footer-new__col-title">Quick Links</h4>
+                    <ul class="footer-new__links">
+                        <li><a href="#what">What I Offer</a></li>
+                        <li><a href="#why">Why Choose Us</a></li>
+                        <li><a href="#about">About Me</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#testi">Testimonials</a></li>
+                        <li><a href="#contact">Book Now</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services Column -->
+                <div class="footer-new__col">
+                    <h4 class="footer-new__col-title">Services</h4>
+                    <ul class="footer-new__links">
+                        <li><a href="#corporate-event-anchors">Corporate Events</a></li>
+                        <li><a href="#wedding-anchors">Weddings</a></li>
+                        <li><a href="#award-show-hosts">Award Shows</a></li>
+                        <li><a href="#brand-launch-hosts">Brand Launches</a></li>
+                        <li><a href="#podcast-hosts">Podcasts</a></li>
+                        <li><a href="#virtual-event-anchors">Virtual Events</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Column -->
+                <div class="footer-new__col">
+                    <h4 class="footer-new__col-title">Get In Touch</h4>
+                    <ul class="footer-new__contact">
+                        <li>
+                            <i class="bi bi-telephone-fill"></i>
+                            <a href="tel:{{ config('site.phone') }}">{{ config('site.phone_display') }}</a>
+                        </li>
+                        <li>
+                            <i class="bi bi-envelope-fill"></i>
+                            <a href="mailto:{{ config('site.email') }}">{{ config('site.email') }}</a>
+                        </li>
+                        <li>
+                            <i class="bi bi-geo-alt-fill"></i>
+                            <span>Pan India</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="footer-new__cta">Book Your Event</a>
+                </div>
+
             </div>
-            <div class="footer-services">
-                <h3 class="footer-services-title">Services</h3>
-                <ul class="footer-services-list">
-                    <li><a href="#corporate-event-anchors">Corporate Event Anchors</a></li>
-                    <li><a href="#wedding-anchors">Wedding Anchors</a></li>
-                    <li><a href="#award-show-hosts">Award Show Hosts</a></li>
-                    <li><a href="#brand-launch-hosts">Brand Launch Hosts</a></li>
-                    <li><a href="#podcast-hosts">Podcast Hosts</a></li>
-                    <li><a href="#virtual-event-anchors">Virtual Event Anchors</a></li>
-                </ul>
+
+            <!-- Footer Bottom Bar -->
+            <div class="footer-new__bottom">
+                <p class="footer-new__copy">
+                    © {{ config('site.footer_copyright') }}
+                    <a href="{{ route('home') }}" target="_blank" rel="noopener">{{ config('site.site_url') }}</a>
+                    · All Rights Reserved
+                    @if(config('site.footer_powered_by'))
+                        · Powered by {{ config('site.footer_powered_by') }}
+                    @endif
+                </p>
             </div>
-            <div class="footer-bottom">
-                <p>© {{ config('site.footer_copyright') }} <a href="{{ route('home') }}" target="_blank" rel="noopener">{{ config('site.site_url') }}</a> · All Rights Reserved @if(config('site.footer_powered_by')) (Powered by {{ config('site.footer_powered_by') }}) @endif</p>
-            </div>
+
         </div>
     </footer>
 
