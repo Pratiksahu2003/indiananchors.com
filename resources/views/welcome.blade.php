@@ -638,22 +638,7 @@
 
         </div>
     </footer>
-
-    <!-- Scroll Top -->
-    <a href="#" id="scroll-top" class="scroll-top-modern"><i class="bi bi-arrow-up"></i></a>
-
-    <!-- Float Contact -->
-    <div class="float-contact" id="chatbot-open-container">
-        <button class="float-btn" id="open-chat-button" aria-label="Contact">
-            <i class="bi bi-chat-dots-fill"></i>
-        </button>
-        <div class="float-dropdown" id="chatbot-container">
-            <a href="tel:{{ config('site.phone') }}" class="float-link"><i class="bi bi-telephone-fill"></i> Call</a>
-            <a href="https://wa.me/{{ config('site.phone') }}" target="_blank" rel="noopener" class="float-link"><i class="bi bi-whatsapp"></i> WhatsApp</a>
-            <a href="mailto:{{ config('site.email') }}" class="float-link"><i class="bi bi-envelope-fill"></i> Email</a>
-            <button class="float-close" id="close-chat-button" aria-label="Close"><i class="bi bi-x-lg"></i></button>
-        </div>
-    </div>
+   
 </main>
 
 <script>
