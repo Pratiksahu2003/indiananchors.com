@@ -25,7 +25,7 @@ class LeadEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'New Lead: ' . $this->name . ' - Vidhu Slathia Website',
+            subject: 'New Lead: ' . $this->name . ' - ' . config('site.name') . ' Website',
             replyTo: [$this->email],
         );
     }

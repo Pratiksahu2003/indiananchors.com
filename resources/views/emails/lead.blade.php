@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Lead - Vidhu Slathia</title>
+    <title>New Lead - {{ config('site.name') }}</title>
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #1a1a1a; margin: 0; padding: 0; background: #f5f5f5; }
         .container { max-width: 600px; margin: 0 auto; padding: 24px; }
@@ -25,7 +25,7 @@
     <div class="container">
         <div class="card">
             <div class="header">
-                <h1>New Lead from <span>Vidhu Slathia</span> Website</h1>
+                <h1>New Lead from <span>{{ config('site.name') }}</span> Website</h1>
                 <p style="margin: 8px 0 0; opacity: 0.9; font-size: 0.9rem;">Event / Booking Inquiry</p>
             </div>
             <div class="body">
@@ -55,7 +55,7 @@
                 </div>
             </div>
             <div class="footer">
-                Sent at {{ $submittedAt }} · Vidhu Slathia | India's National Award Winner
+                Sent at {{ $submittedAt }} · {{ config('site.name') }} | {{ config('site.tagline') }}
             </div>
         </div>
     </div>

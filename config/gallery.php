@@ -17,10 +17,10 @@ return [
     'description' => 'Moments captured across weddings, corporate events & celebrations worldwide',
 
     'images' => [
-        ['file' => 'vidhu_front.jpeg', 'alt' => 'Vidhu Slathia - Portrait'],
-        ['file' => 'offer.jpeg', 'alt' => 'Vidhu Slathia - Events'],
-        ['file' => 'client.jpeg', 'alt' => 'Vidhu Slathia - Client Event'],
-        ['file' => 'vidi.jpeg', 'alt' => 'Vidhu Slathia - On Stage'],
+        ['file' => 'vidhu_front.jpeg', 'alt' => 'Indian Anchors - Portrait'],
+        ['file' => 'offer.jpeg', 'alt' => 'Indian Anchors - Events'],
+        ['file' => 'client.jpeg', 'alt' => 'Indian Anchors - Client Event'],
+        ['file' => 'vidi.jpeg', 'alt' => 'Indian Anchors - On Stage'],
         // Add more images below:
         // ['file' => 'your-image.jpeg', 'alt' => 'Description for accessibility'],
     ],

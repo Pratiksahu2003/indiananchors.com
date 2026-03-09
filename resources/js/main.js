@@ -1,5 +1,5 @@
 /**
- * Vidhu Slathia - Single Page Website
+ * Indian Anchors - Single Page Website
  * All JS bundled via Vite
  */
 import 'bootstrap';
@@ -8,6 +8,9 @@ import GLightbox from 'glightbox';
 import PureCounter from '@srexi/purecounterjs';
 
 document.addEventListener('DOMContentLoaded', () => {
+    // PureCounter - animate numbers when in view
+    new PureCounter();
+
     // AOS
     AOS.init({ duration: 800, once: true, offset: 50 });
 
@@ -67,15 +70,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Smooth scroll for anchor links
+    // Smooth scroll for anchor links (nav, footer, in-page)
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
-            if (href === '#') return;
+            if (href === '#' || !href) return;
             const target = document.querySelector(href);
             if (target) {
                 e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const headerOffset = 90;
+                const elPos = target.getBoundingClientRect().top + window.scrollY;
+                window.scrollTo({ top: elPos - headerOffset, behavior: 'smooth' });
             }
         });
     });

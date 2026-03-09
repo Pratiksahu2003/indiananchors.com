@@ -3,12 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Vidhu Slathia | India's National Award Winner - Best Anchor & Entertainer</title>
-    <meta name="description" content="India's National Award Winner - Best Anchor and Entertainer">
-    <meta name="keywords" content="anchor, entertainer, wedding host, corporate events, Vidhu Slathia">
+    <title>{{ config('site.name') }} | {{ config('site.tagline') }}</title>
+    <meta name="description" content="{{ config('site.description') }}">
+    <meta name="keywords" content="{{ config('site.keywords') }}">
 
-    <link href="{{ asset('img/fav.png') }}" rel="icon">
-    <link href="{{ asset('img/fav.png') }}" rel="apple-touch-icon">
+    <link href="{{ asset(config('site.favicon')) }}" rel="icon">
+    <link href="{{ asset(config('site.favicon')) }}" rel="apple-touch-icon">
 
     @vite(['resources/css/main.css', 'resources/js/main.js'])
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -28,11 +28,12 @@
 <header id="header" class="header-modern">
     <div class="container header-inner">
         <a href="{{ url('/') }}" class="logo-modern">
-            <img src="{{ asset('img/logo.png') }}" alt="Vidhu Slathia" class="logo-img">
+            <img src="{{ asset(config('site.logo')) }}" alt="{{ config('site.name') }}" class="logo-img">
         </a>
         <nav class="nav-modern">
             <ul>
                 <li><a href="#what">What I Offer</a></li>
+                <li><a href="#corporate-event-anchors">Services</a></li>
                 <li><a href="#why">Why Choose Us</a></li>
                 <li><a href="#about">About Me</a></li>
                 <li><a href="#gallery">Gallery</a></li>
@@ -40,8 +41,8 @@
             </ul>
             <button class="mobile-nav-toggle d-xl-none" aria-label="Menu"><span></span><span></span><span></span></button>
         </nav>
-        <a class="cta-modern" href="tel:917838663434">
-            <span class="cta-text">Call +91-7838663434</span>
+        <a class="cta-modern" href="tel:{{ config('site.phone') }}">
+            <span class="cta-text">Call {{ config('site.phone_display') }}</span>
             <span class="cta-icon"><i class="bi bi-telephone-fill"></i></span>
         </a>
     </div>
@@ -71,46 +72,82 @@
         </div>
     </section>
 
-    <!-- What I Offer -->
-    <section id="what" class="section-modern section-offer">
+   
+
+    <!-- Service: Corporate Event Anchors -->
+    <section id="corporate-event-anchors" class="section-modern section-service-detail">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
+            <div class="service-detail-content" data-aos="fade-up">
                 <span class="section-label">Services</span>
-                <h2 class="section-title">What I <span class="gradient-text">Offer</span></h2>
-                <p class="offer-section-subtitle">Professional hosting that turns every moment into a memory — from weddings to boardrooms.</p>
-                <p class="offer-section-desc">As India's National Award Winner for Best Anchor & Entertainer, I bring professional hosting, infectious energy, and a personal touch to every occasion — from intimate celebrations to large-scale corporate events.</p>
+                <h2 class="section-title">Corporate Event <span class="gradient-text">Anchors</span></h2>
+                <p class="service-detail-desc">From annual conferences to seminars, product launches to team offsites — Indian Anchors brings professional polish and engaging energy to every corporate gathering. Whether you need a formal keynote host or an interactive emcee who keeps the room alive, we tailor the tone to match your brand and audience.</p>
+                <p class="service-detail-desc">Our corporate hosting includes seamless coordination with your event team, custom scripts aligned to your agenda, and the ability to handle Q&A sessions, panel moderation, and award presentations with confidence and flair.</p>
+                <a href="#contact" class="btn-modern">Book for Your Event</a>
             </div>
-            <div class="offer-grid">
-                <div class="offer-card offer-cta" data-aos="fade-up" data-aos-delay="100">
-                    <div class="offer-card-inner">
-                        <h3>Elevate Your Event</h3>
-                        <p>Whether it's a wedding, corporate gala, or private celebration — I tailor my hosting style to match your vision. From custom scripts and flow design to seamless coordination with your team, every detail is crafted to reflect your brand and audience.</p>
-                        <p>Fluent in English, Hindi, Haryanavi & Punjabi, I connect with diverse audiences and create moments that resonate long after the lights go down.</p>
-                        <p class="offer-cta-note">15+ years of experience • Worked with top celebrities & brands • National & international events</p>
-                        <a href="#contact" class="btn-modern">Work With Me</a>
-                    </div>
-                </div>
-                <div class="offer-card offer-featured" data-aos="fade-up" data-aos-delay="200">
-                    <div class="offer-image-wrap">
-                        <img src="{{ asset('img/gallery/offer.jpeg') }}" alt="Vidhu Slathia - Events">
-                        <div class="offer-image-overlay"></div>
-                    </div>
-                </div>
-                <div class="offer-card offer-list" data-aos="fade-up" data-aos-delay="300">
-                    <ul class="offer-types">
-                        <li><i class="bi bi-heart-fill"></i><span><strong>Weddings</strong> — Sangeet, reception & full wedding hosting. I bring warmth, humour and flow so your big day runs smoothly and guests feel included.</span></li>
-                        <li><i class="bi bi-people-fill"></i><span><strong>Team Building</strong> — Corporate offsites & engagement events. Interactive hosting that boosts morale and strengthens team bonds.</span></li>
-                        <li><i class="bi bi-briefcase-fill"></i><span><strong>Corporate</strong> — Conferences, launches & award nights. Professional, polished hosting that elevates your brand and keeps audiences engaged.</span></li>
-                        <li><i class="bi bi-mic-fill"></i><span><strong>Award Ceremonies</strong> — Gala nights & recognition events. I honour achievers with grace and energy, making every moment feel special.</span></li>
-                        <li><i class="bi bi-stars"></i><span><strong>Private Parties</strong> — Birthdays, anniversaries & celebrations. Personalised hosting that matches your vibe and keeps the party going.</span></li>
-                    </ul>
-                </div>
+        </div>
+    </section>
+
+    <!-- Service: Wedding Anchors -->
+    <section id="wedding-anchors" class="section-modern section-service-detail section-service-alt">
+        <div class="container">
+            <div class="service-detail-content" data-aos="fade-up">
+                <span class="section-label">Services</span>
+                <h2 class="section-title">Wedding <span class="gradient-text">Anchors</span></h2>
+                <p class="service-detail-desc">Make your big day unforgettable. Indian Anchors brings warmth, humour, and perfect flow to sangeets, receptions, and full wedding ceremonies. We ensure your guests feel included, the schedule runs smoothly, and every moment — from grand entrances to emotional exchanges — is handled with grace and energy.</p>
+                <p class="service-detail-desc">Fluent in English, Hindi, Haryanavi & Punjabi, we connect with families and friends of all ages. From traditional rituals to modern celebrations, we adapt our hosting style to reflect your vision and create memories that last a lifetime.</p>
+                <a href="#contact" class="btn-modern">Book for Your Wedding</a>
             </div>
-            <div class="offer-benefits" data-aos="fade-up">
-                <div class="offer-benefit-item"><i class="bi bi-check2-circle"></i> Custom scripts & flow design</div>
-                <div class="offer-benefit-item"><i class="bi bi-check2-circle"></i> Multilingual hosting</div>
-                <div class="offer-benefit-item"><i class="bi bi-check2-circle"></i> Coordination with your team</div>
-                <div class="offer-benefit-item"><i class="bi bi-check2-circle"></i> Professional & punctual</div>
+        </div>
+    </section>
+
+    <!-- Service: Award Show Hosts -->
+    <section id="award-show-hosts" class="section-modern section-service-detail">
+        <div class="container">
+            <div class="service-detail-content" data-aos="fade-up">
+                <span class="section-label">Services</span>
+                <h2 class="section-title">Award Show <span class="gradient-text">Hosts</span></h2>
+                <p class="service-detail-desc">Recognize excellence with style. Indian Anchors honours achievers with grace, energy, and impeccable timing. Whether it's an industry gala, internal recognition night, or a high-profile awards ceremony, we ensure every honoree feels celebrated and every moment resonates with the audience.</p>
+                <p class="service-detail-desc">We handle everything from opening remarks to trophy presentations, keeping the pace engaging and the atmosphere electric. Our experience with national and international award events means we deliver professionalism that matches the prestige of the occasion.</p>
+                <a href="#contact" class="btn-modern">Host Your Award Night</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service: Brand Launch Hosts -->
+    <section id="brand-launch-hosts" class="section-modern section-service-detail section-service-alt">
+        <div class="container">
+            <div class="service-detail-content" data-aos="fade-up">
+                <span class="section-label">Services</span>
+                <h2 class="section-title">Brand Launch <span class="gradient-text">Hosts</span></h2>
+                <p class="service-detail-desc">Give your brand the spotlight it deserves. Indian Anchors turns product launches, rebrand reveals, and corporate milestones into memorable experiences. We work closely with your marketing and events team to craft a script and flow that amplifies your message and creates buzz.</p>
+                <p class="service-detail-desc">From intimate press gatherings to large-scale launch parties, we bring energy, sophistication, and the ability to adapt on the fly. Your brand story deserves a host who can tell it with impact — and we're here to deliver.</p>
+                <a href="#contact" class="btn-modern">Launch With Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service: Podcast Hosts -->
+    <section id="podcast-hosts" class="section-modern section-service-detail">
+        <div class="container">
+            <div class="service-detail-content" data-aos="fade-up">
+                <span class="section-label">Services</span>
+                <h2 class="section-title">Podcast <span class="gradient-text">Hosts</span></h2>
+                <p class="service-detail-desc">Bring your podcast to life with a host who knows how to hold attention. Indian Anchors brings clarity, warmth, and conversational flow to audio and video podcasts. Whether you need a permanent host, a guest episode host, or someone to moderate panel discussions, we help your content stand out.</p>
+                <p class="service-detail-desc">Our multilingual capability and experience with diverse audiences make us ideal for podcasts targeting Indian and global listeners. From tech and business to culture and entertainment — we adapt our tone to match your brand and keep listeners engaged.</p>
+                <a href="#contact" class="btn-modern">Discuss Your Podcast</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service: Virtual Event Anchors -->
+    <section id="virtual-event-anchors" class="section-modern section-service-detail section-service-alt">
+        <div class="container">
+            <div class="service-detail-content" data-aos="fade-up">
+                <span class="section-label">Services</span>
+                <h2 class="section-title">Virtual Event <span class="gradient-text">Anchors</span></h2>
+                <p class="service-detail-desc">Virtual doesn't mean impersonal. Indian Anchors brings the same energy and connection to online events — webinars, virtual conferences, hybrid gatherings, and live-streamed celebrations. We keep remote audiences engaged, manage transitions smoothly, and create moments that feel real even across screens.</p>
+                <p class="service-detail-desc">With experience in both in-person and virtual hosting, we understand the nuances of camera presence, timing, and interactive elements like Q&A and polls. Whether your audience is in the room or across the globe, we ensure they stay connected and invested.</p>
+                <a href="#contact" class="btn-modern">Host Your Virtual Event</a>
             </div>
         </div>
     </section>
@@ -121,22 +158,12 @@
         <div class="container">
             <h2 class="stats-title" data-aos="fade-up">Numbers That <span class="gradient-text">Speak</span></h2>
             <div class="stats-grid">
-                <div class="stat-card" data-aos="zoom-in" data-aos-delay="100">
-                    <span class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="2">0</span>
-                    <span class="stat-label">Shows Hosted</span>
+                @foreach(config('site.stats', []) as $idx => $stat)
+                <div class="stat-card" data-aos="zoom-in" data-aos-delay="{{ 100 + ($idx * 50) }}">
+                    <span class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="{{ $stat['end'] }}" @if(!empty($stat['suffix'])) data-purecounter-suffix="{{ $stat['suffix'] }}" @endif data-purecounter-duration="2">0</span>
+                    <span class="stat-label">{{ $stat['label'] }}</span>
                 </div>
-                <div class="stat-card" data-aos="zoom-in" data-aos-delay="200">
-                    <span class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="2">0</span>
-                    <span class="stat-label">Years Experience</span>
-                </div>
-                <div class="stat-card" data-aos="zoom-in" data-aos-delay="300">
-                    <span class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="2">0</span>
-                    <span class="stat-label">Events Worldwide</span>
-                </div>
-                <div class="stat-card" data-aos="zoom-in" data-aos-delay="400">
-                    <span class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="98" data-purecounter-duration="2">0</span>
-                    <span class="stat-label">% Satisfaction</span>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -148,7 +175,7 @@
             <div class="videos-header" data-aos="fade-up">
                 <span class="section-label">Watch</span>
                 <h2 class="section-title">In <span class="gradient-text">Action</span></h2>
-                <p class="videos-subtitle">See Vidhu Slathia bring energy, charm & unforgettable moments to every stage.</p>
+                <p class="videos-subtitle">See {{ config('site.name') }} bring energy, charm & unforgettable moments to every stage.</p>
             </div>
             <div class="videos-showcase" data-aos="fade-up">
                 <div class="video-carousel-modern">
@@ -165,7 +192,7 @@
                             <div class="carousel-item {{ $idx === 0 ? 'active' : '' }}">
                                 <div class="video-card">
                                     <div class="video-frame">
-                                        <iframe src="https://www.youtube.com/embed/{{ $video['id'] }}" title="{{ $video['title'] ?? 'Vidhu Slathia' }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+                                        <iframe src="https://www.youtube.com/embed/{{ $video['id'] }}" title="{{ $video['title'] ?? config('site.name') }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
                                         <div class="video-play-badge"><i class="bi bi-play-fill"></i></div>
                                     </div>
                                 </div>
@@ -183,7 +210,7 @@
                     </div>
                 </div>
                 <div class="videos-cta">
-                    <a href="https://www.youtube.com/@anchoratulsharma3002" target="_blank" rel="noopener" class="btn-videos-cta">
+                    <a href="{{ config('site.social.youtube') }}" target="_blank" rel="noopener" class="btn-videos-cta">
                         <i class="bi bi-youtube"></i>
                         <span>More on YouTube</span>
                     </a>
@@ -199,7 +226,7 @@
         <div class="container position-relative">
             <div class="section-header light" data-aos="fade-up">
                 <span class="section-label">Why Me</span>
-                <h2 class="section-title">Why Choose <span class="gradient-text">Vidhu Slathia</span>?</h2>
+                <h2 class="section-title">Why Choose <span class="gradient-text">{{ config('site.name') }}</span>?</h2>
             </div>
             <div class="why-grid">
                 <div class="why-card" data-aos="fade-up" data-aos-delay="100">
@@ -224,7 +251,7 @@
                 </div>
             </div>
             <div class="why-cta" data-aos="zoom-in">
-                <a href="tel:917838663434" class="btn-hero btn-primary btn-lg">Call Now +91-7838663434</a>
+                <a href="tel:{{ config('site.phone') }}" class="btn-hero btn-primary btn-lg">Call Now {{ config('site.phone_display') }}</a>
             </div>
         </div>
     </section>
@@ -235,24 +262,24 @@
             <div class="about-grid">
                 <div class="about-image" data-aos="fade-right">
                     <div class="about-image-frame">
-                        <img src="{{ asset('img/gallery/vidhu_front.jpeg') }}" alt="Vidhu Slathia">
+                        <img src="{{ asset(config('site.about_image')) }}" alt="{{ config('site.name') }}">
                         <div class="about-image-accent"></div>
                     </div>
                 </div>
                 <div class="about-content" data-aos="fade-left">
                     <span class="section-label">About</span>
-                    <h2 class="about-title">I'm <span class="gradient-text">Vidhu Slathia</span></h2>
-                    <p class="about-subtitle">A Defining Moment: Vidhu Slathia Honored as Best Female Anchor (Jammu) at Youth Icon Awards</p>
-                    <p class="about-text">Success is not built overnight — it is earned through consistency, confidence, and courage to stand out. For Vidhu Slathia, that defining moment came at the prestigious Youth Icon Awards, hosted during the grand SPL Cricket Trophy Unveiling Ceremony at the iconic Constitution Club of India.</p>
-                    <p class="about-text">In the presence of respected spiritual leader Devkinandan Thakur and internationally renowned motivational speaker Vivek Bindra, Vidhu Slathia was proudly honored with the title of <strong>Best Female Anchor (Jammu)</strong> — a recognition that celebrates not just talent, but impact.</p>
+                    <h2 class="about-title">I'm <span class="gradient-text">{{ config('site.name') }}</span></h2>
+                    <p class="about-subtitle">A Defining Moment: Indian Anchors Honored as Best Female Anchor (Jammu) at Youth Icon Awards</p>
+                    <p class="about-text">Success is not built overnight — it is earned through consistency, confidence, and courage to stand out. For Indian Anchors, that defining moment came at the prestigious Youth Icon Awards, hosted during the grand SPL Cricket Trophy Unveiling Ceremony at the iconic Constitution Club of India.</p>
+                    <p class="about-text">In the presence of respected spiritual leader Devkinandan Thakur and internationally renowned motivational speaker Vivek Bindra, Indian Anchors was proudly honored with the title of <strong>Best Female Anchor (Jammu)</strong> — a recognition that celebrates not just talent, but impact.</p>
                     <h3 class="about-heading">More Than Just an Award</h3>
                     <p class="about-text">The Best Female Anchor (Jammu) honor is not simply a trophy placed on a shelf — it represents years of dedication to mastering the art of communication and stage presence. Anchoring is not merely about speaking into a microphone; it is about owning the stage, setting the tone of an event, and creating a connection that resonates with every individual in the audience.</p>
-                    <p class="about-text">Vidhu Slathia has consistently demonstrated these qualities. Her voice carries clarity and authority. Her presence commands attention without demanding it. Her confidence uplifts the atmosphere of any event she hosts. These are not accidental traits — they are cultivated through passion and discipline.</p>
+                    <p class="about-text">Indian Anchors has consistently demonstrated these qualities. Her voice carries clarity and authority. Her presence commands attention without demanding it. Her confidence uplifts the atmosphere of any event she hosts. These are not accidental traits — they are cultivated through passion and discipline.</p>
                     <h3 class="about-heading">A Journey Still Rising</h3>
-                    <p class="about-text">This milestone marks not a peak, but a stepping stone in Vidhu Slathia's evolving career. The Youth Icon Awards recognition affirms her growing impact and establishes her as a strong, credible, and influential name in professional anchoring.</p>
+                    <p class="about-text">This milestone marks not a peak, but a stepping stone in Indian Anchors's evolving career. The Youth Icon Awards recognition affirms her growing impact and establishes her as a strong, credible, and influential name in professional anchoring.</p>
                     <p class="about-text">As she continues to elevate standards and inspire others, the title of Best Female Anchor (Jammu) will remain a proud testament to her talent, hard work, and unwavering commitment to excellence.</p>
-                    <p class="about-text about-closing">Vidhu Slathia is not just hosting events — she is creating experiences. And this award is a powerful acknowledgment of that extraordinary journey.</p>
-                    <a href="tel:917838663434" class="btn-modern">Call Now +91-7838663434</a>
+                    <p class="about-text about-closing">Indian Anchors is not just hosting events — she is creating experiences. And this award is a powerful acknowledgment of that extraordinary journey.</p>
+                    <a href="tel:{{ config('site.phone') }}" class="btn-modern">Call Now {{ config('site.phone_display') }}</a>
                 </div>
             </div>
         </div>
@@ -323,47 +350,47 @@
             <div class="faq-list" id="faq-list">
                 <div class="faq-item-modern faq-active" data-aos="fade-up">
                     <div class="faq-question">
-                        <h3>What kind of events does Vidhu Slathia specialize in hosting?</h3>
+                        <h3>What kind of events does {{ config('site.name') }} specialize in hosting?</h3>
                         <i class="bi bi-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Vidhu Slathia specializes in hosting a wide range of events, including weddings, corporate gatherings, award ceremonies, product launches, and private parties. Her versatility and charisma make every event memorable and engaging.</p>
+                        <p>{{ config('site.name') }} specializes in hosting a wide range of events, including weddings, corporate gatherings, award ceremonies, product launches, and private parties. Her versatility and charisma make every event memorable and engaging.</p>
                     </div>
                 </div>
                 <div class="faq-item-modern" data-aos="fade-up">
                     <div class="faq-question">
-                        <h3>What sets Vidhu Slathia apart from other anchors and entertainers?</h3>
+                        <h3>What sets {{ config('site.name') }} apart from other anchors and entertainers?</h3>
                         <i class="bi bi-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Vidhu Slathia combines charm, wit, and professionalism to create a lively and captivating atmosphere. Her ability to adapt to different audiences, along with her National Award-winning skills, ensures a unique and unforgettable experience for every event.</p>
+                        <p>{{ config('site.name') }} combines charm, wit, and professionalism to create a lively and captivating atmosphere. Her ability to adapt to different audiences, along with her National Award-winning skills, ensures a unique and unforgettable experience for every event.</p>
                     </div>
                 </div>
                 <div class="faq-item-modern" data-aos="fade-up">
                     <div class="faq-question">
-                        <h3>Can Vidhu Slathia customize her hosting style for specific themes or events?</h3>
+                        <h3>Can {{ config('site.name') }} customize hosting style for specific themes or events?</h3>
                         <i class="bi bi-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes, Vidhu Slathia is known for tailoring her hosting style to match the theme and requirements of each event. Whether it's a traditional Indian wedding or a modern corporate event, she ensures her approach aligns with the client's vision.</p>
+                        <p>Yes, {{ config('site.name') }} is known for tailoring hosting style to match the theme and requirements of each event. Whether it's a traditional Indian wedding or a modern corporate event, she ensures her approach aligns with the client's vision.</p>
                     </div>
                 </div>
                 <div class="faq-item-modern" data-aos="fade-up">
                     <div class="faq-question">
-                        <h3>How can I book Vidhu Slathia for an event?</h3>
+                        <h3>How can I book {{ config('site.name') }} for an event?</h3>
                         <i class="bi bi-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>To book Vidhu Slathia, you can contact her directly at +91-7838663434 or email digital@tytil.com. It's recommended to book in advance as her calendar fills up quickly due to high demand.</p>
+                        <p>To book {{ config('site.name') }}, you can contact directly at {{ config('site.phone_display') }} or email {{ config('site.email') }}. It's recommended to book in advance as the calendar fills up quickly due to high demand.</p>
                     </div>
                 </div>
                 <div class="faq-item-modern" data-aos="fade-up">
                     <div class="faq-question">
-                        <h3>Does Vidhu Slathia offer multilingual hosting?</h3>
+                        <h3>Does {{ config('site.name') }} offer multilingual hosting?</h3>
                         <i class="bi bi-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes, Vidhu Slathia is proficient in multiple languages, enabling her to connect with diverse audiences across India and abroad. Her multilingual skills add an extra layer of personalization to her hosting.</p>
+                        <p>Yes, {{ config('site.name') }} is proficient in multiple languages, enabling her to connect with diverse audiences across India and abroad. Her multilingual skills add an extra layer of personalization to her hosting.</p>
                     </div>
                 </div>
             </div>
@@ -398,8 +425,8 @@
                     </ul>
                     <div class="contact-direct">
                         <span class="contact-direct-label">Or reach us directly</span>
-                        <a href="tel:917838663434" class="contact-phone"><i class="bi bi-telephone-fill"></i> +91-7838663434</a>
-                        <a href="mailto:digital@tytil.com" class="contact-phone"><i class="bi bi-envelope-fill"></i> digital@tytil.com</a>
+                        <a href="tel:{{ config('site.phone') }}" class="contact-phone"><i class="bi bi-telephone-fill"></i> {{ config('site.phone_display') }}</a>
+                        <a href="mailto:{{ config('site.email') }}" class="contact-phone"><i class="bi bi-envelope-fill"></i> {{ config('site.email') }}</a>
                     </div>
                 </div>
                 <form action="{{ route('book.submit') }}" method="POST" class="contact-form contact-form-modern" data-aos="fade-left" id="lead-form">
@@ -459,23 +486,35 @@
         <div class="container">
             <div class="footer-top">
                 <a href="{{ url('/') }}" class="footer-logo">
-                    <img src="{{ asset('img/logo.png') }}" alt="Vidhu Slathia">
+                    <img src="{{ asset(config('site.logo')) }}" alt="{{ config('site.name') }}">
                 </a>
                 <nav class="footer-nav">
                     <a href="#what">What I Offer</a>
+                    <a href="#corporate-event-anchors">Services</a>
                     <a href="#why">Why Choose Us</a>
                     <a href="#about">About Me</a>
                     <a href="#gallery">Gallery</a>
                     <a href="#testi">Testimonials</a>
                 </nav>
                 <div class="footer-social">
-                    <a href="https://www.instagram.com/anchoratulsharma/" target="_blank" rel="noopener"><i class="bi bi-instagram"></i></a>
-                    <a href="https://www.facebook.com/atulsharma.anchor" target="_blank" rel="noopener"><i class="bi bi-facebook"></i></a>
-                    <a href="https://www.youtube.com/@anchoratulsharma3002/shorts" target="_blank" rel="noopener"><i class="bi bi-youtube"></i></a>
+                    <a href="{{ config('site.social.instagram') }}" target="_blank" rel="noopener"><i class="bi bi-instagram"></i></a>
+                    <a href="{{ config('site.social.facebook') }}" target="_blank" rel="noopener"><i class="bi bi-facebook"></i></a>
+                    <a href="{{ config('site.social.youtube_shorts') }}" target="_blank" rel="noopener"><i class="bi bi-youtube"></i></a>
                 </div>
             </div>
+            <div class="footer-services">
+                <h3 class="footer-services-title">Services</h3>
+                <ul class="footer-services-list">
+                    <li><a href="#corporate-event-anchors">Corporate Event Anchors</a></li>
+                    <li><a href="#wedding-anchors">Wedding Anchors</a></li>
+                    <li><a href="#award-show-hosts">Award Show Hosts</a></li>
+                    <li><a href="#brand-launch-hosts">Brand Launch Hosts</a></li>
+                    <li><a href="#podcast-hosts">Podcast Hosts</a></li>
+                    <li><a href="#virtual-event-anchors">Virtual Event Anchors</a></li>
+                </ul>
+            </div>
             <div class="footer-bottom">
-                <p>© 2026 <a href="https://www.dywix.com/" target="_blank" rel="noopener">DyWix.Com</a> & Studio space powered by Suganta International. All rights reserved.</p>
+                <p>© {{ config('site.footer_copyright') }} <a href="{{ route('home') }}" target="_blank" rel="noopener">{{ config('site.site_url') }}</a> · All Rights Reserved @if(config('site.footer_powered_by')) (Powered by {{ config('site.footer_powered_by') }}) @endif</p>
             </div>
         </div>
     </footer>
@@ -489,9 +528,9 @@
             <i class="bi bi-chat-dots-fill"></i>
         </button>
         <div class="float-dropdown" id="chatbot-container">
-            <a href="tel:917838663434" class="float-link"><i class="bi bi-telephone-fill"></i> Call</a>
-            <a href="https://wa.me/917838663434" target="_blank" rel="noopener" class="float-link"><i class="bi bi-whatsapp"></i> WhatsApp</a>
-            <a href="mailto:digital@tytil.com" class="float-link"><i class="bi bi-envelope-fill"></i> Email</a>
+            <a href="tel:{{ config('site.phone') }}" class="float-link"><i class="bi bi-telephone-fill"></i> Call</a>
+            <a href="https://wa.me/{{ config('site.phone') }}" target="_blank" rel="noopener" class="float-link"><i class="bi bi-whatsapp"></i> WhatsApp</a>
+            <a href="mailto:{{ config('site.email') }}" class="float-link"><i class="bi bi-envelope-fill"></i> Email</a>
             <button class="float-close" id="close-chat-button" aria-label="Close"><i class="bi bi-x-lg"></i></button>
         </div>
     </div>

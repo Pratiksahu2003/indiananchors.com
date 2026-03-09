@@ -724,7 +724,7 @@
 }
 
 /* ============================================
-   MODERN UI - Vidhu Slathia Redesign
+   MODERN UI - Indian Anchors Redesign
    ============================================ */
 
 /* Modern Design Tokens */
@@ -744,6 +744,13 @@
 .modern-ui {
   font-family: var(--font-dm);
   color: var(--navy);
+}
+
+/* Smooth scroll + offset for fixed header */
+html { scroll-behavior: smooth; }
+section[id],
+[id].section-modern {
+  scroll-margin-top: 90px;
 }
 
 /* Animated Background Orbs */
@@ -825,7 +832,6 @@
   width: auto;
   object-fit: contain;
   transition: transform 0.3s var(--ease-out-expo);
-  filter: brightness(0) invert(1); /* Light logo on dark header */
 }
 
 .logo-modern:hover .logo-img {
@@ -1188,26 +1194,137 @@
   background-clip: text;
 }
 
-/* Offer Section */
-.section-offer {
+/* Service Detail Sections */
+.section-service-detail {
   background: var(--cream);
 }
 
-.section-offer .offer-section-subtitle {
-  font-size: 1.1rem;
-  color: var(--navy);
-  opacity: 0.9;
-  margin: 0.5rem auto 1rem;
-  max-width: 36rem;
+.section-service-detail .service-detail-content {
+  max-width: 42rem;
+  margin: 0 auto;
+  text-align: center;
 }
 
-.section-offer .offer-section-desc {
-  font-size: 1rem;
+.section-service-detail .service-detail-desc {
+  font-size: 1.05rem;
   color: var(--navy);
-  opacity: 0.85;
-  margin: 0 auto;
-  max-width: 42rem;
-  line-height: 1.6;
+  opacity: 0.9;
+  line-height: 1.75;
+  margin: 0 0 1.25rem;
+}
+
+.section-service-detail .section-label { margin-bottom: 0.5rem; }
+.section-service-detail .section-title { margin-bottom: 1.5rem; }
+.section-service-detail .btn-modern { margin-top: 0.5rem; }
+
+.section-service-alt {
+  background: var(--navy);
+}
+
+.section-service-alt .section-label,
+.section-service-alt .section-title { color: #fff; }
+.section-service-alt .section-title .gradient-text { color: var(--gold); -webkit-text-fill-color: var(--gold); }
+.section-service-alt .service-detail-desc { color: rgba(255, 255, 255, 0.9); }
+.section-service-alt .btn-modern {
+  background: var(--gold);
+  color: var(--navy) !important;
+  border-color: var(--gold);
+}
+.section-service-alt .btn-modern:hover {
+  background: var(--gold-light);
+  border-color: var(--gold-light);
+  color: var(--navy) !important;
+}
+
+/* Offer Section */
+.section-offer {
+  background: var(--cream);
+  position: relative;
+}
+
+.section-offer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+}
+
+/* Offer Header - Modern UI */
+.offer-header {
+  text-align: center;
+  max-width: 52rem;
+  margin: 0 auto 4rem;
+}
+
+.offer-header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.06) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 1.25rem;
+}
+
+.offer-header-badge i {
+  font-size: 0.9rem;
+  color: var(--gold);
+}
+
+.offer-header-title {
+  font-family: var(--font-syne);
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: var(--navy);
+  margin: 0;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.offer-header-accent {
+  width: 64px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  border-radius: 2px;
+  margin: 1.5rem auto;
+}
+
+.offer-header-tagline {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--navy);
+  line-height: 1.5;
+  margin: 0 auto 1.5rem;
+}
+
+.offer-header-intro {
+  padding: 1.75rem 2rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 16px;
+  border: 1px solid rgba(10, 22, 40, 0.06);
+  box-shadow: 0 4px 24px rgba(10, 22, 40, 0.04);
+}
+
+.offer-header-intro p {
+  font-size: 1.05rem;
+  color: var(--navy);
+  opacity: 0.88;
+  line-height: 1.75;
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .offer-header { margin-bottom: 3rem; }
+  .offer-header-intro { padding: 1.25rem 1.5rem; }
 }
 
 .offer-grid {
@@ -1386,12 +1503,19 @@
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 575px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 }
 
 .stat-card {
@@ -2065,14 +2189,22 @@
 }
 
 .faq-list {
-  max-width: 800px;
-  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  max-width: 100%;
+}
+
+@media (max-width: 767px) {
+  .faq-list {
+    grid-template-columns: 1fr;
+  }
 }
 
 .faq-item-modern {
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 16px;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
   overflow: hidden;
   transition: all 0.3s var(--ease-out-expo);
   cursor: pointer;
@@ -2519,7 +2651,6 @@
 .footer-logo img {
   height: 50px;
   width: auto;
-  filter: brightness(0) invert(1);
   opacity: 0.9;
 }
 
@@ -2561,6 +2692,52 @@
   background: var(--gold);
   color: var(--navy) !important;
   transform: translateY(-3px);
+}
+
+/* Footer Services Section */
+.footer-services {
+  padding: 2rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-services-title {
+  font-family: var(--font-syne), sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 1.25rem;
+}
+
+.footer-services-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+}
+
+.footer-services-list li {
+  margin: 0;
+}
+
+.footer-services-list a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.3s;
+}
+
+.footer-services-list a:hover {
+  color: var(--gold);
+}
+
+@media (max-width: 767px) {
+  .footer-services { text-align: center; }
+  .footer-services-list { justify-content: center; }
 }
 
 .footer-bottom {

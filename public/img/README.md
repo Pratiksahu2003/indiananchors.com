@@ -1,9 +1,9 @@
 # Add Your Images Here
 
-Place your Vidhu Slathia website images in this folder:
+Place your Indian Anchors website images in this folder:
 
 **Root (public/img/):**
-- `Vidhu Slathia Black.png` - Logo / favicon
+- `Indian Anchors Black.png` - Logo / favicon
 - `1.jpg` - Hero background
 - `1.png` - CTA section background
 - `count.png` - Stats section background

@@ -16,11 +16,11 @@ return [
     'videos' => [
         [
             'id' => 'OiwyZOn9zgM',
-            'title' => 'Vidhu Slathia - In Action',
+            'title' => 'Indian Anchors - In Action',
         ],
         [
             'id' => '3cZSC0iPvU4',
-            'title' => 'Vidhu Slathia - In Action',
+            'title' => 'Indian Anchors - In Action',
         ],
         // Add more videos below:
         // [

@@ -48,7 +48,7 @@ class BookingController extends Controller
 
         // Try to send email
         try {
-            Mail::to('digital@tytil.com')->send(new LeadEmail(
+            Mail::to(config('site.email'))->send(new LeadEmail(
                 name: $validated['name'],
                 email: $validated['email'],
                 phone: $validated['phone'],
