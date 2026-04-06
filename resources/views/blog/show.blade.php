@@ -68,14 +68,14 @@
             </div>
         </header>
 
-        <!-- Main Content Area (Optimized) -->
+        <!-- Main Content Area (Unified & Fully Responsive) -->
         <div class="container py-12 md:py-20 lg:py-24">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+            <div class="grid grid-cols-1 xl:grid-cols-12 gap-10 lg:gap-16 items-start">
                 
-                <!-- Sidebar Left: Share Tools (Vertical Minimal) -->
-                <aside class="hidden lg:block lg:col-span-1 sticky top-32" data-aos="fade-right">
-                    <div class="flex flex-col items-center gap-4">
-                        <span class="text-[8px] font-black uppercase leading-none text-slate-300 -rotate-90 origin-center translate-y-8 mb-8 whitespace-nowrap tracking-[0.4em]">Share</span>
+                <!-- Share Center (Mobile: Top / Desktop: Left Sticky) -->
+                <aside class="xl:col-span-1 xl:sticky xl:top-32" data-aos="fade-right">
+                    <div class="flex flex-row xl:flex-col items-center justify-center gap-4 py-6 border-b xl:border-b-0 border-slate-100 mb-10 xl:mb-0">
+                        <span class="text-[8px] font-black uppercase leading-none text-slate-400 xl:-rotate-90 xl:origin-center xl:translate-y-8 xl:mb-8 whitespace-nowrap tracking-[0.4em]">Share Article</span>
                         <a href="#" class="w-10 h-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:bg-slate-950 hover:text-white transition-all shadow-sm"><i class="bi bi-facebook"></i></a>
                         <a href="#" class="w-10 h-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:bg-slate-950 hover:text-white transition-all shadow-sm"><i class="bi bi-twitter-x"></i></a>
                         <a href="#" class="w-10 h-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:bg-slate-950 hover:text-white transition-all shadow-sm"><i class="bi bi-link-45deg text-lg"></i></a>
@@ -114,12 +114,15 @@
 
                 </div>
 
-                <!-- Right Sidebar: Author & Related (XL+) -->
-                <aside class="hidden xl:block xl:col-span-3 space-y-8 sticky top-32" data-aos="fade-left" data-aos-delay="200">
+                <!-- Right Discovery Center (Fully Responsive) -->
+                <aside class="xl:col-span-3 space-y-10 xl:sticky xl:top-32 mt-16 xl:mt-0" data-aos="fade-left" data-aos-delay="200">
                     
-                    <!-- Trending Categories Block (Expanded) -->
-                    <div class="bg-white p-8 rounded-[40px] border border-slate-100 shadow-sm">
-                        <h3 class="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-8 flex items-center gap-3">
+                    <!-- Trending Categories Block (Expanded & Responsive) -->
+                    <div class="bg-white p-8 md:p-10 rounded-[40px] border border-slate-100 shadow-sm overflow-hidden relative group">
+                        <!-- Subtle Background Glow -->
+                        <div class="absolute -top-24 -right-24 w-48 h-48 bg-[#c9a227]/5 rounded-full blur-[80px] group-hover:bg-[#c9a227]/10 transition-all duration-700"></div>
+                        
+                        <h3 class="text-[10px] md:text-[11px] font-black uppercase tracking-[0.4em] text-slate-400 mb-8 flex items-center gap-3 relative z-10">
                              <span class="w-6 h-[1.5px] bg-[#c9a227]"></span> Categories
                         </h3>
                         <div class="space-y-2 max-h-[400px] overflow-y-auto custom-scrollbar pr-3">
@@ -132,10 +135,10 @@
                         </div>
                     </div>
 
-                    <!-- Recommended Reading (Compact) -->
-                    <div class="bg-white p-6 rounded-[35px] border border-slate-100 shadow-sm">
-                        <h3 class="text-[8px] font-black uppercase tracking-[0.4em] text-slate-400 mb-6 flex items-center gap-2">
-                             Featured
+                    <!-- Recommended Reading Center (Responsive) -->
+                    <div class="bg-white p-8 md:p-10 rounded-[40px] border border-slate-100 shadow-sm overflow-hidden relative">
+                        <h3 class="text-[10px] md:text-[11px] font-black uppercase tracking-[0.4em] text-slate-400 mb-8 flex items-center gap-3">
+                             <span class="w-6 h-[1.5px] bg-[#c9a227]"></span> Featured
                         </h3>
                         <div class="space-y-6">
                             @forelse($relatedPosts ?? [] as $rp)
@@ -160,9 +163,11 @@
                         </div>
                     </div>
 
-                    <!-- Discovery Cloud (Expanded) -->
-                    <div class="bg-white p-8 rounded-[40px] border border-slate-100 shadow-sm">
-                        <h3 class="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-8 flex items-center gap-3">
+                    <!-- Discovery Cloud (Expanded & Responsive) -->
+                    <div class="bg-white p-8 md:p-10 rounded-[40px] border border-slate-100 shadow-sm overflow-hidden relative group">
+                        <div class="absolute -bottom-24 -left-24 w-48 h-48 bg-[#c9a227]/5 rounded-full blur-[80px] group-hover:bg-[#c9a227]/10 transition-all duration-700"></div>
+
+                        <h3 class="text-[10px] md:text-[11px] font-black uppercase tracking-[0.4em] text-slate-400 mb-8 flex items-center gap-3 relative z-10">
                              <span class="w-6 h-[1.5px] bg-[#c9a227]"></span> Discovery
                         </h3>
                         <div class="flex flex-wrap gap-2 max-h-[350px] overflow-y-auto custom-scrollbar pr-3">
