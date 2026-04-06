@@ -23,6 +23,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
     
     @stack('styles')
+    
+    <style>
+        /* Force UI Perfection: Reset all Anchor Tags */
+        a, a:hover, a:focus, a:active {
+            text-decoration: none !important;
+            color: inherit;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+        
+        /* Ensure Navbar & Footer Links follow Brand Palette, not Browser Defaults */
+        #hdr-nav a, 
+        #header a, 
+        footer a, 
+        .footer-links a {
+            text-decoration: none !important;
+            color: inherit !important;
+        }
+        
+        #hdr-nav a:hover, 
+        footer a:hover {
+            color: #c9a227 !important;
+        }
+
+        /* Smooth state transitions for all interactive elements */
+        a, button { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important; }
+    </style>
 </head>
 <body class="index-page modern-ui">
 

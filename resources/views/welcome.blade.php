@@ -70,17 +70,17 @@
                         </ul>
                         <a href="#contact" class="inline-flex px-8 py-3.5 bg-slate-950 text-white font-syne font-black uppercase tracking-[0.2em] text-[10px] rounded-xl hover:bg-[#c9a227] hover:text-slate-950 transition-all shadow-xl active:scale-95 leading-none">Book Corporate</a>
                     </div>
-                    <div class="relative group" data-aos="fade-left">
+                    <div class="relative group h-[350px] md:h-[420px] lg:h-[480px]" data-aos="fade-left">
                          <div class="absolute -inset-4 bg-[#c9a227]/5 rounded-[50px] blur-3xl"></div>
-                        <img src="{{ asset('img/gallery/offer.jpeg') }}" class="relative rounded-[40px] shadow-2xl transition-transform duration-1000 group-hover:scale-105 border border-slate-100 grayscale hover:grayscale-0 transition-all">
+                        <img src="{{ asset('img/gallery/offer.jpeg') }}" class="relative w-full h-full object-cover rounded-[40px] shadow-2xl transition-transform duration-1000 group-hover:scale-105 border border-slate-100 grayscale hover:grayscale-0 transition-all">
                     </div>
                 </div>
 
                 <!-- Wedding -->
                 <div id="wedding-anchors" class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                    <div class="order-2 lg:order-1 relative group" data-aos="fade-right">
+                    <div class="order-2 lg:order-1 relative group h-[350px] md:h-[420px] lg:h-[480px]" data-aos="fade-right">
                          <div class="absolute -inset-4 bg-[#c9a227]/5 rounded-[50px] blur-3xl"></div>
-                        <img src="{{ asset('img/gallery/client.jpeg') }}" class="relative rounded-[40px] shadow-2xl transition-transform duration-1000 group-hover:scale-105 border border-slate-100">
+                        <img src="{{ asset('img/gallery/client.jpeg') }}" class="relative w-full h-full object-cover rounded-[40px] shadow-2xl transition-transform duration-1000 group-hover:scale-105 border border-slate-100">
                     </div>
                     <div class="order-1 lg:order-2" data-aos="fade-left">
                         <span class="text-[#c9a227] font-black uppercase text-[10px] tracking-[0.4em] mb-4 block italic">Cultural Vibrancy</span>
