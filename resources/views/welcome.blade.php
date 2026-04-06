@@ -13,18 +13,39 @@
     <!-- Brand Marquee (Using Client Images) -->
     <section class="py-12 bg-white border-b border-slate-50 overflow-hidden">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-10">
+            <div class="text-center mb-8">
                 <span class="text-[9px] font-syne font-black uppercase tracking-[0.5em] text-slate-300">The Brands That Trust Our Stage</span>
             </div>
-            <div class="flex flex-wrap justify-center items-center gap-10 md:gap-20">
-                @foreach(range(1, 10) as $i)
-                    <div class="h-8 md:h-12 flex items-center">
-                        <img src="{{ asset('brand/' . $i . '.png') }}" alt="Client Brand {{ $i }}" class="h-full w-auto object-contain opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500">
-                    </div>
-                @endforeach
+            
+            <!-- Infinite Marquee Container -->
+            <div class="relative overflow-hidden w-full py-4 [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]">
+                <div class="flex flex-nowrap gap-16 md:gap-24 animate-marquee whitespace-nowrap min-w-full items-center">
+                    <!-- Original Set -->
+                    @foreach(range(1, 10) as $i)
+                        <div class="h-8 md:h-10 flex-shrink-0">
+                            <img src="{{ asset('brand/' . $i . '.png') }}" alt="Client Brand {{ $i }}" class="h-full w-auto object-contain opacity-60 grayscale">
+                        </div>
+                    @endforeach
+                    <!-- Duplicate Set for Seamless Loop -->
+                    @foreach(range(1, 10) as $i)
+                        <div class="h-8 md:h-10 flex-shrink-0">
+                            <img src="{{ asset('brand/' . $i . '.png') }}" alt="Client Brand {{ $i }}" class="h-full w-auto object-contain opacity-60 grayscale">
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </div>
     </section>
+
+    <style>
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            animation: marquee 30s linear infinite;
+        }
+    </style>
 
     <!-- Professional Services (Restored Gold) -->
     <section id="what" class="py-24 bg-white overflow-hidden">
