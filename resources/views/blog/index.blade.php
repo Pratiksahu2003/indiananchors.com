@@ -138,31 +138,7 @@
         </div>
     </section>
 
-    <!-- Tag Discovery Section (The Grand Finale) -->
-    <section class="py-24 bg-slate-950 overflow-hidden relative">
-        <!-- Background Accents -->
-        <div class="absolute -top-48 -right-48 w-[600px] h-[600px] bg-[#c9a227]/10 rounded-full blur-[120px]"></div>
-        
-        <div class="container relative z-10 text-center">
-            <div class="max-w-4xl mx-auto">
-                 <div class="inline-flex items-center gap-3 px-6 py-2.5 bg-[#c9a227]/10 border border-[#c9a227]/20 rounded-full text-[#c9a227] text-[10px] font-black uppercase tracking-[0.4em] mb-8">
-                     Discovery Hub
-                 </div>
-                 <h2 class="text-4xl md:text-5xl font-syne font-black text-white uppercase tracking-tighter mb-12 italic">
-                     Explore Industry <br><span class="text-[#c9a227]">Expertise</span>
-                 </h2>
-                 
-                 <div class="flex flex-wrap items-center justify-center gap-3">
-                    @foreach($tags ?? $allTags ?? [] as $t)
-                        <a href="{{ route('blog.tag', $t->slug) }}" 
-                           class="px-5 py-3 rounded-xl border {{ (isset($tag) && $tag->id == $t->id) ? 'bg-[#c9a227] border-[#c9a227] text-slate-950 shadow-2xl' : 'bg-white/5 border-white/10 text-white/60 hover:bg-white hover:text-slate-950 transition-all duration-300' }} text-[10px] font-black uppercase tracking-widest backdrop-blur-md">
-                            #{{ $t->name }}
-                        </a>
-                    @endforeach
-                 </div>
-            </div>
-        </div>
-    </section>
+ 
         </div>
     </section>
 

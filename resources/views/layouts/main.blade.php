@@ -108,7 +108,6 @@
             <a href="{{ url('/') }}#corporate-event-anchors" class="text-[11px] font-black uppercase tracking-[0.3em] no-underline">Services</a>
             <a href="{{ route('blog.index') }}" class="text-[11px] font-black uppercase tracking-[0.3em] {{ request()->is('blog*') ? 'active' : '' }} no-underline">Blog</a>
             <a href="{{ route('about') }}" class="text-[11px] font-black uppercase tracking-[0.3em] {{ request()->routeIs('about') ? 'active' : '' }} no-underline">About</a>
-           <a href="{{ url('/') }}#gallery" class="text-[11px] font-black uppercase tracking-[0.3em] no-underline">Gallery</a>
             <a href="{{ url('/') }}#testi" class="text-[11px] font-black uppercase tracking-[0.3em] no-underline">Reviews</a>
         </nav>
 
