@@ -16,21 +16,23 @@
 @section('content')
     <article class="bg-white min-h-screen">
         <!-- Cinematic Post Hero -->
-        <header class="relative min-h-[70vh] flex items-center justify-center pt-32 pb-24 overflow-hidden bg-slate-900">
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent z-10"></div>
+        <header class="relative min-h-[60vh] flex items-center justify-center pt-32 pb-24 overflow-hidden bg-slate-950">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent z-10"></div>
             
             <!-- Dynamic Background Image -->
             @if($post->featured_image)
-                <img src="{{ Storage::url($post->featured_image) }}" alt="{{ $post->title }}" class="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-luminosity scale-110 blur-sm">
+                <img src="{{ Storage::url($post->featured_image) }}" alt="{{ $post->title }}" class="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-luminosity scale-110 blur-[2px]">
+            @else
+                <img src="{{ asset('img/blog.avif') }}" class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-luminosity">
             @endif
 
             <!-- Background Accents -->
-            <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-indigo-500/10 rounded-full blur-[150px] animate-pulse"></div>
+            <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-[#c9a227]/10 rounded-full blur-[150px] animate-pulse"></div>
             
             <div class="container relative z-20">
                 <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
-                    <nav class="flex items-center justify-center gap-4 mb-10 text-[10px] font-black text-indigo-400 uppercase tracking-[0.3em]">
-                        <a href="{{ route('blog.index') }}" class="hover:text-white transition-colors">Journal</a>
+                    <nav class="flex items-center justify-center gap-4 mb-10 text-[10px] font-black text-[#c9a227] uppercase tracking-[0.3em]">
+                        <a href="{{ route('blog.index') }}" class="hover:text-white transition-colors">Journal Index</a>
                         <span class="w-1 h-1 rounded-full bg-slate-700"></span>
                         <a href="{{ route('blog.category', $post->category->slug ?? '#') }}" class="hover:text-white transition-colors">
                             {{ $post->category->name ?? 'Story' }}
@@ -39,18 +41,18 @@
                         <span class="text-slate-400">{{ $post->published_at->format('d M Y') }}</span>
                     </nav>
 
-                    <h1 class="text-5xl md:text-7xl font-syne font-extrabold text-white mb-12 tracking-tighter leading-[1.05] drop-shadow-2xl">
+                    <h1 class="text-5xl md:text-7xl font-syne font-black text-white mb-12 tracking-tighter leading-[0.9] uppercase drop-shadow-2xl">
                         {{ $post->title }}
                     </h1>
 
                     <!-- Author Info -->
                     <div class="flex items-center justify-center gap-4">
-                        <div class="w-12 h-12 rounded-full border-2 border-indigo-500/30 p-1">
-                            <div class="w-full h-full rounded-full bg-slate-800 flex items-center justify-center text-xs font-bold text-white tracking-widest">IA</div>
+                        <div class="w-12 h-12 rounded-full border-2 border-[#c9a227]/30 p-1">
+                            <div class="w-full h-full rounded-full bg-slate-800 flex items-center justify-center text-[10px] font-black text-white tracking-widest uppercase">IA</div>
                         </div>
                         <div class="text-left leading-tight">
                             <p class="text-white font-black uppercase tracking-widest text-[10px]">Team Indian Anchors</p>
-                            <p class="text-slate-400 font-dm text-[10px] italic">Professional Curators</p>
+                            <p class="text-slate-500 font-dm text-[10px] italic">Expert Insights</p>
                         </div>
                     </div>
                 </div>
@@ -86,7 +88,7 @@
                     @endif
 
                     <!-- Rich Content -->
-                    <div class="article-body prose prose-slate max-w-none prose-h2:font-syne prose-h2:text-4xl prose-h2:font-bold prose-h2:tracking-tight prose-h2:text-slate-900 prose-p:text-slate-600 prose-p:text-xl prose-p:leading-relaxed prose-p:font-dm prose-strong:text-slate-900 prose-blockquote:border-l-4 prose-blockquote:border-indigo-600 prose-blockquote:italic prose-blockquote:text-2xl prose-blockquote:bg-indigo-50 prose-blockquote:p-10 prose-blockquote:rounded-r-3xl">
+                    <div class="article-body prose prose-slate max-w-none prose-h2:font-syne prose-h2:text-4xl prose-h2:font-black prose-h2:tracking-tighter prose-h2:text-slate-950 prose-h2:uppercase prose-p:text-slate-600 prose-p:text-xl prose-p:leading-relaxed prose-p:font-dm prose-strong:text-slate-950 prose-blockquote:border-l-4 prose-blockquote:border-[#c9a227] prose-blockquote:italic prose-blockquote:text-2xl prose-blockquote:bg-[#c9a227]/5 prose-blockquote:p-10 prose-blockquote:rounded-r-3xl">
                         {!! $post->content !!}
                     </div>
 
@@ -105,12 +107,29 @@
                 </div>
 
                 <!-- Right Sidebar: Author & Related (XL+) -->
-                <aside class="hidden xl:block xl:col-span-3 space-y-16 sticky top-32" data-aos="fade-left" data-aos-delay="200">
-                    <div class="bg-slate-50 p-10 rounded-[40px] border border-slate-100">
-                        <h3 class="text-xs font-black uppercase tracking-[0.2em] text-slate-400 mb-8 flex items-center gap-4">
-                            <span class="w-8 h-[2px] bg-indigo-500"></span> More Stories
+                <aside class="hidden xl:block xl:col-span-3 space-y-12 sticky top-32" data-aos="fade-left" data-aos-delay="200">
+                    
+                    <!-- Trending Categories Block -->
+                    <div class="bg-slate-50 p-8 rounded-[40px] border border-slate-100">
+                        <h3 class="text-[9px] font-black uppercase tracking-[0.4em] text-slate-400 mb-6 flex items-center gap-3">
+                            <span class="w-6 h-[2px] bg-[#c9a227]"></span> Categories
                         </h3>
-                        <div class="space-y-10">
+                        <div class="space-y-2">
+                            @foreach($allCategories ?? [] as $cat)
+                                <a href="{{ route('blog.category', $cat->slug) }}" class="flex items-center justify-between p-4 rounded-2xl bg-white border border-slate-100 hover:border-[#c9a227] hover:bg-slate-950 hover:text-white transition-all group">
+                                    <span class="text-[10px] font-black uppercase tracking-widest">{{ $cat->name }}</span>
+                                    <span class="text-[8px] font-dm text-slate-400 group-hover:text-[#c9a227]">{{ $cat->posts_count ?? 'Explore' }}</span>
+                                </a>
+                            @endforeach
+                        </div>
+                    </div>
+
+                    <!-- Recommended Reading -->
+                    <div class="bg-slate-50 p-8 rounded-[40px] border border-slate-100">
+                        <h3 class="text-[9px] font-black uppercase tracking-[0.4em] text-slate-400 mb-6 flex items-center gap-3">
+                            <span class="w-6 h-[2px] bg-[#c9a227]"></span> Featured
+                        </h3>
+                        <div class="space-y-8">
                             @forelse($relatedPosts ?? [] as $rp)
                                 <a href="{{ route('blog.show', $rp->slug) }}" class="group block">
                                     <div class="space-y-4">
@@ -119,22 +138,36 @@
                                                 <img src="{{ Storage::url($rp->featured_image) }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                                             </div>
                                         @endif
-                                        <h4 class="font-syne font-bold text-slate-900 group-hover:text-indigo-600 leading-snug transition-colors line-clamp-2">
+                                        <h4 class="text-xs font-syne font-black text-slate-950 group-hover:text-[#c9a227] leading-tight transition-all uppercase tracking-tighter line-clamp-2">
                                             {{ $rp->title }}
                                         </h4>
-                                        <p class="text-[9px] font-black uppercase tracking-[0.3em] text-slate-400">{{ $rp->published_at->format('d M Y') }}</p>
+                                        <p class="text-[8px] font-black uppercase tracking-[0.3em] text-slate-400">{{ $rp->published_at->format('d M Y') }}</p>
                                     </div>
                                 </a>
                             @empty
-                                <p class="text-slate-400 italic text-xs">Awaiting more chapters...</p>
+                                <p class="text-slate-400 italic text-xs">More coming soon...</p>
                             @endforelse
                         </div>
-                        
-                        <div class="mt-12 pt-10 border-t border-slate-200">
-                            <a href="{{ route('blog.index') }}" class="flex items-center justify-center gap-3 w-full py-4 rounded-2xl bg-white border border-slate-200 text-[10px] font-black uppercase tracking-widest text-slate-700 hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-all">
-                                View Journal Index
-                            </a>
+                    </div>
+
+                    <!-- Tags Discovery Cloud -->
+                    <div class="bg-slate-50 p-8 rounded-[40px] border border-slate-100">
+                        <h3 class="text-[9px] font-black uppercase tracking-[0.4em] text-slate-400 mb-6 flex items-center gap-3">
+                            <span class="w-6 h-[2px] bg-[#c9a227]"></span> Discovery
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            @foreach($allTags ?? [] as $tag)
+                                <a href="{{ route('blog.tag', $tag->slug) }}" class="px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-[8px] font-black uppercase tracking-widest text-slate-600 hover:bg-[#c9a227] hover:text-slate-950 hover:border-[#c9a227] transition-all">
+                                    #{{ $tag->name }}
+                                </a>
+                            @endforeach
                         </div>
+                    </div>
+
+                    <div class="pt-6">
+                        <a href="{{ route('blog.index') }}" class="flex items-center justify-center gap-3 w-full py-4 rounded-2xl bg-slate-950 text-[10px] font-black uppercase tracking-widest text-white hover:bg-[#c9a227] hover:text-slate-950 transition-all shadow-xl">
+                             Masterclass Index
+                        </a>
                     </div>
                 </aside>
 

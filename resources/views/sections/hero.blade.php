@@ -70,7 +70,7 @@
                 <div class="absolute -inset-4 bg-[#c9a227]/10 rounded-[60px] lg:rounded-[100px] blur-3xl group-hover:bg-[#c9a227]/20 transition-all duration-1000"></div>
                 <div class="relative rounded-[60px] lg:rounded-[100px] overflow-hidden aspect-[4/5] shadow-2xl border border-white/10 bg-slate-900">
                     <img 
-                        src="{{ asset($hero['image'] ?? 'img/gallery/vidhu_front.jpeg') }}" 
+                        src="{{ asset('img/blog.avif') }}" 
                         class="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110" 
                         alt="{{ config('site.name') }}"
                     >
