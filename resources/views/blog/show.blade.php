@@ -224,49 +224,8 @@
             </div>
         </div>
 
-                    <!-- Recommended Reading Center (Responsive) -->
-                    <div class="bg-white p-8 md:p-10 rounded-[40px] border border-slate-100 shadow-sm overflow-hidden relative">
-                        <h3 class="text-[10px] md:text-[11px] font-black uppercase tracking-[0.4em] text-slate-400 mb-8 flex items-center gap-3">
-                             <span class="w-6 h-[1.5px] bg-[#c9a227]"></span> Featured
-                        </h3>
-                        <div class="space-y-6">
-                            @forelse($relatedPosts ?? [] as $rp)
-                                <a href="{{ route('blog.show', $rp->slug) }}" class="group block">
-                                    <div class="flex items-center gap-4">
-                                        @if($rp->featured_image)
-                                            <div class="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0 bg-slate-100">
-                                                <img src="{{ Storage::url($rp->featured_image) }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
-                                            </div>
-                                        @endif
-                                        <div>
-                                            <h4 class="text-[10px] font-syne font-black text-slate-950 group-hover:text-[#c9a227] leading-tight transition-all uppercase tracking-tighter line-clamp-2">
-                                                {{ $rp->title }}
-                                            </h4>
-                                            <p class="text-[7px] font-black uppercase tracking-widest text-slate-400 mt-1">{{ $rp->published_at->format('M Y') }}</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            @empty
-                                <p class="text-slate-400 italic text-[9px]">More soon...</p>
-                            @endforelse
-                        </div>
-                    </div>
+               
 
-                    <!-- Discovery Cloud (Expanded & Responsive) -->
-                    <div class="bg-white p-8 md:p-10 rounded-[40px] border border-slate-100 shadow-sm overflow-hidden relative group">
-                        <div class="absolute -bottom-24 -left-24 w-48 h-48 bg-[#c9a227]/5 rounded-full blur-[80px] group-hover:bg-[#c9a227]/10 transition-all duration-700"></div>
-
-                        <h3 class="text-[10px] md:text-[11px] font-black uppercase tracking-[0.4em] text-slate-400 mb-8 flex items-center gap-3 relative z-10">
-                             <span class="w-6 h-[1.5px] bg-[#c9a227]"></span> Discovery
-                        </h3>
-                        <div class="flex flex-wrap gap-2 max-h-[350px] overflow-y-auto custom-scrollbar pr-3">
-                            @foreach($allTags ?? [] as $tag)
-                                <a href="{{ route('blog.tag', $tag->slug) }}" class="px-4 py-2 rounded-xl bg-slate-50 border border-slate-100 text-[9px] font-black uppercase tracking-widest text-slate-500 hover:bg-[#c9a227] hover:text-slate-950 hover:border-[#c9a227] transition-all">
-                                    #{{ $tag->name }}
-                                </a>
-                            @endforeach
-                        </div>
-                    </div>
 
                     <div class="pt-2">
                         <a href="{{ route('blog.index') }}" class="flex items-center justify-center gap-3 w-full py-4 rounded-xl bg-slate-950 text-[9px] font-black uppercase tracking-widest text-white hover:bg-[#c9a227] hover:text-slate-950 transition-all shadow-xl">
@@ -277,45 +236,6 @@
 
             </div>
         </div>
-
-        <!-- Cinematic Post-Article Discovery Ad (Full-Width Signature) -->
-        <section class="py-24 md:py-32 bg-slate-950 overflow-hidden relative border-t border-[#c9a227]/10">
-            <!-- Dynamic Background Elements -->
-            <div class="absolute -top-48 -left-48 w-[800px] h-[800px] bg-[#c9a227]/5 rounded-full blur-[150px] animate-pulse"></div>
-            <div class="absolute -bottom-48 -right-48 w-[800px] h-[800px] bg-[#c9a227]/5 rounded-full blur-[150px] animate-pulse"></div>
-            
-            <div class="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-center pointer-events-none select-none z-0 opacity-20 overflow-hidden">
-                <span class="text-[35vw] md:text-[20vw] font-syne font-black text-white uppercase leading-none transform rotate-12">LEGACY</span>
-            </div>
-
-            <div class="container relative z-10 px-4 md:px-0">
-                <div class="max-w-5xl mx-auto backdrop-blur-3xl bg-white/5 border border-white/10 rounded-[40px] md:rounded-[60px] p-10 md:p-24 text-center shadow-2xl overflow-hidden group">
-                    <!-- Subtle Glow -->
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-[#c9a227]/20 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
-                    
-                    <div class="inline-flex items-center gap-3 px-6 py-2.5 bg-[#c9a227]/10 border border-[#c9a227]/20 rounded-full text-[#c9a227] text-[10px] font-black uppercase tracking-[0.4em] mb-12">
-                        Professional Engagement
-                    </div>
-                    
-                    <h2 class="text-3xl md:text-5xl lg:text-7xl font-syne font-black text-white mb-12 uppercase leading-none tracking-tighter">
-                        Elevate Your Next <br><span class="text-[#c9a227]">Global Event</span>
-                    </h2>
-                    
-                    <p class="text-lg md:text-2xl text-slate-400 font-dm max-w-2xl mx-auto mb-16 leading-relaxed italic">
-                        Experience the gold standard of stage mastery with India’s elite anchors and corporate presenters.
-                    </p>
-                    
-                    <div class="flex flex-col md:flex-row items-center justify-center gap-6">
-                        <a href="{{ route('pages.book') }}" class="w-full md:w-auto px-12 py-5 rounded-2xl bg-[#c9a227] text-slate-950 font-syne font-black text-xs uppercase tracking-widest hover:bg-white transition-all shadow-2xl hover:-translate-y-2 text-center">
-                            Secure The Stage
-                        </a>
-                        <a href="{{ route('pages.about') }}" class="w-full md:w-auto px-12 py-5 rounded-2xl border border-white/10 text-white font-syne font-black text-xs uppercase tracking-widest hover:bg-white hover:text-slate-950 transition-all text-center">
-                            Our Story
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
     </article>
 
     <style>
