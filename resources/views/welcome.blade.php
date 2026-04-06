@@ -14,7 +14,7 @@
     <section class="py-12 bg-white border-b border-slate-50 overflow-hidden">
         <div class="container mx-auto px-6">
             <p class="text-center text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-12">Trusted By Global Brands</p>
-            <div class="flex flex-wrap justify-center items-center gap-10 md:gap-16 opacity-40 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-700 h-10 md:h-12">
+            <div class="flex flex-wrap justify-center items-center gap-10 md:gap-16 opacity-40 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-700 h-20 md:h-20">
                 @foreach(range(1, 10) as $i)
                     <img src="{{ asset('brand/' . $i . '.png') }}" alt="Client Brand {{ $i }}" class="h-full w-auto object-contain transition-transform duration-500 hover:scale-110">
                 @endforeach
@@ -53,26 +53,26 @@
         </div>
     </section>
 
-    <!-- Compact Detail Blocks (Gold Palette) -->
-    <section class="py-24 bg-slate-950 text-white overflow-hidden text-slate-100">
+    <!-- Compact Detail Blocks (Standard White Background for Clarity) -->
+    <section class="py-24 bg-white overflow-hidden">
         <div class="container mx-auto px-6">
             <div class="space-y-32">
                 <!-- Corporate -->
                 <div id="corporate-event-anchors" class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <div data-aos="fade-right">
                         <span class="text-[#c9a227] font-black uppercase text-[10px] tracking-[0.4em] mb-4 block italic">Professional Poise</span>
-                        <h2 class="text-4xl md:text-5xl font-syne font-black mb-8 tracking-tighter uppercase leading-none text-white">Corporate <span class="text-[#c9a227]">Events</span></h2>
-                        <p class="text-slate-400 font-dm text-lg leading-relaxed mb-6 italic">From seminars to product launches, Indian Anchors brings professional polish and engaging energy. Whether formal keynote hosting or interactive hosting that keeps the room alive, we tailor the tone to match your brand and audience.</p>
+                        <h2 class="text-4xl md:text-5xl font-syne font-black mb-8 tracking-tighter uppercase leading-none text-slate-950">Corporate <span class="text-[#c9a227]">Events</span></h2>
+                        <p class="text-slate-500 font-dm text-lg leading-relaxed mb-6 italic">From seminars to product launches, Indian Anchors brings professional polish and engaging energy. Whether formal keynote hosting or interactive hosting that keeps the room alive, we tailor the tone to match your brand and audience.</p>
                         <ul class="space-y-4 mb-10">
                             @foreach(['Annual Conferences','Product Launches','Team Building','Award Galas'] as $p)
-                                <li class="flex items-center gap-3 text-slate-300 text-sm font-dm"><i class="bi bi-check2-circle text-[#c9a227]"></i> {{ $p }}</li>
+                                <li class="flex items-center gap-3 text-slate-600 text-sm font-dm"><i class="bi bi-check2-circle text-[#c9a227]"></i> {{ $p }}</li>
                             @endforeach
                         </ul>
-                        <a href="#contact" class="inline-flex px-8 py-3.5 bg-[#c9a227] text-slate-950 font-syne font-black uppercase tracking-[0.2em] text-[10px] rounded-xl hover:bg-white hover:text-slate-900 transition-all shadow-xl active:scale-95 leading-none">Book Corporate</a>
+                        <a href="#contact" class="inline-flex px-8 py-3.5 bg-slate-950 text-white font-syne font-black uppercase tracking-[0.2em] text-[10px] rounded-xl hover:bg-[#c9a227] hover:text-slate-950 transition-all shadow-xl active:scale-95 leading-none">Book Corporate</a>
                     </div>
                     <div class="relative group" data-aos="fade-left">
                          <div class="absolute -inset-4 bg-[#c9a227]/5 rounded-[50px] blur-3xl"></div>
-                        <img src="{{ asset('img/gallery/offer.jpeg') }}" class="relative rounded-[40px] shadow-2xl transition-transform duration-1000 group-hover:scale-105 border border-white/5 grayscale group-hover:grayscale-0">
+                        <img src="{{ asset('img/gallery/offer.jpeg') }}" class="relative rounded-[40px] shadow-2xl transition-transform duration-1000 group-hover:scale-105 border border-slate-100 grayscale hover:grayscale-0 transition-all">
                     </div>
                 </div>
 
@@ -80,18 +80,18 @@
                 <div id="wedding-anchors" class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <div class="order-2 lg:order-1 relative group" data-aos="fade-right">
                          <div class="absolute -inset-4 bg-[#c9a227]/5 rounded-[50px] blur-3xl"></div>
-                        <img src="{{ asset('img/gallery/client.jpeg') }}" class="relative rounded-[40px] shadow-2xl transition-transform duration-1000 group-hover:scale-105 border border-white/5">
+                        <img src="{{ asset('img/gallery/client.jpeg') }}" class="relative rounded-[40px] shadow-2xl transition-transform duration-1000 group-hover:scale-105 border border-slate-100">
                     </div>
                     <div class="order-1 lg:order-2" data-aos="fade-left">
                         <span class="text-[#c9a227] font-black uppercase text-[10px] tracking-[0.4em] mb-4 block italic">Cultural Vibrancy</span>
-                        <h2 class="text-4xl md:text-5xl font-syne font-black mb-8 tracking-tighter uppercase leading-none text-white">Wedding <span class="text-[#c9a227]">Celebrations</span></h2>
-                        <p class="text-slate-400 font-dm text-lg leading-relaxed mb-6 italic">Indian Anchors brings warmth, humour and perfect flow to sangeets and receptions. We ensure your guests feel included, the schedule runs smoothly, and every moment — from grand entrances to emotional exchanges — is handled with grace.</p>
+                        <h2 class="text-4xl md:text-5xl font-syne font-black mb-8 tracking-tighter uppercase leading-none text-slate-950">Wedding <span class="text-[#c9a227]">Celebrations</span></h2>
+                        <p class="text-slate-500 font-dm text-lg leading-relaxed mb-6 italic">Indian Anchors brings warmth, humour and perfect flow to sangeets and receptions. We ensure your guests feel included, the schedule runs smoothly, and every moment — from grand entrances to emotional exchanges — is handled with grace.</p>
                         <div class="flex flex-wrap gap-3 mb-10">
                             @foreach(['Hindi','English','Punjabi','Haryanavi'] as $lang)
-                                <span class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-widest text-[#c9a227] group-hover:text-white transition-all">{{ $lang }}</span>
+                                <span class="px-4 py-2 bg-slate-50 border border-slate-200 rounded-full text-[10px] font-black uppercase tracking-widest text-slate-600 group-hover:bg-[#c9a227] group-hover:text-slate-950 group-hover:border-[#c9a227] transition-all">{{ $lang }}</span>
                             @endforeach
                         </div>
-                        <a href="#contact" class="inline-flex px-8 py-3.5 bg-white/5 border border-white/10 text-white font-syne font-black uppercase tracking-[0.2em] text-[10px] rounded-xl hover:bg-white hover:text-slate-900 transition-all shadow-xl active:scale-95 leading-none shadow-[#c9a227]/5">Inquire for Wedding</a>
+                        <a href="#contact" class="inline-flex px-8 py-3.5 bg-slate-950 text-white font-syne font-black uppercase tracking-[0.2em] text-[10px] rounded-xl hover:bg-[#c9a227] hover:text-slate-950 transition-all shadow-xl active:scale-95 leading-none">Inquire for Wedding</a>
                     </div>
                 </div>
             </div>

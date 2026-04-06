@@ -43,13 +43,13 @@
 
         <!-- Desktop Nav -->
         <nav class="hidden lg:flex items-center gap-10" id="hdr-nav" aria-label="Main navigation">
-            <a href="{{ url('/') }}#what" class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-white transition-colors">Offer</a>
-            <a href="{{ url('/') }}#corporate-event-anchors" class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-white transition-colors">Services</a>
-            <a href="{{ url('/') }}#why" class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-white transition-colors">Why Me</a>
-            <a href="{{ route('blog.index') }}" class="text-[10px] font-black uppercase tracking-[0.3em] {{ request()->is('blog*') ? 'text-[#c9a227]' : 'text-slate-400' }} hover:text-white transition-colors">Blog</a>
-            <a href="{{ route('about') }}" class="text-[10px] font-black uppercase tracking-[0.3em] {{ request()->routeIs('about') ? 'text-[#c9a227]' : 'text-slate-400' }} hover:text-white transition-colors">About</a>
-            <a href="{{ url('/') }}#gallery" class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-white transition-colors">Gallery</a>
-            <a href="{{ url('/') }}#testi" class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-white transition-colors">Reviews</a>
+            <a href="{{ url('/') }}#what" class="text-[11px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-white transition-all no-underline">Offer</a>
+            <a href="{{ url('/') }}#corporate-event-anchors" class="text-[11px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-white transition-all no-underline">Services</a>
+            <a href="{{ url('/') }}#why" class="text-[11px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-white transition-all no-underline">Why Me</a>
+            <a href="{{ route('blog.index') }}" class="text-[11px] font-black uppercase tracking-[0.3em] {{ request()->is('blog*') ? 'text-[#c9a227]' : 'text-slate-400' }} hover:text-white transition-all no-underline">Blog</a>
+            <a href="{{ route('about') }}" class="text-[11px] font-black uppercase tracking-[0.3em] {{ request()->routeIs('about') ? 'text-[#c9a227]' : 'text-slate-400' }} hover:text-white transition-all no-underline">About</a>
+            <a href="{{ url('/') }}#gallery" class="text-[11px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-white transition-all no-underline">Gallery</a>
+            <a href="{{ url('/') }}#testi" class="text-[11px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-white transition-all no-underline">Reviews</a>
         </nav>
 
         <!-- Right: CTA + Burger -->
@@ -96,42 +96,42 @@
 
                 <!-- Navigation Column -->
                 <div>
-                    <h4 class="text-white font-syne font-black uppercase tracking-[0.2em] text-xs mb-8">Quick Links</h4>
+                    <h4 class="text-white font-syne font-black uppercase tracking-[0.2em] text-xs mb-8 italic">Quick Links</h4>
                     <ul class="space-y-4">
-                        <li><a href="{{ url('/') }}#what" class="text-slate-400 text-sm hover:text-indigo-400 transition-colors">What I Offer</a></li>
-                        <li><a href="{{ url('/') }}#why" class="text-slate-400 text-sm hover:text-indigo-400 transition-colors">Why Choose Us</a></li>
-                        <li><a href="{{ route('blog.index') }}" class="text-slate-400 text-sm hover:text-indigo-400 transition-colors">Our Blog</a></li>
-                        <li><a href="{{ route('about') }}" class="text-slate-400 text-sm hover:text-indigo-400 transition-colors">About Me</a></li>
-                        <li><a href="{{ url('/') }}#gallery" class="text-slate-400 text-sm hover:text-indigo-400 transition-colors">Gallery</a></li>
+                        <li><a href="{{ url('/') }}#what" class="text-slate-400 text-[10px] font-black uppercase tracking-widest hover:text-[#c9a227] transition-all no-underline">What I Offer</a></li>
+                        <li><a href="{{ url('/') }}#why" class="text-slate-400 text-[10px] font-black uppercase tracking-widest hover:text-[#c9a227] transition-all no-underline">Why Choose Us</a></li>
+                        <li><a href="{{ route('blog.index') }}" class="text-slate-400 text-[10px] font-black uppercase tracking-widest hover:text-[#c9a227] transition-all no-underline">Our Blog</a></li>
+                        <li><a href="{{ route('about') }}" class="text-slate-400 text-[10px] font-black uppercase tracking-widest hover:text-[#c9a227] transition-all no-underline">About Me</a></li>
+                        <li><a href="{{ url('/') }}#gallery" class="text-slate-400 text-[10px] font-black uppercase tracking-widest hover:text-[#c9a227] transition-all no-underline">Gallery</a></li>
                     </ul>
                 </div>
 
                 <!-- Services Column -->
                 <div>
-                    <h4 class="text-white font-syne font-black uppercase tracking-[0.2em] text-xs mb-8">Specialties</h4>
+                    <h4 class="text-white font-syne font-black uppercase tracking-[0.2em] text-xs mb-8 italic">Specialties</h4>
                     <ul class="space-y-4">
-                        <li><a href="{{ url('/') }}#corporate-event-anchors" class="text-slate-400 text-sm hover:text-indigo-400 transition-colors">Corporate Events</a></li>
-                        <li><a href="{{ url('/') }}#wedding-anchors" class="text-slate-400 text-sm hover:text-indigo-400 transition-colors">Weddings</a></li>
-                        <li><a href="{{ url('/') }}#award-show-hosts" class="text-slate-400 text-sm hover:text-indigo-400 transition-colors">Award Shows</a></li>
-                        <li><a href="{{ url('/') }}#brand-launch-hosts" class="text-slate-400 text-sm hover:text-indigo-400 transition-colors">Launch Events</a></li>
-                        <li><a href="{{ url('/') }}#podcast-hosts" class="text-slate-400 text-sm hover:text-indigo-400 transition-colors">Podcasts</a></li>
+                        <li><a href="{{ url('/') }}#corporate-event-anchors" class="text-slate-400 text-[10px] font-black uppercase tracking-widest hover:text-[#c9a227] transition-all no-underline">Corporate Events</a></li>
+                        <li><a href="{{ url('/') }}#wedding-anchors" class="text-slate-400 text-[10px] font-black uppercase tracking-widest hover:text-[#c9a227] transition-all no-underline">Weddings</a></li>
+                        <li><a href="{{ url('/') }}#award-show-hosts" class="text-slate-400 text-[10px] font-black uppercase tracking-widest hover:text-[#c9a227] transition-all no-underline">Award Shows</a></li>
+                        <li><a href="{{ url('/') }}#brand-launch-hosts" class="text-slate-400 text-[10px] font-black uppercase tracking-widest hover:text-[#c9a227] transition-all no-underline">Launch Events</a></li>
+                        <li><a href="{{ url('/') }}#podcast-hosts" class="text-slate-400 text-[10px] font-black uppercase tracking-widest hover:text-[#c9a227] transition-all no-underline">Podcasts</a></li>
                     </ul>
                 </div>
 
                 <!-- Contact Column -->
                 <div>
-                    <h4 class="text-white font-syne font-black uppercase tracking-[0.2em] text-xs mb-8">Get In Touch</h4>
+                    <h4 class="text-white font-syne font-black uppercase tracking-[0.2em] text-xs mb-8 italic">Get In Touch</h4>
                     <ul class="space-y-6 mb-10">
-                        <li class="flex gap-4">
-                            <i class="bi bi-telephone-fill text-indigo-500"></i>
-                            <a href="tel:{{ config('site.phone') }}" class="text-slate-400 text-sm hover:text-white transition-all">{{ config('site.phone_display') }}</a>
+                        <li class="flex gap-4 items-center">
+                            <i class="bi bi-telephone-fill text-[#c9a227]"></i>
+                            <a href="tel:{{ config('site.phone') }}" class="text-slate-400 text-[10px] font-black uppercase tracking-widest hover:text-white transition-all no-underline">{{ config('site.phone_display') }}</a>
                         </li>
-                        <li class="flex gap-4">
-                            <i class="bi bi-envelope-fill text-indigo-500"></i>
-                            <a href="mailto:{{ config('site.email') }}" class="text-slate-400 text-sm hover:text-white transition-all">{{ config('site.email') }}</a>
+                        <li class="flex gap-4 items-center">
+                            <i class="bi bi-envelope-fill text-[#c9a227]"></i>
+                            <a href="mailto:{{ config('site.email') }}" class="text-slate-400 text-[10px] font-black uppercase tracking-widest hover:text-white transition-all no-underline lowercase italic">{{ config('site.email') }}</a>
                         </li>
                     </ul>
-                    <a href="{{ url('/') }}#contact" class="inline-block px-10 py-4 bg-white/5 border border-white/10 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-xl hover:bg-white hover:text-slate-900 transition-all">Book Now</a>
+                    <a href="{{ url('/') }}#contact" class="inline-block px-10 py-4 bg-white/5 border border-white/10 text-[#c9a227] text-[10px] font-black uppercase tracking-[0.2em] rounded-xl hover:bg-white hover:text-slate-900 transition-all no-underline">Book Now</a>
                 </div>
             </div>
 
@@ -140,7 +140,7 @@
                     © {{ config('site.footer_copyright') }} {{ config('site.site_url') }}
                 </p>
                 <p class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500">
-                    All Rights Reserved · Powered by <span class="text-indigo-500">{{ config('site.footer_powered_by', 'Tytil') }}</span>
+                    All Rights Reserved · Powered by <span class="text-[#c9a227]">{{ config('site.footer_powered_by', 'Tytil') }}</span>
                 </p>
             </div>
         </div>
