@@ -12,58 +12,103 @@
     @if(isset($post)) @method('PUT') @endif
 
     <!-- Main Content Area (Left) -->
-    <div class="lg:col-span-2 space-y-8">
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
+    <div class="lg:col-span-2 space-y-10">
+        <div class="bg-white rounded-[40px] shadow-2xl border border-slate-50 p-10 relative overflow-hidden group">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-50/30 rounded-bl-[100%] transition-all duration-700 group-focus-within:scale-150"></div>
+            
             <!-- Title Content Section -->
-            <div class="space-y-6">
+            <div class="space-y-8 relative z-10">
                 <div>
-                    <label for="title" class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Post Title</label>
+                    <div class="flex items-center justify-between mb-4">
+                        <label for="title" class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">Narrative Headline</label>
+                        <span class="text-[12px] text-indigo-400 font-bold italic" id="title-hint">Ready for impact?</span>
+                    </div>
                     <input type="text" name="title" id="title" value="{{ old('title', $post->title ?? '') }}" 
-                        class="w-full text-2xl font-bold bg-slate-50 border border-slate-200 rounded-xl px-6 py-4 focus:ring-4 focus:ring-indigo-100 focus:border-indigo-500 focus:bg-white transition-all shadow-sm outline-none" 
-                        placeholder="Enter catchy title here..." required onkeyup="generateSlug(this.value)">
+                        class="w-full text-4xl font-black bg-transparent border-none p-0 focus:ring-0 outline-none placeholder:text-slate-200 tracking-tighter" 
+                        placeholder="Start your story here..." required onkeyup="updateFieldInsight(this.value)">
                 </div>
 
-                <div>
-                    <label for="slug" class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">SEO Slug</label>
-                    <div class="flex items-center gap-2">
-                        <span class="text-slate-400 font-medium whitespace-nowrap">/blog/</span>
-                        <input type="text" name="slug" id="slug" value="{{ old('slug', $post->slug ?? '') }}" 
-                            class="flex-1 bg-slate-50 border border-slate-200 rounded-lg px-4 py-2 focus:ring-indigo-500/10 focus:border-indigo-500 outline-none transition-all font-mono text-sm text-slate-600" 
-                            placeholder="url-friendly-slug-auto-generated" required>
+                <div class="pt-4 border-t border-slate-50">
+                    <div class="flex items-center gap-3">
+                        <div class="px-3 py-1 bg-slate-900 text-white rounded-lg text-[9px] font-black uppercase tracking-widest">SEO PATH</div>
+                        <div class="flex-1 flex items-center gap-1.5 text-sm font-mono text-slate-400 bg-slate-50 px-4 py-2 rounded-xl">
+                            <span class="opacity-40">/blog/</span>
+                            <input type="text" name="slug" id="slug" value="{{ old('slug', $post->slug ?? '') }}" 
+                                class="flex-1 bg-transparent border-none p-0 focus:ring-0 outline-none text-slate-900" 
+                                placeholder="narrative-slug-auto-generated" required>
+                        </div>
                     </div>
                 </div>
 
-                <div>
-                    <label for="editor" class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Content</label>
-                    <div class="rounded-xl overflow-hidden border border-slate-200">
-                        <textarea name="content" id="editor">{{ old('content', $post->content ?? '') }}</textarea>
-                    </div>
+                <div class="pt-6">
+                    <label for="editor" class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 mb-4 block">Manuscript Content</label>
+                    <textarea name="content" id="editor">{{ old('content', $post->content ?? '') }}</textarea>
                 </div>
             </div>
         </div>
 
+        <!-- Discovery Optimization Section -->
+        <div class="bg-white rounded-[40px] shadow-sm border border-slate-50 p-10">
+            <div class="flex items-center justify-between mb-8">
+                <h3 class="text-xl font-black text-slate-950 uppercase tracking-tighter flex items-center gap-3">
+                    <i class="fas fa-bullseye text-indigo-500"></i> Discovery Hub
+                </h3>
+                <span class="px-3 py-1 bg-indigo-50 text-indigo-600 rounded-lg text-[10px] font-black uppercase tracking-widest">SEO Optimization</span>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">Search Meta Title</label>
+                        <input type="text" name="meta_title" value="{{ old('meta_title', $post->meta_title ?? '') }}" 
+                            class="w-full bg-slate-50 border border-slate-50 rounded-2xl px-6 py-4 focus:ring-4 focus:ring-indigo-100 focus:border-indigo-500 transition-all outline-none text-sm font-bold" 
+                            placeholder="Defaults to Headline">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">Snippet Description</label>
+                        <textarea name="meta_description" rows="3" 
+                            class="w-full bg-slate-50 border border-slate-50 rounded-2xl px-6 py-4 focus:ring-4 focus:ring-indigo-100 text-sm focus:border-indigo-500 transition-all outline-none leading-relaxed" 
+                            placeholder="Brief search summary...">{{ old('meta_description', $post->meta_description ?? '') }}</textarea>
+                    </div>
+                </div>
+                <div class="bg-slate-900 rounded-[30px] p-8 text-white flex flex-col justify-center border border-slate-800 shadow-2xl">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
+                        <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">Search Live Preview</span>
+                    </div>
+                    <p class="text-indigo-400 text-[10px] font-bold mb-2 truncate">indiananchors.com › blog › ...</p>
+                    <h4 class="text-lg font-bold mb-2 leading-tight uppercase tracking-tighter line-clamp-1" id="preview-title">Your Narrative Headline</h4>
+                    <p class="text-slate-500 text-xs line-clamp-2" id="preview-desc">The manuscript summary you craft will appear right here in global search results, captivating your audience at first glance.</p>
+                </div>
+            </div>
         </div>
         
         <!-- Featured Image -->
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
-            <h3 class="text-sm font-bold text-slate-800 mb-4 flex items-center gap-2">
-                <i class="fas fa-image text-emerald-500"></i> Featured Media (Header Image)
+        <div class="bg-white rounded-[40px] shadow-sm border border-slate-50 p-10 group" 
+             id="dropzone" 
+             ondragover="handleDragOver(event)" 
+             ondragleave="handleDragLeave(event)" 
+             ondrop="handleDrop(event)">
+            <h3 class="text-sm font-black text-slate-950 uppercase tracking-widest mb-6 flex items-center gap-3">
+                <i class="fas fa-camera-retro text-indigo-500"></i> Cinematic Header
             </h3>
-            <div class="relative group">
-                <div class="w-full aspect-video bg-slate-50 rounded-xl border-2 border-dashed border-slate-200 flex flex-col items-center justify-center text-slate-400 group-hover:border-indigo-400 transition-all cursor-pointer overflow-hidden p-2" onclick="document.getElementById('imageInput').click()">
+            <div class="relative overflow-hidden rounded-[30px] border-2 border-dashed border-slate-100 group-hover:border-indigo-400 transition-all">
+                <div class="w-full aspect-video bg-slate-50 flex flex-col items-center justify-center text-slate-400 cursor-pointer p-4" onclick="document.getElementById('imageInput').click()">
                     @if(isset($post) && $post->featured_image)
-                        <img src="{{ Storage::url($post->featured_image) }}" id="imagePreview" class="w-full h-full object-cover rounded-lg">
+                        <img src="{{ Storage::url($post->featured_image) }}" id="imagePreview" class="w-full h-full object-cover rounded-2xl">
                     @else
-                        <img id="imagePreview" class="hidden w-full h-full object-cover rounded-lg">
+                        <img id="imagePreview" class="hidden w-full h-full object-cover rounded-2xl">
                         <div id="imagePlaceholder" class="flex flex-col items-center">
-                            <i class="fas fa-cloud-upload-alt text-3xl mb-2 group-hover:text-indigo-500"></i>
-                            <span class="text-xs font-bold uppercase tracking-wider">Click to Upload</span>
+                            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-xl mb-4 transition-transform group-hover:scale-110">
+                                <i class="fas fa-cloud-upload-alt text-2xl text-indigo-500"></i>
+                            </div>
+                            <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">Drag & Drop Narrative Art</span>
                         </div>
                     @endif
                 </div>
                 <input type="file" name="featured_image" id="imageInput" class="hidden" accept="image/*" onchange="previewImage(this)">
             </div>
-            <p class="mt-3 text-[10px] text-slate-400 uppercase font-black tracking-widest">Recommended: 1200 x 630px for cinematic clarity</p>
+            <p class="mt-3 text-[9px] text-slate-400 uppercase font-black tracking-[0.2em] text-center">Recommended: 1200 x 630px Cinematic Clarity</p>
         </div>
 
         <!-- Media Integration -->
@@ -142,30 +187,55 @@
 @push('scripts')
 <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
 <script>
-    // CKEditor Initialization
-    ClassicEditor
-        .create(document.querySelector('#editor'), {
-            toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'insertTable', 'undo', 'redo'],
-            placeholder: 'Start writing your story here...'
-        })
-        .catch(error => {
-            console.error(error);
-        });
+    // CKEditor Initialization with Cinematic Styles
+    ClassicEditor.create(document.querySelector('#editor'), {
+        toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'insertTable', 'undo', 'redo'],
+        placeholder: 'Begin the artistic narrative...'
+    }).catch(error => { console.error(error); });
 
-    // Slug Generation
-    function generateSlug(text) {
+    // Narrative Insight & Slug Logic
+    function updateFieldInsight(text) {
+        const hint = document.getElementById('title-hint');
+        if (text.length > 5) hint.innerText = "Story looks compelling!";
+        else if (text.length > 0) hint.innerText = "Drafting the focus...";
+        else hint.innerText = "Ready for impact?";
+        
+        // Slug Gen
         const slug = text.toLowerCase()
-            .replace(/[^\w\s-]/g, '') // Remove non-word chars
-            .replace(/[\s_]+/g, '-')  // Replace spaces/underscores with -
-            .replace(/^-+|-+$/g, ''); // Trim - from ends
+            .replace(/[^\w\s-]/g, '')
+            .replace(/[\s_]+/g, '-')
+            .replace(/^-+|-+$/g, '');
         document.getElementById('slug').value = slug;
     }
 
-    // Image Preview
+    // Cinematic Drag & Drop Media Upload
+    const dropzone = document.getElementById('dropzone');
+    const imageInput = document.getElementById('imageInput');
+
+    function handleDragOver(e) {
+        e.preventDefault();
+        dropzone.classList.add('border-indigo-500', 'bg-indigo-50/20', 'scale-[1.01]');
+    }
+
+    function handleDragLeave(e) {
+        e.preventDefault();
+        dropzone.classList.remove('border-indigo-500', 'bg-indigo-50/20', 'scale-[1.01]');
+    }
+
+    function handleDrop(e) {
+        e.preventDefault();
+        dropzone.classList.remove('border-indigo-500', 'bg-indigo-50/20', 'scale-[1.01]');
+        
+        if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+            imageInput.files = e.dataTransfer.files;
+            previewImage(imageInput);
+        }
+    }
+
     function previewImage(input) {
         if (input.files && input.files[0]) {
             const reader = new FileReader();
-            reader.onload = function(e) {
+            reader.onload = e => {
                 const preview = document.getElementById('imagePreview');
                 const placeholder = document.getElementById('imagePlaceholder');
                 preview.src = e.target.result;
@@ -176,24 +246,26 @@
         }
     }
 
-    // YouTube Preview Logic
+    // YouTube Precision Hub
     function updateYoutubePreview(url) {
         const container = document.getElementById('yt-preview-container');
+        const placeholder = document.getElementById('yt-placeholder');
         const iframe = document.getElementById('yt-preview');
         const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
         const match = url.match(regExp);
 
         if (match && match[2].length == 11) {
             container.classList.remove('hidden');
+            if(placeholder) placeholder.classList.add('hidden');
             iframe.src = `https://www.youtube.com/embed/${match[2]}`;
         } else {
             container.classList.add('hidden');
+            if(placeholder) placeholder.classList.remove('hidden');
             iframe.src = '';
         }
     }
 
-    // Run initial youtube preview check
-    window.onload = function() {
+    window.onload = () => {
         const ytInput = document.getElementById('youtube_url');
         if(ytInput.value) updateYoutubePreview(ytInput.value);
     }
