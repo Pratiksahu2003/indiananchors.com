@@ -208,17 +208,17 @@
     <section id="insights" class="py-24 bg-slate-50 overflow-hidden">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div class="relative group" data-aos="fade-right">
+                <a href="{{ route('blog.index') }}" class="relative group block" data-aos="fade-right">
                     <div class="absolute -inset-4 bg-[#c9a227]/10 rounded-[60px] blur-3xl group-hover:bg-[#c9a227]/20 transition-all duration-1000"></div>
                     <div class="relative rounded-[50px] overflow-hidden aspect-[4/3] shadow-2xl border border-white/50 bg-slate-900">
                         <img src="{{ asset('img/blog.avif') }}" class="w-full h-full object-cover transition-transform duration-[3000ms] group-hover:scale-110" alt="Masterclass Insights">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80"></div>
                         <div class="absolute bottom-10 left-10 right-10">
-                             <span class="px-4 py-2 bg-[#c9a227] text-slate-950 font-syne font-black uppercase text-[8px] tracking-[0.3em] rounded-lg mb-4 inline-block shadow-lg">Deep Dive</span>
-                             <h3 class="text-white font-syne font-black text-3xl tracking-tighter uppercase leading-tight">The Art of <br><span class="text-[#c9a227] italic font-normal">Global Masterclass</span></h3>
+                             <span class="px-4 py-2 bg-[#c9a227] text-slate-950 font-syne font-black uppercase text-[8px] tracking-[0.3em] rounded-lg mb-4 inline-block shadow-lg group-hover:bg-white transition-all">Deep Dive</span>
+                             <h3 class="text-white font-syne font-black text-3xl tracking-tighter uppercase leading-tight group-hover:text-[#c9a227] transition-all">The Art of <br><span class="text-[#c9a227] italic font-normal group-hover:text-white transition-all">Global Masterclass</span></h3>
                         </div>
                     </div>
-                </div>
+                </a>
                 <div data-aos="fade-left">
                      <span class="text-[#c9a227] font-black uppercase tracking-[0.4em] text-[10px] mb-4 block italic">Knowledge Hub</span>
                      <h2 class="text-4xl lg:text-5xl font-syne font-black text-slate-900 tracking-tighter uppercase leading-[0.9] mb-8">Masterclass & <br><span class="text-[#c9a227] italic">Industry Insights</span></h2>
@@ -234,13 +234,13 @@
                         ];
                         @endphp
                         @foreach($cats as $cat)
-                        <div class="p-6 bg-white rounded-[30px] border border-slate-100 hover:border-[#c9a227] hover:shadow-2xl hover:shadow-slate-200/50 transition-all duration-500 group cursor-pointer">
+                        <a href="{{ route('blog.index') }}" class="p-6 bg-white rounded-[30px] border border-slate-100 hover:border-[#c9a227] hover:shadow-2xl hover:shadow-slate-200/50 transition-all duration-500 group">
                             <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-[#c9a227] text-xl mb-4 group-hover:bg-[#c9a227] group-hover:text-slate-950 transition-all duration-500">
                                 <i class="{{ $cat['i'] }}"></i>
                             </div>
                             <h4 class="font-syne font-black text-slate-950 uppercase tracking-tighter text-sm mb-1">{{ $cat['t'] }}</h4>
                             <p class="text-slate-400 text-[10px] font-dm italic uppercase tracking-widest">{{ $cat['d'] }}</p>
-                        </div>
+                        </a>
                         @endforeach
                      </div>
                 </div>
