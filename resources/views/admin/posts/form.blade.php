@@ -6,15 +6,15 @@
 @section('content')
 <style>
     .ck-editor__editable {
-        min-height: 500px !important;
-        max-height: 700px !important;
+        min-height: 300px !important;
+        max-height: 500px !important;
         overflow-y: auto !important;
         border: none !important;
         background: transparent !important;
         padding: 0 !important;
         font-family: 'Inter', sans-serif !important;
-        font-size: 1.1rem !important;
-        line-height: 1.8 !important;
+        font-size: 1rem !important;
+        line-height: 1.6 !important;
         color: #0f172a !important;
     }
     .ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
@@ -23,138 +23,117 @@
     .ck.ck-toolbar {
         border: none !important;
         background: #f8fafc !important;
-        border-radius: 20px !important;
-        margin-bottom: 20px !important;
-        padding: 10px !important;
-    }
-    .ck-content blockquote {
-        border-left: 4px solid #6366f1 !important;
-        background: #f5f3ff !important;
-        padding: 20px !important;
-        border-radius: 0 20px 20px 0 !important;
-        font-style: italic !important;
+        border-radius: 12px !important;
+        margin-bottom: 12px !important;
+        padding: 6px !important;
     }
 </style>
 <form action="{{ isset($post) ? route('admin.posts.update', $post) : route('admin.posts.store') }}" 
       method="POST" 
       enctype="multipart/form-data" 
-      class="grid grid-cols-1 lg:grid-cols-3 gap-8 pb-20">
+      class="grid grid-cols-1 lg:grid-cols-3 gap-6 pb-12">
     @csrf
     @if(isset($post)) @method('PUT') @endif
 
     <!-- Main Content Area (Left) -->
-    <div class="lg:col-span-2 space-y-10">
-        <div class="bg-white rounded-[40px] shadow-2xl border border-slate-50 p-10 relative overflow-hidden group">
-            <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-50/30 rounded-bl-[100%] transition-all duration-700 group-focus-within:scale-150"></div>
-            
+    <div class="lg:col-span-2 space-y-4">
+        <div class="bg-white rounded-xl shadow-lg border border-slate-50 p-6 relative overflow-hidden group">
             <!-- Title Content Section -->
-            <div class="space-y-8 relative z-10">
-                <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <label for="title" class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">Narrative Headline</label>
-                        <span class="text-[12px] text-indigo-400 font-bold italic" id="title-hint">Ready for impact?</span>
+            <div class="space-y-4 relative z-10">
+                <div class="flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="flex-1">
+                        <input type="text" name="title" id="title" value="{{ old('title', $post->title ?? '') }}" 
+                            class="w-full text-2xl font-black bg-transparent border-none p-0 focus:ring-0 outline-none placeholder:text-slate-200 tracking-tight" 
+                            placeholder="Headline..." required onkeyup="updateFieldInsight(this.value)">
                     </div>
-                    <input type="text" name="title" id="title" value="{{ old('title', $post->title ?? '') }}" 
-                        class="w-full text-4xl font-black bg-transparent border-none p-0 focus:ring-0 outline-none placeholder:text-slate-200 tracking-tighter" 
-                        placeholder="Start your story here..." required onkeyup="updateFieldInsight(this.value)">
-                </div>
-
-                <div class="pt-4 border-t border-slate-50">
-                    <div class="flex items-center gap-3">
-                        <div class="px-3 py-1 bg-slate-900 text-white rounded-lg text-[9px] font-black uppercase tracking-widest">SEO PATH</div>
-                        <div class="flex-1 flex items-center gap-1.5 text-sm font-mono text-slate-400 bg-slate-50 px-4 py-2 rounded-xl">
-                            <span class="opacity-40">/blog/</span>
-                            <input type="text" name="slug" id="slug" value="{{ old('slug', $post->slug ?? '') }}" 
-                                class="flex-1 bg-transparent border-none p-0 focus:ring-0 outline-none text-slate-900" 
-                                placeholder="narrative-slug-auto-generated" required>
-                        </div>
+                    <div class="flex items-center gap-2 text-xs font-mono text-slate-400 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100">
+                        <span class="opacity-30">/blog/</span>
+                        <input type="text" name="slug" id="slug" value="{{ old('slug', $post->slug ?? '') }}" 
+                            class="bg-transparent border-none p-0 focus:ring-0 outline-none text-slate-900 w-32" 
+                            placeholder="slug-gen" required>
                     </div>
                 </div>
 
-                <div class="pt-6">
-                    <label for="editor" class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 mb-4 block">Manuscript Content</label>
+                <div class="pt-2 border-t border-slate-50">
                     <textarea name="content" id="editor">{{ old('content', $post->content ?? '') }}</textarea>
                 </div>
             </div>
         </div>
 
-        <!-- Discovery Optimization Section -->
-        <div class="bg-white rounded-[40px] shadow-sm border border-slate-50 p-10">
-            <div class="flex items-center justify-between mb-8">
-                <h3 class="text-xl font-black text-slate-950 uppercase tracking-tighter flex items-center gap-3">
-                    <i class="fas fa-bullseye text-indigo-500"></i> Discovery Hub
-                </h3>
-                <span class="px-3 py-1 bg-indigo-50 text-indigo-600 rounded-lg text-[10px] font-black uppercase tracking-widest">SEO Optimization</span>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="space-y-6">
-                    <div>
-                        <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">Search Meta Title</label>
-                        <input type="text" name="meta_title" value="{{ old('meta_title', $post->meta_title ?? '') }}" 
-                            class="w-full bg-slate-50 border border-slate-50 rounded-2xl px-6 py-4 focus:ring-4 focus:ring-indigo-100 focus:border-indigo-500 transition-all outline-none text-sm font-bold" 
-                            placeholder="Defaults to Headline">
+        <!-- Discovery Hub -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-50 p-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-xs font-black text-slate-900 uppercase tracking-widest">Discovery Hub</h3>
+                        <span class="text-[8px] text-emerald-500 font-bold uppercase tracking-widest">Ready for search</span>
                     </div>
-                    <div>
-                        <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">Snippet Description</label>
-                        <textarea name="meta_description" rows="3" 
-                            class="w-full bg-slate-50 border border-slate-50 rounded-2xl px-6 py-4 focus:ring-4 focus:ring-indigo-100 text-sm focus:border-indigo-500 transition-all outline-none leading-relaxed" 
-                            placeholder="Brief search summary...">{{ old('meta_description', $post->meta_description ?? '') }}</textarea>
-                    </div>
+                    <input type="text" name="meta_title" value="{{ old('meta_title', $post->meta_title ?? '') }}" 
+                        class="w-full bg-slate-50 border border-slate-100 rounded-lg px-4 py-2 text-xs font-bold outline-none focus:border-indigo-500" 
+                        placeholder="Meta Title">
+                    <textarea name="meta_description" rows="2" 
+                        class="w-full bg-slate-50 border border-slate-100 rounded-lg px-4 py-2 text-xs outline-none focus:border-indigo-500" 
+                        placeholder="Snippet...">{{ old('meta_description', $post->meta_description ?? '') }}</textarea>
                 </div>
-                <div class="bg-slate-900 rounded-[30px] p-8 text-white flex flex-col justify-center border border-slate-800 shadow-2xl">
-                    <div class="flex items-center gap-2 mb-4">
-                        <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
-                        <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">Search Live Preview</span>
+                <div class="bg-slate-950 rounded-xl p-4 text-white relative">
+                    <div class="flex items-center gap-2 mb-1">
+                        <div class="w-1 h-1 rounded-full bg-emerald-500 animate-pulse"></div>
+                        <span class="text-[8px] font-black uppercase text-slate-500">Live</span>
                     </div>
-                    <p class="text-indigo-400 text-[10px] font-bold mb-2 truncate">indiananchors.com › blog › ...</p>
-                    <h4 class="text-lg font-bold mb-2 leading-tight uppercase tracking-tighter line-clamp-1" id="preview-title">Your Narrative Headline</h4>
-                    <p class="text-slate-500 text-xs line-clamp-2" id="preview-desc">The manuscript summary you craft will appear right here in global search results, captivating your audience at first glance.</p>
+                    <h4 class="text-xs font-bold mb-1 truncate text-indigo-400" id="preview-title">Headline</h4>
+                    <p class="text-slate-500 text-[9px] line-clamp-1 leading-tight" id="preview-desc">Search snippet preview area.</p>
                 </div>
             </div>
         </div>
+iv>
         
-        <!-- Featured Image -->
-        <div class="bg-white rounded-[40px] shadow-sm border border-slate-50 p-10 group" 
-             id="dropzone" 
-             ondragover="handleDragOver(event)" 
-             ondragleave="handleDragLeave(event)" 
-             ondrop="handleDrop(event)">
-            <h3 class="text-sm font-black text-slate-950 uppercase tracking-widest mb-6 flex items-center gap-3">
-                <i class="fas fa-camera-retro text-indigo-500"></i> Cinematic Header
-            </h3>
-            <div class="relative overflow-hidden rounded-[30px] border-2 border-dashed border-slate-100 group-hover:border-indigo-400 transition-all">
-                <div class="w-full aspect-video bg-slate-50 flex flex-col items-center justify-center text-slate-400 cursor-pointer p-4" onclick="document.getElementById('imageInput').click()">
-                    @if(isset($post) && $post->featured_image)
-                        <img src="{{ Storage::url($post->featured_image) }}" id="imagePreview" class="w-full h-full object-cover rounded-2xl">
-                    @else
-                        <img id="imagePreview" class="hidden w-full h-full object-cover rounded-2xl">
-                        <div id="imagePlaceholder" class="flex flex-col items-center">
-                            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-xl mb-4 transition-transform group-hover:scale-110">
-                                <i class="fas fa-cloud-upload-alt text-2xl text-indigo-500"></i>
+        <!-- Media Integration Modules -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Featured Image -->
+            <div class="bg-white rounded-3xl shadow-sm border border-slate-50 p-8 group" 
+                 id="dropzone" 
+                 ondragover="handleDragOver(event)" 
+                 ondragleave="handleDragLeave(event)" 
+                 ondrop="handleDrop(event)">
+                <h3 class="text-sm font-black text-slate-950 uppercase tracking-widest mb-4 flex items-center gap-2">
+                    <i class="fas fa-camera-retro text-indigo-500 text-xs"></i> Cinematic Header
+                </h3>
+                <div class="relative overflow-hidden rounded-2xl border-2 border-dashed border-slate-100 group-hover:border-indigo-400 transition-all">
+                    <div class="w-full aspect-video bg-slate-50 flex flex-col items-center justify-center text-slate-400 cursor-pointer p-4" onclick="document.getElementById('imageInput').click()">
+                        @if(isset($post) && $post->featured_image)
+                            <img src="{{ Storage::url($post->featured_image) }}" id="imagePreview" class="w-full h-full object-cover rounded-xl">
+                        @else
+                            <img id="imagePreview" class="hidden w-full h-full object-cover rounded-xl">
+                            <div id="imagePlaceholder" class="flex flex-col items-center">
+                                <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg mb-2 transition-transform group-hover:scale-110">
+                                    <i class="fas fa-cloud-upload-alt text-lg text-indigo-500"></i>
+                                </div>
+                                <span class="text-[8px] font-black uppercase tracking-widest text-slate-400">Drag & Drop Narrative Art</span>
                             </div>
-                            <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">Drag & Drop Narrative Art</span>
-                        </div>
-                    @endif
+                        @endif
+                    </div>
+                    <input type="file" name="featured_image" id="imageInput" class="hidden" accept="image/*" onchange="previewImage(this)">
                 </div>
-                <input type="file" name="featured_image" id="imageInput" class="hidden" accept="image/*" onchange="previewImage(this)">
+                <p class="mt-2 text-[8px] text-slate-400 uppercase font-black tracking-widest text-center">Recommended: 1200 x 630px Clarity</p>
             </div>
-            <p class="mt-3 text-[9px] text-slate-400 uppercase font-black tracking-[0.2em] text-center">Recommended: 1200 x 630px Cinematic Clarity</p>
-        </div>
 
-        <!-- Media Integration -->
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
-            <h3 class="text-sm font-bold text-slate-800 mb-4 flex items-center gap-2">
-                <i class="fab fa-youtube text-rose-500"></i> Cinematic Reel (YouTube Link)
-            </h3>
-            <div class="space-y-4">
-                <input type="url" name="youtube_url" id="youtube_url" value="{{ old('youtube_url', $post->youtube_url ?? '') }}" 
-                    class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:ring-4 focus:ring-rose-100 focus:border-rose-500 transition-all outline-none" 
-                    placeholder="https://youtube.com/watch?v=..." oninput="updateYoutubePreview(this.value)">
-                
-                <div id="yt-preview-container" class="hidden aspect-video rounded-xl overflow-hidden border border-slate-200 shadow-sm relative">
-                    <div class="absolute inset-0 bg-slate-900/10 pointer-events-none"></div>
-                    <iframe id="yt-preview" class="w-full h-full" frameborder="0" allowfullscreen></iframe>
+            <!-- YouTube Integration -->
+            <div class="bg-white rounded-3xl shadow-sm border border-slate-50 p-8 h-full flex flex-col">
+                <h3 class="text-sm font-black text-slate-950 uppercase tracking-widest mb-4 flex items-center gap-2">
+                    <i class="fab fa-youtube text-rose-500 text-xs"></i> Cinematic Reel
+                </h3>
+                <div class="space-y-3 flex-1 flex flex-col">
+                    <input type="url" name="youtube_url" id="youtube_url" value="{{ old('youtube_url', $post->youtube_url ?? '') }}" 
+                        class="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 text-sm font-bold focus:ring-2 focus:ring-rose-100 focus:border-rose-500 transition-all outline-none" 
+                        placeholder="YouTube Story URL..." oninput="updateYoutubePreview(this.value)">
+                    
+                    <div id="yt-preview-container" class="hidden flex-1 aspect-video rounded-2xl overflow-hidden border border-slate-50 shadow-xl relative mt-auto">
+                        <iframe id="yt-preview" class="w-full h-full" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div id="yt-placeholder" class="flex-1 flex flex-col items-center justify-center bg-slate-50 rounded-2xl border border-slate-50 border-dashed text-slate-200 py-6">
+                        <i class="fab fa-youtube text-2xl opacity-10 mb-1"></i>
+                        <span class="text-[8px] font-black uppercase tracking-widest">Video Preview Hub</span>
+                    </div>
                 </div>
             </div>
         </div>
