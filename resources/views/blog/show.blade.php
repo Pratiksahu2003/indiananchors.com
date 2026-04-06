@@ -102,18 +102,6 @@
                         </div>
                     </div>
 
-                    <!-- Newsletter Glass Card -->
-                    <div class="relative p-12 lg:p-16 rounded-[50px] overflow-hidden bg-slate-900 shadow-2xl text-center">
-                        <div class="absolute inset-0 bg-gradient-to-br from-indigo-900/40 to-slate-900 z-0"></div>
-                        <div class="relative z-10">
-                            <h3 class="text-3xl lg:text-4xl font-syne font-bold text-white mb-6">Stay Ahead of the Stage.</h3>
-                            <p class="text-slate-400 font-dm text-lg mb-12 max-w-md mx-auto leading-relaxed">Join 10,000+ event professionals who receive our weekly curated industry insights.</p>
-                            <form class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
-                                <input type="email" placeholder="Your best email address" class="flex-1 px-8 py-4 rounded-2xl bg-white/10 border border-white/10 text-white placeholder:text-slate-500 outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all font-medium text-sm">
-                                <button type="submit" class="px-10 py-4 bg-white text-slate-900 font-syne font-bold rounded-2xl hover:bg-indigo-400 hover:text-white transition-all active:scale-95 shadow-lg">Subscribe</button>
-                            </form>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- Right Sidebar: Author & Related (XL+) -->

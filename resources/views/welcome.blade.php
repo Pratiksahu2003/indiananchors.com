@@ -104,16 +104,16 @@
                         </a>
                     </div>
                 </div>
-                <div class="contact-form-wrap bg-white p-12 rounded-[50px] shadow-2xl border border-slate-50">
-                    <form action="{{ route('book.submit') }}" method="POST" class="space-y-6">
+                <div class="contact-form-wrap">
+                    <form action="{{ route('book.submit') }}" method="POST" class="form-group-modern">
                         @csrf
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <input type="text" name="name" placeholder="Full Name" required class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none outline-none focus:ring-2 focus:ring-indigo-500 transition-all">
-                            <input type="email" name="email" placeholder="Email Address" required class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none outline-none focus:ring-2 focus:ring-indigo-500 transition-all">
+                        <div class="form-row">
+                            <input type="text" name="name" placeholder="Full Name" required class="input-modern">
+                            <input type="email" name="email" placeholder="Email Address" required class="input-modern">
                         </div>
-                        <input type="text" name="event" placeholder="Event Type" required class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none outline-none focus:ring-2 focus:ring-indigo-500 transition-all">
-                        <textarea name="message" rows="4" placeholder="Your Message" required class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none outline-none focus:ring-2 focus:ring-indigo-500 transition-all"></textarea>
-                        <button type="submit" class="w-full py-5 bg-slate-900 text-white font-syne font-bold rounded-2xl hover:bg-indigo-600 transition-all shadow-lg active:scale-95">Send Message</button>
+                        <input type="text" name="event" placeholder="Event Type" required class="input-modern">
+                        <textarea name="message" rows="4" placeholder="Your Message" required class="input-modern"></textarea>
+                        <button type="submit" class="btn-modern">Send Message</button>
                     </form>
                 </div>
             </div>

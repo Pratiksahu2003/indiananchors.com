@@ -3542,14 +3542,89 @@ section[id],
 }
 
 /* ---- Contact section ---- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 5rem;
+  align-items: flex-start;
+  margin-top: 3rem;
+}
+
+.contact-form-wrap {
+  background: #ffffff;
+  padding: 3.5rem;
+  border-radius: 40px;
+  box-shadow: 0 40px 100px -20px rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.03);
+}
+
+.form-group-modern {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.input-modern {
+  width: 100%;
+  padding: 1.2rem 1.5rem;
+  border-radius: 18px;
+  background: #f8fafc;
+  border: 2px solid transparent;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  color: #1e293b;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input-modern:focus {
+  background: #ffffff;
+  border-color: #6366f1;
+  box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.15);
+  outline: none;
+}
+
+.btn-modern {
+  width: 100%;
+  padding: 1.4rem;
+  background: #0f172a;
+  color: #ffffff;
+  border: none;
+  border-radius: 18px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 15px 30px -10px rgba(15, 23, 42, 0.3);
+}
+
+.btn-modern:hover {
+  background: #6366f1;
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.4);
+}
+
+.btn-modern:active {
+  transform: translateY(0);
+}
+
 @media (max-width: 991px) {
-  .contact-grid-modern { gap: 2.5rem; }
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
 }
 
 @media (max-width: 767px) {
-  .contact-grid, .contact-grid-modern { gap: 2rem; }
-  .contact-form-modern { padding: 1.75rem 1.5rem; }
-  .contact-phone { font-size: 1rem; }
+  .contact-grid { gap: 3rem; }
+  .contact-form-wrap { padding: 2rem; border-radius: 30px; }
+  .form-row { grid-template-columns: 1fr; }
   .section-contact .section-title { font-size: clamp(1.6rem, 6vw, 2.25rem); }
 }
 
