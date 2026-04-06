@@ -14,16 +14,25 @@
 @endsection
 
 @section('content')
-    <article class="bg-white min-h-screen">
+    <!-- World-Class Reading Progress Bar -->
+    <div class="fixed top-0 left-0 w-full h-1 z-[100] bg-slate-900/10 pointer-events-none">
+        <div id="reading-progress" class="h-full bg-[#c9a227] w-0 transition-all duration-150"></div>
+    </div>
+
+    <article class="bg-white min-h-screen relative overflow-hidden">
+        <!-- Abstract Background Signature (Huge Outline Text) -->
+        <div class="absolute inset-x-0 top-1/4 -translate-y-1/2 flex justify-center pointer-events-none select-none overflow-hidden z-0 opacity-40">
+            <span class="text-[25vw] font-syne font-black text-slate-50 uppercase leading-none transform -rotate-6">STORY</span>
+        </div>
         <!-- Cinematic Post Hero (Compact) -->
         <header class="relative min-h-[50vh] flex items-center justify-center pt-24 pb-16 overflow-hidden bg-slate-950">
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent z-10"></div>
             
-            <!-- Dynamic Background Image -->
+            <!-- Dynamic Background Image (Optimized LCP) -->
             @if($post->featured_image)
-                <img src="{{ Storage::url($post->featured_image) }}" alt="{{ $post->title }}" class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-luminosity scale-110 blur-[2px]">
+                <img src="{{ Storage::url($post->featured_image) }}" fetchpriority="high" alt="{{ $post->title }}" class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-luminosity scale-110 blur-[1px]">
             @else
-                <img src="{{ asset('img/blog.avif') }}" class="absolute inset-0 w-full h-full object-cover opacity-10 mix-blend-luminosity">
+                <img src="{{ asset('img/blog.avif') }}" fetchpriority="high" class="absolute inset-0 w-full h-full object-cover opacity-10 mix-blend-luminosity">
             @endif
 
             <!-- Background Accents -->
@@ -178,8 +187,11 @@
 
     <style>
         .article-body p:first-of-type {
-            @apply text-2xl font-bold text-slate-950 leading-tight tracking-tighter uppercase mb-12;
-            content-visibility: auto;
+            @apply text-2xl font-bold text-slate-950 leading-tight tracking-tighter uppercase mb-12 relative;
+        }
+        .article-body p:first-of-type::before {
+            content: "";
+            @apply absolute -left-4 top-0 w-1 h-full bg-[#c9a227] rounded-full;
         }
         .gradient-text {
             background: linear-gradient(135deg, #c9a227 0%, #d4af37 100%);
@@ -197,4 +209,15 @@
             @apply bg-[#c9a227]/30 rounded-full hover:bg-[#c9a227]/60 transition-all;
         }
     </style>
+
+    <script>
+        document.addEventListener('scroll', () => {
+            const h = document.documentElement, 
+                  b = document.body,
+                  st = 'scrollTop',
+                  sh = 'scrollHeight';
+            const percent = (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100;
+            document.getElementById('reading-progress').style.width = percent + '%';
+        });
+    </script>
 @endsection
