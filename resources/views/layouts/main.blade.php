@@ -46,15 +46,15 @@
             <a href="{{ url('/') }}#what" class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-white transition-colors">Offer</a>
             <a href="{{ url('/') }}#corporate-event-anchors" class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-white transition-colors">Services</a>
             <a href="{{ url('/') }}#why" class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-white transition-colors">Why Me</a>
-            <a href="{{ route('blog.index') }}" class="text-[10px] font-black uppercase tracking-[0.3em] {{ request()->is('blog*') ? 'text-indigo-400' : 'text-slate-400' }} hover:text-white transition-colors">Blog</a>
-            <a href="{{ url('/') }}#about" class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-white transition-colors">About</a>
+            <a href="{{ route('blog.index') }}" class="text-[10px] font-black uppercase tracking-[0.3em] {{ request()->is('blog*') ? 'text-[#c9a227]' : 'text-slate-400' }} hover:text-white transition-colors">Blog</a>
+            <a href="{{ route('about') }}" class="text-[10px] font-black uppercase tracking-[0.3em] {{ request()->routeIs('about') ? 'text-[#c9a227]' : 'text-slate-400' }} hover:text-white transition-colors">About</a>
             <a href="{{ url('/') }}#gallery" class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-white transition-colors">Gallery</a>
             <a href="{{ url('/') }}#testi" class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-white transition-colors">Reviews</a>
         </nav>
 
         <!-- Right: CTA + Burger -->
         <div class="flex items-center gap-6">
-            <a href="{{ url('/') }}#contact" class="hidden md:flex items-center gap-3 px-8 py-3.5 bg-indigo-600 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-xl hover:bg-white hover:text-slate-900 transition-all shadow-xl shadow-indigo-600/20 active:scale-95">
+            <a href="{{ url('/') }}#contact" class="hidden md:flex items-center gap-3 px-8 py-3.5 bg-[#c9a227] text-slate-950 text-[10px] font-black uppercase tracking-[0.2em] rounded-xl hover:bg-white hover:text-slate-900 transition-all shadow-xl shadow-[#c9a227]/20 active:scale-95 leading-none">
                 <i class="bi bi-calendar-check-fill"></i>
                 <span>Book Now</span>
             </a>
@@ -101,7 +101,7 @@
                         <li><a href="{{ url('/') }}#what" class="text-slate-400 text-sm hover:text-indigo-400 transition-colors">What I Offer</a></li>
                         <li><a href="{{ url('/') }}#why" class="text-slate-400 text-sm hover:text-indigo-400 transition-colors">Why Choose Us</a></li>
                         <li><a href="{{ route('blog.index') }}" class="text-slate-400 text-sm hover:text-indigo-400 transition-colors">Our Blog</a></li>
-                        <li><a href="{{ url('/') }}#about" class="text-slate-400 text-sm hover:text-indigo-400 transition-colors">About Me</a></li>
+                        <li><a href="{{ route('about') }}" class="text-slate-400 text-sm hover:text-indigo-400 transition-colors">About Me</a></li>
                         <li><a href="{{ url('/') }}#gallery" class="text-slate-400 text-sm hover:text-indigo-400 transition-colors">Gallery</a></li>
                     </ul>
                 </div>
@@ -147,25 +147,25 @@
     </footer>
 
     <!-- Scroll Top -->
-    <a href="#" id="scroll-top" class="fixed bottom-10 right-10 w-14 h-14 bg-indigo-600 text-white rounded-full flex items-center justify-center opacity-0 invisible transition-all duration-500 z-50 hover:bg-white hover:text-slate-900 shadow-2xl"><i class="bi bi-arrow-up"></i></a>
+    <a href="#" id="scroll-top" class="fixed bottom-10 right-10 w-14 h-14 bg-[#c9a227] text-slate-950 rounded-full flex items-center justify-center opacity-0 invisible transition-all duration-500 z-50 hover:bg-white shadow-2xl"><i class="bi bi-arrow-up"></i></a>
 
     <!-- Float Contact -->
     <div class="fixed bottom-10 left-10 z-[60]" id="chatbot-open-container">
-        <button class="w-16 h-16 bg-indigo-600 text-white rounded-2xl flex items-center justify-center text-3xl shadow-2xl hover:scale-105 active:scale-95 transition-all" id="open-chat-button" aria-label="Contact">
+        <button class="w-16 h-16 bg-[#c9a227] text-slate-950 rounded-2xl flex items-center justify-center text-3xl shadow-2xl hover:scale-105 active:scale-95 transition-all shadow-[#c9a227]/20" id="open-chat-button" aria-label="Contact">
             <i class="bi bi-chat-dots-fill"></i>
         </button>
         <div class="absolute bottom-20 left-0 w-72 bg-slate-900/95 backdrop-blur-xl border border-white/10 rounded-[30px] p-6 shadow-2xl opacity-0 invisible translate-y-10 transition-all duration-500" id="chatbot-container">
             <div class="space-y-4">
                 <a href="tel:{{ config('site.phone') }}" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 hover:bg-white/10 text-white transition-all">
-                    <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-lg"><i class="bi bi-telephone-fill"></i></div>
+                    <div class="w-10 h-10 rounded-xl bg-[#c9a227] text-slate-950 flex items-center justify-center text-lg"><i class="bi bi-telephone-fill"></i></div>
                     <span class="font-syne font-bold uppercase text-[10px] tracking-widest">Call Now</span>
                 </a>
                 <a href="https://wa.me/{{ config('site.phone') }}" target="_blank" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 hover:bg-white/10 text-white transition-all">
-                    <div class="w-10 h-10 rounded-xl bg-emerald-500 flex items-center justify-center text-lg"><i class="bi bi-whatsapp"></i></div>
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500 text-white flex items-center justify-center text-lg"><i class="bi bi-whatsapp"></i></div>
                     <span class="font-syne font-bold uppercase text-[10px] tracking-widest">WhatsApp</span>
                 </a>
                 <a href="mailto:{{ config('site.email') }}" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 hover:bg-white/10 text-white transition-all">
-                    <div class="w-10 h-10 rounded-xl bg-indigo-400 flex items-center justify-center text-lg"><i class="bi bi-envelope-fill"></i></div>
+                    <div class="w-10 h-10 rounded-xl bg-[#d4af37] text-slate-950 flex items-center justify-center text-lg"><i class="bi bi-envelope-fill"></i></div>
                     <span class="font-syne font-bold uppercase text-[10px] tracking-widest">Email Us</span>
                 </a>
             </div>
