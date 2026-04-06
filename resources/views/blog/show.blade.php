@@ -173,56 +173,6 @@
                     </div>
                 </div>
 
-                <div class="pt-2">
-                    <a href="{{ route('blog.index') }}"
-                        class="flex items-center justify-center gap-3 w-full py-4 rounded-xl bg-slate-950 text-[9px] font-black uppercase tracking-widest text-white hover:bg-[#c9a227] hover:text-slate-950 transition-all shadow-xl">
-                        Back to Index
-                    </a>
-                </div>
-            </aside>
-
-            <!-- Core Article Content (Narrative Pillar 8-Col) -->
-            <main class="md:col-span-8 space-y-12 lg:space-y-16 order-1 md:order-2" data-aos="fade-up"
-                data-aos-delay="100">
-
-                <!-- Strategic Share Ribbon (Post-Hero Discovery) -->
-                <div class="flex flex-wrap items-center gap-6 pb-10 mb-12 border-b border-slate-50">
-                    <span class="text-[9px] font-black uppercase tracking-[0.4em] text-slate-400">Masterclass
-                        Insights:</span>
-                    <div class="flex items-center gap-4">
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:bg-slate-950 hover:text-white transition-all shadow-sm"><i
-                                class="bi bi-facebook"></i></a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:bg-slate-950 hover:text-white transition-all shadow-sm"><i
-                                class="bi bi-twitter-x"></i></a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:bg-slate-950 hover:text-white transition-all shadow-sm"><i
-                                class="bi bi-link-45deg text-lg"></i></a>
-                    </div>
-                </div>
-                <div class="rounded-[40px] overflow-hidden shadow-2xl bg-black border-4 border-white p-1 ">
-                    <img src="{{ Storage::url($post->featured_image) }}" fetchpriority="high" alt="{{ $post->title }}"
-                        class="">
-                </div>
-
-
-                <!-- Rich Content with Fluid Typography -->
-                <div
-                    class="article-body prose prose-slate max-w-none prose-h2:font-syne prose-h2:text-4xl prose-h2:font-black prose-h2:tracking-tighter prose-h2:text-slate-950 prose-h2:uppercase prose-p:text-slate-600 prose-p:text-lg md:text-xl prose-p:leading-relaxed prose-p:font-dm prose-strong:text-slate-950 prose-blockquote:border-l-4 prose-blockquote:border-[#c9a227] prose-blockquote:italic prose-blockquote:text-xl md:text-2xl prose-blockquote:bg-[#c9a227]/5 prose-blockquote:p-8 md:p-10 prose-blockquote:rounded-r-3xl">
-                    {!! $post->content !!}
-                </div>
-                @if($post->youtube_url)
-                <div class="rounded-[40px] overflow-hidden shadow-2xl bg-black border-4 border-white p-1">
-                    <div class="aspect-video">
-                        <iframe class="w-full h-full rounded-[34px]"
-                            src="https://www.youtube.com/embed/{{ preg_replace('/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/', '$2', $post->youtube_url) }}"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-                    </div>
-                </div>
-                @endif
                 <!-- Recommended Reading Module (Integrated Column) -->
                 <div
                     class="bg-white p-8 md:p-10 rounded-[40px] border border-slate-100 shadow-sm relative overflow-hidden group">
@@ -257,6 +207,42 @@
 
                     </div>
                 </div>
+
+                <div class="pt-2">
+                    <a href="{{ route('blog.index') }}"
+                        class="flex items-center justify-center gap-3 w-full py-4 rounded-xl bg-slate-950 text-[9px] font-black uppercase tracking-widest text-white hover:bg-[#c9a227] hover:text-slate-950 transition-all shadow-xl">
+                        Back to Index
+                    </a>
+                </div>
+            </aside>
+
+            <!-- Core Article Content (Narrative Pillar 8-Col) -->
+            <main class="md:col-span-8 space-y-12 lg:space-y-16 order-1 md:order-2" data-aos="fade-up"
+                data-aos-delay="100">
+
+                <div class="rounded-[40px] overflow-hidden shadow-2xl bg-black border-4 border-white p-1 ">
+                    <img src="{{ Storage::url($post->featured_image) }}" fetchpriority="high" alt="{{ $post->title }}"
+                        class="">
+                </div>
+
+
+                <!-- Rich Content with Fluid Typography -->
+                <div
+                    class="article-body prose prose-slate max-w-none prose-h2:font-syne prose-h2:text-4xl prose-h2:font-black prose-h2:tracking-tighter prose-h2:text-slate-950 prose-h2:uppercase prose-p:text-slate-600 prose-p:text-lg md:text-xl prose-p:leading-relaxed prose-p:font-dm prose-strong:text-slate-950 prose-blockquote:border-l-4 prose-blockquote:border-[#c9a227] prose-blockquote:italic prose-blockquote:text-xl md:text-2xl prose-blockquote:bg-[#c9a227]/5 prose-blockquote:p-8 md:p-10 prose-blockquote:rounded-r-3xl">
+                    {!! $post->content !!}
+                </div>
+                @if($post->youtube_url)
+                <div class="rounded-[40px] overflow-hidden shadow-2xl bg-black border-4 border-white p-1">
+                    <div class="aspect-video">
+                        <iframe class="w-full h-full rounded-[34px]"
+                            src="https://www.youtube.com/embed/{{ preg_replace('/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/', '$2', $post->youtube_url) }}"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+                @endif
+
 
                 <!-- Post Tags Decor (Integrated Footer) -->
                 <div class="pt-12 border-t border-slate-100">
