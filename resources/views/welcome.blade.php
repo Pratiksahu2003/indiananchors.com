@@ -13,10 +13,14 @@
     <!-- Brand Marquee (Using Client Images) -->
     <section class="py-12 bg-white border-b border-slate-50 overflow-hidden">
         <div class="container mx-auto px-6">
-            <p class="text-center text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-12">Trusted By Global Brands</p>
-            <div class="flex flex-wrap justify-center items-center gap-10 md:gap-16 opacity-100 grayscale-0">
+            <div class="text-center mb-10">
+                <span class="text-[9px] font-syne font-black uppercase tracking-[0.5em] text-slate-300">The Brands That Trust Our Stage</span>
+            </div>
+            <div class="flex flex-wrap justify-center items-center gap-10 md:gap-20">
                 @foreach(range(1, 10) as $i)
-                    <img src="{{ asset('brand/' . $i . '.png') }}" alt="Client Brand {{ $i }}" class="object-contain">
+                    <div class="h-8 md:h-12 flex items-center">
+                        <img src="{{ asset('brand/' . $i . '.png') }}" alt="Client Brand {{ $i }}" class="h-full w-auto object-contain opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500">
+                    </div>
                 @endforeach
             </div>
         </div>
