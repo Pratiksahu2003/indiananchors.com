@@ -23,13 +23,13 @@
                     <!-- Original Set -->
                     @foreach(range(1, 10) as $i)
                         <div class="h-8 md:h-10 flex-shrink-0">
-                            <img src="{{ asset('brand/' . $i . '.png') }}" alt="Client Brand {{ $i }}" class="h-full w-auto object-contain opacity-60 grayscale">
+                            <img src="{{ asset('brand/' . $i . '.png') }}" alt="Client Brand {{ $i }}" class="h-20 w-auto ">
                         </div>
                     @endforeach
                     <!-- Duplicate Set for Seamless Loop -->
                     @foreach(range(1, 10) as $i)
                         <div class="h-8 md:h-10 flex-shrink-0">
-                            <img src="{{ asset('brand/' . $i . '.png') }}" alt="Client Brand {{ $i }}" class="h-full w-auto object-contain opacity-60 grayscale">
+                            <img src="{{ asset('brand/' . $i . '.png') }}" alt="Client Brand {{ $i }}" class="h-20 w-auto ">
                         </div>
                     @endforeach
                 </div>

@@ -201,7 +201,10 @@
                                 class="bi bi-link-45deg text-lg"></i></a>
                     </div>
                 </div>
-
+                <div class="rounded-[40px] overflow-hidden shadow-2xl bg-black border-4 border-white p-1 ">
+                    <img src="{{ Storage::url($post->featured_image) }}" fetchpriority="high" alt="{{ $post->title }}"
+                        class="">
+                </div>
 
 
                 <!-- Rich Content with Fluid Typography -->
