@@ -27,18 +27,32 @@
                     Exclusive insights into the world of professional anchoring, event management, and the art of stage presence in India.
                 </p>
                 
-                <!-- Category Filter Pills -->
-                <div class="flex flex-wrap items-center justify-center gap-3">
-                    <a href="{{ route('blog.index') }}" 
-                       class="px-6 py-2.5 rounded-xl border {{ !isset($category) ? 'bg-[#c9a227] border-[#c9a227] text-slate-950' : 'bg-white/5 border-white/10 text-white/50 hover:bg-white/10 hover:text-white' }} transition-all font-syne font-black text-[9px] uppercase tracking-widest backdrop-blur-md">
-                        All Stories
-                    </a>
-                    @foreach($categories ?? [] as $cat)
-                        <a href="{{ route('blog.category', $cat->slug) }}" 
-                           class="px-6 py-2.5 rounded-xl border {{ (isset($category) && $category->id == $cat->id) ? 'bg-[#c9a227] border-[#c9a227] text-slate-950' : 'bg-white/5 border-white/10 text-white/50 hover:bg-white/10 hover:text-white' }} transition-all font-syne font-black text-[9px] uppercase tracking-widest backdrop-blur-md">
-                            {{ $cat->name }}
+                <!-- High-Visibility Taxonomy Filters -->
+                <div class="space-y-6">
+                    <!-- Categories Row -->
+                    <div class="flex flex-wrap items-center justify-center gap-3">
+                        <a href="{{ route('blog.index') }}" 
+                           class="px-5 py-3 rounded-xl border {{ !isset($category) && !isset($tag) ? 'bg-[#c9a227] border-[#c9a227] text-slate-950 shadow-2xl' : 'bg-white/10 border-white/10 text-white/90 hover:bg-white hover:text-slate-950 hover:border-white shadow-xl' }} transition-all duration-300 font-syne font-black text-[10px] uppercase tracking-[0.2em] backdrop-blur-md">
+                            All Masterclasses
                         </a>
-                    @endforeach
+                        @foreach($categories ?? $allCategories ?? [] as $cat)
+                            <a href="{{ route('blog.category', $cat->slug) }}" 
+                               class="px-5 py-3 rounded-xl border {{ (isset($category) && $category->id == $cat->id) ? 'bg-[#c9a227] border-[#c9a227] text-slate-950 shadow-2xl' : 'bg-white/10 border-white/10 text-white/90 hover:bg-white hover:text-slate-950 hover:border-white shadow-xl' }} transition-all duration-300 font-syne font-black text-[10px] uppercase tracking-[0.2em] backdrop-blur-md">
+                                {{ $cat->name }}
+                            </a>
+                        @endforeach
+                    </div>
+
+                    <!-- Tags Row (Secondary) -->
+                    <div class="flex flex-wrap items-center justify-center gap-2 max-w-2xl mx-auto opacity-80">
+                        <span class="text-[8px] font-black uppercase tracking-[0.3em] text-[#c9a227] mr-2">Tags:</span>
+                        @foreach($tags ?? $allTags ?? [] as $t)
+                            <a href="{{ route('blog.tag', $t->slug) }}" 
+                               class="px-3 py-1.5 rounded-lg border {{ (isset($tag) && $tag->id == $t->id) ? 'bg-white border-white text-slate-950' : 'bg-white/5 border-white/5 text-white/60 hover:text-white hover:border-white' }} transition-all text-[8px] font-black uppercase tracking-widest">
+                                #{{ $t->name }}
+                            </a>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
@@ -47,10 +61,15 @@
     <!-- Post Grid Section -->
     <section class="section-modern py-32 bg-[#fafafa]">
         <div class="container">
-            @if(isset($category))
+            @if(isset($category) || isset($tag))
                 <div class="mb-20 text-center" data-aos="fade-up">
-                    <h2 class="text-sm font-black text-slate-400 uppercase tracking-[0.3em] mb-4">Browsing Collection</h2>
-                    <h3 class="text-4xl font-syne font-bold text-slate-900">{{ $category->name }}</h3>
+                    <div class="inline-flex items-center gap-3 px-5 py-2.5 bg-slate-100 rounded-full text-slate-500 text-[10px] font-black uppercase tracking-[0.3em] mb-6">
+                        <i class="bi bi-collection-fill text-[#c9a227]"></i>
+                        {{ isset($category) ? 'Category Collection' : 'Tagged Stories' }}
+                    </div>
+                    <h3 class="text-4xl lg:text-5xl font-syne font-black text-slate-950 uppercase tracking-tighter italic">
+                        {{ isset($category) ? $category->name : '#'.$tag->name }}
+                    </h3>
                 </div>
             @endif
 
