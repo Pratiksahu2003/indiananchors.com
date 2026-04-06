@@ -81,10 +81,10 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 lg:gap-16 items-start">
                 
-                <!-- Core Article Content (8 Col) -->
-                <main class="lg:col-span-8 space-y-12 lg:space-y-16" data-aos="fade-up" data-aos-delay="100">
+                <!-- Core Article Content (Perfect 8-Column Pillar) -->
+                <main class="md:col-span-8 space-y-12 lg:space-y-16" data-aos="fade-up" data-aos-delay="100">
                     
                     @if($post->youtube_url)
                         <div class="rounded-[40px] overflow-hidden shadow-2xl bg-black border-4 border-white p-1">
@@ -96,27 +96,27 @@
                         </div>
                     @endif
 
-                    <!-- Rich Content -->
-                    <div class="article-body prose prose-slate max-w-none prose-h2:font-syne prose-h2:text-4xl prose-h2:font-black prose-h2:tracking-tighter prose-h2:text-slate-950 prose-h2:uppercase prose-p:text-slate-600 prose-p:text-xl prose-p:leading-relaxed prose-p:font-dm prose-strong:text-slate-950 prose-blockquote:border-l-4 prose-blockquote:border-[#c9a227] prose-blockquote:italic prose-blockquote:text-2xl prose-blockquote:bg-[#c9a227]/5 prose-blockquote:p-10 prose-blockquote:rounded-r-3xl">
+                    <!-- Rich Content with Fluid Typography -->
+                    <div class="article-body prose prose-slate max-w-none prose-h2:font-syne prose-h2:text-4xl prose-h2:font-black prose-h2:tracking-tighter prose-h2:text-slate-950 prose-h2:uppercase prose-p:text-slate-600 prose-p:text-lg md:text-xl prose-p:leading-relaxed prose-p:font-dm prose-strong:text-slate-950 prose-blockquote:border-l-4 prose-blockquote:border-[#c9a227] prose-blockquote:italic prose-blockquote:text-xl md:text-2xl prose-blockquote:bg-[#c9a227]/5 prose-blockquote:p-8 md:p-10 prose-blockquote:rounded-r-3xl">
                         {!! $post->content !!}
                     </div>
 
-                    <!-- Post Tags Decor -->
+                    <!-- Post Tags Decor (Integrated Footer) -->
                     <div class="pt-12 border-t border-slate-100">
                         <div class="flex flex-wrap items-center gap-3">
-                            <span class="text-[10px] font-black uppercase text-slate-400 tracking-widest mr-4">Tags:</span>
+                            <span class="text-[9px] font-black uppercase text-slate-400 tracking-widest mr-4">Story Themes:</span>
                             @foreach($post->tags as $tag)
-                                <a href="{{ route('blog.tag', $tag->slug) }}" class="px-5 py-2 rounded-full bg-slate-50 border border-slate-100 text-[10px] font-black uppercase tracking-widest text-slate-500 hover:bg-[#c9a227] hover:text-slate-950 hover:border-[#c9a227] transition-all">
+                                <a href="{{ route('blog.tag', $tag->slug) }}" class="px-5 py-2 rounded-full bg-slate-50 border border-slate-100 text-[9px] font-black uppercase tracking-widest text-slate-500 hover:bg-[#c9a227] hover:text-slate-950 hover:border-[#c9a227] transition-all">
                                     #{{ $tag->name }}
                                 </a>
                             @endforeach
                         </div>
                     </div>
 
-                </div>
+                </main>
 
-                <!-- Right Discovery Center (4 Col & Fully Responsive) -->
-                <aside class="lg:col-span-4 space-y-10 lg:sticky lg:top-32 mt-20 lg:mt-0" data-aos="fade-left" data-aos-delay="200">
+                <!-- Right Discovery Center (Perfect 4-Column Sidebar) -->
+                <aside class="md:col-span-4 space-y-10 md:sticky md:top-32 mt-20 md:mt-0" data-aos="fade-left" data-aos-delay="200">
                     
                     <!-- Trending Categories Block (Expanded & Responsive) -->
                     <div class="bg-white p-8 md:p-10 rounded-[40px] border border-slate-100 shadow-sm overflow-hidden relative group">
