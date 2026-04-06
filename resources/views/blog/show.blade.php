@@ -68,22 +68,23 @@
             </div>
         </header>
 
-        <!-- Main Content Area (Unified & Fully Responsive) -->
+        <!-- Main Content Area (Unified & Fully Responsive 8:4 Layout) -->
         <div class="container py-12 md:py-20 lg:py-24">
-            <div class="grid grid-cols-1 xl:grid-cols-12 gap-10 lg:gap-16 items-start">
-                
-                <!-- Share Center (Mobile: Top / Desktop: Left Sticky) -->
-                <aside class="xl:col-span-1 xl:sticky xl:top-32" data-aos="fade-right">
-                    <div class="flex flex-row xl:flex-col items-center justify-center gap-4 py-6 border-b xl:border-b-0 border-slate-100 mb-10 xl:mb-0">
-                        <span class="text-[8px] font-black uppercase leading-none text-slate-400 xl:-rotate-90 xl:origin-center xl:translate-y-8 xl:mb-8 whitespace-nowrap tracking-[0.4em]">Share Article</span>
-                        <a href="#" class="w-10 h-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:bg-slate-950 hover:text-white transition-all shadow-sm"><i class="bi bi-facebook"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:bg-slate-950 hover:text-white transition-all shadow-sm"><i class="bi bi-twitter-x"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:bg-slate-950 hover:text-white transition-all shadow-sm"><i class="bi bi-link-45deg text-lg"></i></a>
-                    </div>
-                </aside>
+            
+            <!-- Strategic Share Discovery Bar -->
+            <div class="flex flex-wrap items-center gap-6 pb-12 mb-12 border-b border-slate-50" data-aos="fade-up">
+                <span class="text-[9px] font-black uppercase tracking-[0.4em] text-slate-400">Masterclass Insights:</span>
+                <div class="flex items-center gap-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:bg-slate-950 hover:text-white transition-all shadow-sm"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:bg-slate-950 hover:text-white transition-all shadow-sm"><i class="bi bi-twitter-x"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:bg-slate-950 hover:text-white transition-all shadow-sm"><i class="bi bi-link-45deg text-lg"></i></a>
+                </div>
+            </div>
 
-                <!-- Core Article Content -->
-                <div class="lg:col-span-11 xl:col-span-8 space-y-16" data-aos="fade-up" data-aos-delay="100">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+                
+                <!-- Core Article Content (8 Col) -->
+                <main class="lg:col-span-8 space-y-12 lg:space-y-16" data-aos="fade-up" data-aos-delay="100">
                     
                     @if($post->youtube_url)
                         <div class="rounded-[40px] overflow-hidden shadow-2xl bg-black border-4 border-white p-1">
@@ -114,8 +115,8 @@
 
                 </div>
 
-                <!-- Right Discovery Center (Fully Responsive) -->
-                <aside class="xl:col-span-3 space-y-10 xl:sticky xl:top-32 mt-16 xl:mt-0" data-aos="fade-left" data-aos-delay="200">
+                <!-- Right Discovery Center (4 Col & Fully Responsive) -->
+                <aside class="lg:col-span-4 space-y-10 lg:sticky lg:top-32 mt-20 lg:mt-0" data-aos="fade-left" data-aos-delay="200">
                     
                     <!-- Trending Categories Block (Expanded & Responsive) -->
                     <div class="bg-white p-8 md:p-10 rounded-[40px] border border-slate-100 shadow-sm overflow-hidden relative group">
