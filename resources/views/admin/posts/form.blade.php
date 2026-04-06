@@ -42,23 +42,43 @@
             </div>
         </div>
 
-        <!-- SEO Section -->
+        </div>
+        
+        <!-- Featured Image -->
         <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
-            <h3 class="text-lg font-bold text-slate-900 mb-6 flex items-center gap-2">
-                <i class="fas fa-search-plus text-indigo-500"></i> SEO Optimization
+            <h3 class="text-sm font-bold text-slate-800 mb-4 flex items-center gap-2">
+                <i class="fas fa-image text-emerald-500"></i> Featured Media (Header Image)
             </h3>
-            <div class="space-y-6">
-                <div>
-                    <label for="meta_title" class="block text-sm font-bold text-slate-700 mb-2">Meta Title</label>
-                    <input type="text" name="meta_title" id="meta_title" value="{{ old('meta_title', $post->meta_title ?? '') }}" 
-                        class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 focus:ring-4 focus:ring-indigo-100 text-sm focus:border-indigo-500 transition-all outline-none" 
-                        placeholder="Default is post title">
+            <div class="relative group">
+                <div class="w-full aspect-video bg-slate-50 rounded-xl border-2 border-dashed border-slate-200 flex flex-col items-center justify-center text-slate-400 group-hover:border-indigo-400 transition-all cursor-pointer overflow-hidden p-2" onclick="document.getElementById('imageInput').click()">
+                    @if(isset($post) && $post->featured_image)
+                        <img src="{{ Storage::url($post->featured_image) }}" id="imagePreview" class="w-full h-full object-cover rounded-lg">
+                    @else
+                        <img id="imagePreview" class="hidden w-full h-full object-cover rounded-lg">
+                        <div id="imagePlaceholder" class="flex flex-col items-center">
+                            <i class="fas fa-cloud-upload-alt text-3xl mb-2 group-hover:text-indigo-500"></i>
+                            <span class="text-xs font-bold uppercase tracking-wider">Click to Upload</span>
+                        </div>
+                    @endif
                 </div>
-                <div>
-                    <label for="meta_description" class="block text-sm font-bold text-slate-700 mb-2">Meta Description</label>
-                    <textarea name="meta_description" id="meta_description" rows="3" 
-                        class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 focus:ring-4 focus:ring-indigo-100 text-sm focus:border-indigo-500 transition-all outline-none" 
-                        placeholder="Brief summary for search results...">{{ old('meta_description', $post->meta_description ?? '') }}</textarea>
+                <input type="file" name="featured_image" id="imageInput" class="hidden" accept="image/*" onchange="previewImage(this)">
+            </div>
+            <p class="mt-3 text-[10px] text-slate-400 uppercase font-black tracking-widest">Recommended: 1200 x 630px for cinematic clarity</p>
+        </div>
+
+        <!-- Media Integration -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
+            <h3 class="text-sm font-bold text-slate-800 mb-4 flex items-center gap-2">
+                <i class="fab fa-youtube text-rose-500"></i> Cinematic Reel (YouTube Link)
+            </h3>
+            <div class="space-y-4">
+                <input type="url" name="youtube_url" id="youtube_url" value="{{ old('youtube_url', $post->youtube_url ?? '') }}" 
+                    class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:ring-4 focus:ring-rose-100 focus:border-rose-500 transition-all outline-none" 
+                    placeholder="https://youtube.com/watch?v=..." oninput="updateYoutubePreview(this.value)">
+                
+                <div id="yt-preview-container" class="hidden aspect-video rounded-xl overflow-hidden border border-slate-200 shadow-sm relative">
+                    <div class="absolute inset-0 bg-slate-900/10 pointer-events-none"></div>
+                    <iframe id="yt-preview" class="w-full h-full" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
@@ -116,40 +136,6 @@
             </div>
         </div>
 
-        <!-- Featured Image -->
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
-            <h3 class="text-sm font-bold text-slate-800 mb-4 flex items-center gap-2">
-                <i class="fas fa-image text-emerald-500"></i> Featured Image
-            </h3>
-            <div class="relative group">
-                <div class="w-full aspect-video bg-slate-50 rounded-xl border-2 border-dashed border-slate-200 flex flex-col items-center justify-center text-slate-400 group-hover:border-indigo-400 transition-all cursor-pointer overflow-hidden p-2" onclick="document.getElementById('imageInput').click()">
-                    @if(isset($post) && $post->featured_image)
-                        <img src="{{ Storage::url($post->featured_image) }}" id="imagePreview" class="w-full h-full object-cover rounded-lg">
-                    @else
-                        <img id="imagePreview" class="hidden w-full h-full object-cover rounded-lg">
-                        <div id="imagePlaceholder" class="flex flex-col items-center">
-                            <i class="fas fa-cloud-upload-alt text-3xl mb-2 group-hover:text-indigo-500"></i>
-                            <span class="text-xs font-bold uppercase tracking-wider">Click to Upload</span>
-                        </div>
-                    @endif
-                </div>
-                <input type="file" name="featured_image" id="imageInput" class="hidden" accept="image/*" onchange="previewImage(this)">
-            </div>
-        </div>
-
-        <!-- Media Integration -->
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
-            <h3 class="text-sm font-bold text-slate-800 mb-4 flex items-center gap-2">
-                <i class="fab fa-youtube text-rose-500"></i> YouTube Integration
-            </h3>
-            <input type="url" name="youtube_url" id="youtube_url" value="{{ old('youtube_url', $post->youtube_url ?? '') }}" 
-                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:ring-4 focus:ring-rose-100 focus:border-rose-500 transition-all outline-none" 
-                placeholder="https://youtube.com/watch?v=..." oninput="updateYoutubePreview(this.value)">
-            
-            <div id="yt-preview-container" class="mt-4 hidden aspect-video rounded-xl overflow-hidden border border-slate-200 shadow-sm">
-                <iframe id="yt-preview" class="w-full h-full" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </div>
     </div>
 </form>
 
