@@ -35,7 +35,6 @@
 
         <!-- Desktop Nav -->
         <nav class="hdr__nav" id="hdr-nav" aria-label="Main navigation">
-            <a href="#what" class="hdr__link">What I Offer</a>
             <a href="#corporate-event-anchors" class="hdr__link">Services</a>
             <a href="#why" class="hdr__link">Why Us</a>
             <a href="#about" class="hdr__link">About</a>
