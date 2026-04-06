@@ -14,9 +14,9 @@
     <section class="py-12 bg-white border-b border-slate-50 overflow-hidden">
         <div class="container mx-auto px-6">
             <p class="text-center text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-12">Trusted By Global Brands</p>
-            <div class="flex flex-wrap justify-center items-center gap-10 md:gap-16 opacity-40 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-700 h-20 md:h-20">
+            <div class="flex flex-wrap justify-center items-center gap-10 md:gap-16 opacity-100 grayscale-0">
                 @foreach(range(1, 10) as $i)
-                    <img src="{{ asset('brand/' . $i . '.png') }}" alt="Client Brand {{ $i }}" class="h-full w-auto object-contain transition-transform duration-500 hover:scale-110">
+                    <img src="{{ asset('brand/' . $i . '.png') }}" alt="Client Brand {{ $i }}" class="object-contain">
                 @endforeach
             </div>
         </div>
@@ -41,12 +41,12 @@
                     ['i' => 'bi-stars', 't' => 'Concerts', 'l' => '#contact', 'd' => 'High-octane Stage Presence'],
                     ['i' => 'bi-lightning-charge', 't' => 'Socials', 'l' => '#contact', 'd' => 'Private Celebrity gatherings']
                 ] as $s)
-                <a href="{{ $s['l'] }}" class="group p-8 rounded-[40px] bg-slate-50 border border-slate-100 hover:bg-slate-900 transition-all duration-500 hover:-translate-y-2 text-center">
-                    <div class="w-14 h-14 rounded-2xl bg-white flex items-center justify-center text-[#c9a227] text-xl mb-6 shadow-sm group-hover:bg-[#c9a227] group-hover:text-slate-950 transition-all mx-auto">
+                <a href="{{ $s['l'] }}" class="group p-8 rounded-[40px] bg-slate-50 border border-slate-100 hover:bg-slate-950 transition-all duration-500 hover:-translate-y-2 text-center">
+                    <div class="w-14 h-14 rounded-2xl bg-white flex items-center justify-center text-[#c9a227] text-xl mb-6 shadow-sm group-hover:bg-[#c9a227] group-hover:text-slate-950 transition-all duration-500 mx-auto">
                         <i class="{{ $s['i'] }}"></i>
                     </div>
-                    <h3 class="text-lg font-syne font-black text-slate-900 group-hover:text-white transition-all uppercase tracking-tighter leading-tight mb-2">{{ $s['t'] }}</h3>
-                    <p class="text-[10px] font-dm text-slate-500 group-hover:text-slate-400 uppercase tracking-widest leading-relaxed">{{ $s['d'] }}</p>
+                    <h3 class="text-lg font-syne font-black text-slate-950 group-hover:text-white transition-all duration-500 uppercase tracking-tighter leading-tight mb-2">{{ $s['t'] }}</h3>
+                    <p class="text-[10px] font-dm text-slate-500 group-hover:text-slate-200 uppercase tracking-widest leading-relaxed transition-all duration-500">{{ $s['d'] }}</p>
                 </a>
                 @endforeach
             </div>
@@ -72,7 +72,7 @@
                     </div>
                     <div class="relative group h-[350px] md:h-[420px] lg:h-[480px]" data-aos="fade-left">
                          <div class="absolute -inset-4 bg-[#c9a227]/5 rounded-[50px] blur-3xl"></div>
-                        <img src="{{ asset('img/gallery/offer.jpeg') }}" class="relative w-full h-full object-cover rounded-[40px] shadow-2xl transition-transform duration-1000 group-hover:scale-105 border border-slate-100 grayscale hover:grayscale-0 transition-all">
+                        <img src="{{ asset('img/gallery/offer.jpeg') }}" class="relative w-full h-full object-cover rounded-[40px] shadow-2xl border border-slate-100">
                     </div>
                 </div>
 
@@ -80,7 +80,7 @@
                 <div id="wedding-anchors" class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <div class="order-2 lg:order-1 relative group h-[350px] md:h-[420px] lg:h-[480px]" data-aos="fade-right">
                          <div class="absolute -inset-4 bg-[#c9a227]/5 rounded-[50px] blur-3xl"></div>
-                        <img src="{{ asset('img/gallery/client.jpeg') }}" class="relative w-full h-full object-cover rounded-[40px] shadow-2xl transition-transform duration-1000 group-hover:scale-105 border border-slate-100">
+                        <img src="{{ asset('img/gallery/client.jpeg') }}" class="relative w-full h-full object-cover rounded-[40px] shadow-2xl border border-slate-100">
                     </div>
                     <div class="order-1 lg:order-2" data-aos="fade-left">
                         <span class="text-[#c9a227] font-black uppercase text-[10px] tracking-[0.4em] mb-4 block italic">Cultural Vibrancy</span>
@@ -136,9 +136,9 @@
         <div class="container mx-auto px-6">
             <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div class="relative group" data-aos="fade-right">
-                    <img src="{{ asset(config('site.about_image')) }}" class="relative z-10 w-full h-[500px] object-cover rounded-[50px] shadow-2xl border-4 border-white grayscale group-hover:grayscale-0 transition-all duration-1000">
+                    <img src="{{ asset(config('site.about_image')) }}" class="relative z-10 w-full h-[500px] object-cover rounded-[50px] shadow-2xl border-4 border-white">
                     <!-- Awards Float -->
-                    <div class="absolute -top-6 -right-6 p-6 bg-slate-900 rounded-[30px] text-white shadow-2xl transform transition-transform group-hover:-translate-x-2">
+                    <div class="absolute -top-6 -right-6 p-6 bg-slate-900 rounded-[30px] text-white shadow-2xl">
                         <i class="bi bi-award-fill text-[#c9a227] text-3xl"></i>
                     </div>
                 </div>
@@ -169,7 +169,7 @@
                 <p class="text-xl md:text-2xl text-slate-300 italic font-dm leading-relaxed mb-10 relative z-10">"Beyond anchoring, Vidhu's talent as an entertainer is equally commendable. Her lively energy and knack for bringing an element of surprise to every event make her a crowd favorite. She ensures every moment is memorable."</p>
                 <div class="inline-flex flex-col items-center gap-4">
                      <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-[#c9a227]">
-                        <img src="{{ asset('img/gallery/client.jpeg') }}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                        <img src="{{ asset('img/gallery/client.jpeg') }}" class="w-full h-full object-cover">
                      </div>
                      <div>
                          <cite class="not-italic block font-syne font-black text-white uppercase tracking-tighter text-xl leading-none">Natassha Sharma</cite>
