@@ -33,22 +33,56 @@
             box-shadow: none !important;
         }
         
-        /* Ensure Navbar & Footer Links follow Brand Palette, not Browser Defaults */
-        #hdr-nav a, 
-        #header a, 
-        footer a, 
-        .footer-links a {
-            text-decoration: none !important;
-            color: inherit !important;
-        }
-        
-        #hdr-nav a:hover, 
-        footer a:hover {
-            color: #c9a227 !important;
+        /* Premium Navigation - Floating White Pill */
+        #header { transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); background: #ffffff; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        #header.scrolled {
+            top: 15px;
+            width: 92%;
+            left: 4%;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.98) !important;
+            backdrop-filter: blur(15px) !important;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
         }
 
-        /* Smooth state transitions for all interactive elements */
-        a, button { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important; }
+        /* Navbar Link Logic for White BG */
+        #hdr-nav a { 
+            position: relative;
+            padding: 8px 0;
+            color: #475569 !important; /* slate-600 */
+        }
+        #hdr-nav a:hover, #hdr-nav a.active {
+            color: #0f172a !important; /* slate-900 */
+        }
+        #hdr-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #c9a227;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        #hdr-nav a:hover::after, #hdr-nav a.active::after {
+            width: 100%;
+        }
+
+        /* Responsive Navbar adjustments (Burger & Icons) */
+        #header i { color: #0f172a; }
+
+        /* Smooth state transitions */
+        a, button, .hover-target { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important; }
+        
+        /* Social Icons Gold Glow */
+        .social-link:hover {
+            background: #c9a227 !important;
+            color: #ffffff !important;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px -5px rgba(201, 162, 39, 0.4);
+        }
     </style>
 </head>
 <body class="index-page modern-ui">
@@ -60,7 +94,7 @@
     <div class="orb orb-3"></div>
 </div>
 
-<header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 @if(!request()->routeIs('home')) bg-slate-900/90 backdrop-blur-xl border-b border-white/5 @else hover:bg-slate-900/90 hover:backdrop-blur-xl @endif">
+<header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 bg-white border-b border-black/5">
     <div class="container mx-auto px-6 h-20 md:h-24 flex items-center justify-between">
 
         <!-- Logo -->
@@ -70,28 +104,28 @@
 
         <!-- Desktop Nav -->
         <nav class="hidden lg:flex items-center gap-10" id="hdr-nav" aria-label="Main navigation">
-            <a href="{{ url('/') }}#what" class="text-[11px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-white transition-all no-underline">Offer</a>
-            <a href="{{ url('/') }}#corporate-event-anchors" class="text-[11px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-white transition-all no-underline">Services</a>
-            <a href="{{ url('/') }}#why" class="text-[11px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-white transition-all no-underline">Why Me</a>
-            <a href="{{ route('blog.index') }}" class="text-[11px] font-black uppercase tracking-[0.3em] {{ request()->is('blog*') ? 'text-[#c9a227]' : 'text-slate-400' }} hover:text-white transition-all no-underline">Blog</a>
-            <a href="{{ route('about') }}" class="text-[11px] font-black uppercase tracking-[0.3em] {{ request()->routeIs('about') ? 'text-[#c9a227]' : 'text-slate-400' }} hover:text-white transition-all no-underline">About</a>
-            <a href="{{ url('/') }}#gallery" class="text-[11px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-white transition-all no-underline">Gallery</a>
-            <a href="{{ url('/') }}#testi" class="text-[11px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-white transition-all no-underline">Reviews</a>
+            <a href="{{ url('/') }}#what" class="text-[11px] font-black uppercase tracking-[0.3em] no-underline">Offer</a>
+            <a href="{{ url('/') }}#corporate-event-anchors" class="text-[11px] font-black uppercase tracking-[0.3em] no-underline">Services</a>
+            <a href="{{ url('/') }}#why" class="text-[11px] font-black uppercase tracking-[0.3em] no-underline">Why Me</a>
+            <a href="{{ route('blog.index') }}" class="text-[11px] font-black uppercase tracking-[0.3em] {{ request()->is('blog*') ? 'active' : '' }} no-underline">Blog</a>
+            <a href="{{ route('about') }}" class="text-[11px] font-black uppercase tracking-[0.3em] {{ request()->routeIs('about') ? 'active' : '' }} no-underline">About</a>
+            <a href="{{ url('/') }}#gallery" class="text-[11px] font-black uppercase tracking-[0.3em] no-underline">Gallery</a>
+            <a href="{{ url('/') }}#testi" class="text-[11px] font-black uppercase tracking-[0.3em] no-underline">Reviews</a>
         </nav>
 
         <!-- Right: CTA + Burger -->
         <div class="flex items-center gap-6">
-            <a href="{{ url('/') }}#contact" class="hidden md:flex items-center gap-3 px-8 py-3.5 bg-[#c9a227] text-slate-950 text-[10px] font-black uppercase tracking-[0.2em] rounded-xl hover:bg-white hover:text-slate-900 transition-all shadow-xl shadow-[#c9a227]/20 active:scale-95 leading-none">
-                <i class="bi bi-calendar-check-fill"></i>
+            <a href="{{ url('/') }}#contact" class="hidden md:flex items-center gap-3 px-8 py-3.5 bg-slate-950 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-xl hover:bg-[#c9a227] hover:text-slate-950 transition-all shadow-xl active:scale-95 leading-none">
+                <i class="bi bi-calendar-check-fill text-inherit !important"></i>
                 <span>Book Now</span>
             </a>
-            <a href="tel:{{ config('site.phone') }}" class="hidden sm:flex items-center justify-center w-12 h-12 bg-white/5 border border-white/10 text-white rounded-xl hover:bg-white/10 transition-all">
+            <a href="tel:{{ config('site.phone') }}" class="hidden sm:flex items-center justify-center w-12 h-12 bg-slate-50 border border-slate-100 text-slate-950 rounded-xl hover:bg-slate-100 transition-all">
                 <i class="bi bi-telephone-fill"></i>
             </a>
-            <button class="lg:hidden w-12 h-12 flex flex-col items-center justify-center gap-1.5 rounded-xl bg-white/5" id="hdr-burger" type="button" aria-label="Toggle menu">
-                <span class="w-6 h-0.5 bg-white transition-all"></span>
-                <span class="w-6 h-0.5 bg-white transition-all"></span>
-                <span class="w-4 h-0.5 bg-white self-end transition-all"></span>
+            <button class="lg:hidden w-12 h-12 flex flex-col items-center justify-center gap-1.5 rounded-xl bg-slate-50 border border-slate-100" id="hdr-burger" type="button" aria-label="Toggle menu">
+                <span class="w-6 h-0.5 bg-slate-950 transition-all"></span>
+                <span class="w-6 h-0.5 bg-slate-950 transition-all"></span>
+                <span class="w-4 h-0.5 bg-slate-950 self-end transition-all"></span>
             </button>
         </div>
 
@@ -102,72 +136,72 @@
     @yield('content')
 
     <!-- Footer -->
-    <footer class="py-24 bg-slate-950 border-t border-white/5 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent"></div>
+    <footer class="py-24 bg-white relative overflow-hidden border-t border-black/5">
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#c9a227]/40 to-transparent"></div>
         <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-4 gap-16 md:gap-24 mb-20">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-24 mb-20">
                 <!-- Brand Column -->
-                <div class="space-y-8">
+                <div class="lg:col-span-4 space-y-8">
                     <a href="{{ url('/') }}" class="inline-block h-12">
                         <img src="{{ asset(config('site.logo')) }}" alt="{{ config('site.name') }}" class="h-full w-auto">
                     </a>
-                    <p class="text-slate-400 font-dm leading-relaxed text-sm">
-                        Indian Anchors connects professional event anchors with brands, event planners, and production houses across India. We provide experienced hosts for corporate events, weddings, award shows, podcasts and live productions.
+                    <p class="text-slate-600 font-dm leading-relaxed text-sm italic">
+                        Connecting India's finest event anchors with global brands and legendary celebrations. Since 2012, we've defined the stage for corporate seminars, dream weddings, and digital productions.
                     </p>
                     <div class="flex items-center gap-4">
-                        <a href="{{ config('site.social.instagram') }}" target="_blank" class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-white hover:bg-indigo-600 transition-all"><i class="bi bi-instagram"></i></a>
-                        <a href="{{ config('site.social.facebook') }}" target="_blank" class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-white hover:bg-indigo-600 transition-all"><i class="bi bi-facebook"></i></a>
-                        <a href="{{ config('site.social.youtube_shorts') }}" target="_blank" class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-white hover:bg-indigo-600 transition-all"><i class="bi bi-youtube"></i></a>
+                        <a href="{{ config('site.social.instagram') }}" target="_blank" class="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-950 social-link"><i class="bi bi-instagram"></i></a>
+                        <a href="{{ config('site.social.facebook') }}" target="_blank" class="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-950 social-link"><i class="bi bi-facebook"></i></a>
+                        <a href="{{ config('site.social.youtube_shorts') }}" target="_blank" class="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-950 social-link"><i class="bi bi-youtube"></i></a>
                     </div>
                 </div>
 
                 <!-- Navigation Column -->
-                <div>
-                    <h4 class="text-white font-syne font-black uppercase tracking-[0.2em] text-xs mb-8 italic">Quick Links</h4>
+                <div class="lg:col-span-2">
+                    <h4 class="text-slate-950 font-syne font-black uppercase tracking-[0.4em] text-[10px] mb-10 border-l-2 border-[#c9a227] pl-4">Explore</h4>
                     <ul class="space-y-4">
-                        <li><a href="{{ url('/') }}#what" class="text-slate-400 text-[10px] font-black uppercase tracking-widest hover:text-[#c9a227] transition-all no-underline">What I Offer</a></li>
-                        <li><a href="{{ url('/') }}#why" class="text-slate-400 text-[10px] font-black uppercase tracking-widest hover:text-[#c9a227] transition-all no-underline">Why Choose Us</a></li>
-                        <li><a href="{{ route('blog.index') }}" class="text-slate-400 text-[10px] font-black uppercase tracking-widest hover:text-[#c9a227] transition-all no-underline">Our Blog</a></li>
-                        <li><a href="{{ route('about') }}" class="text-slate-400 text-[10px] font-black uppercase tracking-widest hover:text-[#c9a227] transition-all no-underline">About Me</a></li>
-                        <li><a href="{{ url('/') }}#gallery" class="text-slate-400 text-[10px] font-black uppercase tracking-widest hover:text-[#c9a227] transition-all no-underline">Gallery</a></li>
+                        <li><a href="{{ url('/') }}#what" class="text-slate-500 text-[11px] font-black uppercase tracking-widest hover:text-[#c9a227] transition-all">What I Offer</a></li>
+                        <li><a href="{{ url('/') }}#why" class="text-slate-500 text-[11px] font-black uppercase tracking-widest hover:text-[#c9a227] transition-all">Why Me?</a></li>
+                        <li><a href="{{ route('blog.index') }}" class="text-slate-500 text-[11px] font-black uppercase tracking-widest hover:text-[#c9a227] transition-all">Insights</a></li>
+                        <li><a href="{{ route('about') }}" class="text-slate-500 text-[11px] font-black uppercase tracking-widest hover:text-[#c9a227] transition-all">The Story</a></li>
+                        <li><a href="{{ url('/') }}#gallery" class="text-slate-500 text-[11px] font-black uppercase tracking-widest hover:text-[#c9a227] transition-all">Portfolio</a></li>
                     </ul>
                 </div>
 
                 <!-- Services Column -->
-                <div>
-                    <h4 class="text-white font-syne font-black uppercase tracking-[0.2em] text-xs mb-8 italic">Specialties</h4>
+                <div class="lg:col-span-3">
+                    <h4 class="text-slate-950 font-syne font-black uppercase tracking-[0.4em] text-[10px] mb-10 border-l-2 border-[#c9a227] pl-4">Expertise</h4>
                     <ul class="space-y-4">
-                        <li><a href="{{ url('/') }}#corporate-event-anchors" class="text-slate-400 text-[10px] font-black uppercase tracking-widest hover:text-[#c9a227] transition-all no-underline">Corporate Events</a></li>
-                        <li><a href="{{ url('/') }}#wedding-anchors" class="text-slate-400 text-[10px] font-black uppercase tracking-widest hover:text-[#c9a227] transition-all no-underline">Weddings</a></li>
-                        <li><a href="{{ url('/') }}#award-show-hosts" class="text-slate-400 text-[10px] font-black uppercase tracking-widest hover:text-[#c9a227] transition-all no-underline">Award Shows</a></li>
-                        <li><a href="{{ url('/') }}#brand-launch-hosts" class="text-slate-400 text-[10px] font-black uppercase tracking-widest hover:text-[#c9a227] transition-all no-underline">Launch Events</a></li>
-                        <li><a href="{{ url('/') }}#podcast-hosts" class="text-slate-400 text-[10px] font-black uppercase tracking-widest hover:text-[#c9a227] transition-all no-underline">Podcasts</a></li>
+                        <li><a href="{{ url('/') }}#corporate-event-anchors" class="text-slate-500 text-[11px] font-black uppercase tracking-widest hover:text-[#c9a227] transition-all">Corporate Events</a></li>
+                        <li><a href="{{ url('/') }}#wedding-anchors" class="text-slate-500 text-[11px] font-black uppercase tracking-widest hover:text-[#c9a227] transition-all">Wedding Hosting</a></li>
+                        <li><a href="{{ url('/') }}#award-show-hosts" class="text-slate-500 text-[11px] font-black uppercase tracking-widest hover:text-[#c9a227] transition-all">Award Show Host</a></li>
+                        <li><a href="{{ url('/') }}#brand-launch-hosts" class="text-slate-500 text-[11px] font-black uppercase tracking-widest hover:text-[#c9a227] transition-all">Product Launches</a></li>
+                        <li><a href="{{ url('/') }}#podcast-hosts" class="text-slate-500 text-[11px] font-black uppercase tracking-widest hover:text-[#c9a227] transition-all">Podcast Mastery</a></li>
                     </ul>
                 </div>
 
                 <!-- Contact Column -->
-                <div>
-                    <h4 class="text-white font-syne font-black uppercase tracking-[0.2em] text-xs mb-8 italic">Get In Touch</h4>
+                <div class="lg:col-span-3">
+                    <h4 class="text-slate-950 font-syne font-black uppercase tracking-[0.4em] text-[10px] mb-10 border-l-2 border-[#c9a227] pl-4">Connect</h4>
                     <ul class="space-y-6 mb-10">
                         <li class="flex gap-4 items-center">
-                            <i class="bi bi-telephone-fill text-[#c9a227]"></i>
-                            <a href="tel:{{ config('site.phone') }}" class="text-slate-400 text-[10px] font-black uppercase tracking-widest hover:text-white transition-all no-underline">{{ config('site.phone_display') }}</a>
+                            <div class="w-8 h-8 rounded-lg bg-[#c9a227]/10 flex items-center justify-center text-[#c9a227]"><i class="bi bi-telephone-fill"></i></div>
+                            <a href="tel:{{ config('site.phone') }}" class="text-slate-600 text-[11px] font-black uppercase tracking-widest hover:text-[#c9a227] transition-all font-bold">{{ config('site.phone_display') }}</a>
                         </li>
                         <li class="flex gap-4 items-center">
-                            <i class="bi bi-envelope-fill text-[#c9a227]"></i>
-                            <a href="mailto:{{ config('site.email') }}" class="text-slate-400 text-[10px] font-black uppercase tracking-widest hover:text-white transition-all no-underline lowercase italic">{{ config('site.email') }}</a>
+                            <div class="w-8 h-8 rounded-lg bg-[#c9a227]/10 flex items-center justify-center text-[#c9a227]"><i class="bi bi-envelope-fill"></i></div>
+                            <a href="mailto:{{ config('site.email') }}" class="text-slate-600 text-[11px] font-black uppercase tracking-widest hover:text-[#c9a227] transition-all lowercase">{{ config('site.email') }}</a>
                         </li>
                     </ul>
-                    <a href="{{ url('/') }}#contact" class="inline-block px-10 py-4 bg-white/5 border border-white/10 text-[#c9a227] text-[10px] font-black uppercase tracking-[0.2em] rounded-xl hover:bg-white hover:text-slate-900 transition-all no-underline">Book Now</a>
+                    <a href="{{ url('/') }}#contact" class="inline-flex px-10 py-4 bg-slate-950 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-2xl hover:bg-[#c9a227] hover:text-slate-950 transition-all shadow-xl shadow-slate-950/10">Start Planning</a>
                 </div>
             </div>
 
-            <div class="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-                <p class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500">
-                    © {{ config('site.footer_copyright') }} {{ config('site.site_url') }}
+            <div class="pt-10 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">
+                    © {{ config('site.footer_copyright') }} · {{ config('site.site_url') }}
                 </p>
-                <p class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500">
-                    All Rights Reserved · Powered by <span class="text-[#c9a227]">{{ config('site.footer_powered_by', 'Tytil') }}</span>
+                <p class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">
+                    Handcrafted by <span class="text-[#c9a227] uppercase tracking-widest font-black">{{ config('site.footer_powered_by', 'Tytil') }}</span>
                 </p>
             </div>
         </div>
@@ -256,15 +290,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Header scroll background
+    // Header shadow/floating logic
     const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
-            header.classList.add('bg-slate-900/95', 'backdrop-blur-xl', 'border-b', 'border-white/5');
+            header.classList.add('scrolled');
         } else {
-            @if(request()->routeIs('home'))
-                header.classList.remove('bg-slate-900/95', 'backdrop-blur-xl', 'border-b', 'border-white/5');
-            @endif
+            header.classList.remove('scrolled');
         }
     });
 });

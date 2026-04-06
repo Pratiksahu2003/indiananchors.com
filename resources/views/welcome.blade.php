@@ -200,39 +200,69 @@
         </div>
     </section>
 
-    <!-- Contact Section (Restored Gold) -->
-    <section id="contact" class="py-24 bg-white">
+    <!-- Contact Section (Modern White & Gold Split Layout) -->
+    <section id="contact" class="py-16 md:py-24 bg-white overflow-hidden">
         <div class="container mx-auto px-6">
-            <div class="p-10 md:p-20 rounded-[60px] bg-slate-950 flex flex-col items-center text-center overflow-hidden border border-white/5 relative group">
-                <div class="absolute -top-40 -right-40 w-96 h-96 bg-[#c9a227]/10 rounded-full blur-[100px] animate-pulse"></div>
-                <div class="max-w-xl space-y-6 mb-16 relative z-10" data-aos="fade-up">
-                    <span class="text-[#c9a227] font-black uppercase tracking-[0.4em] text-[10px] block font-syne">Get Started</span>
-                    <h2 class="text-5xl md:text-6xl font-syne font-black text-white tracking-tighter leading-none">Ready to <span class="text-[#c9a227] italic">Work</span> Together?</h2>
-                    <p class="text-slate-400 font-dm text-lg opacity-80 italic">Join the thousands of brands and families who trusted us for their most precious milestones.</p>
-                </div>
-                <div class="w-full max-w-4xl bg-white p-12 rounded-[50px] shadow-2xl relative z-10 border border-slate-100" data-aos="fade-up" data-aos-delay="100">
-                    <form action="{{ route('book.submit') }}" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        @csrf
-                        <div class="space-y-4 text-left">
-                            <label class="text-[10px] font-black uppercase tracking-widest text-[#c9a227] ml-4 italic">Full Name</label>
-                            <input type="text" name="name" placeholder="Natasha Sharma" required class="w-full px-8 py-5 rounded-3xl bg-slate-50 border-none focus:ring-4 focus:ring-[#c9a227]/10 outline-none transition-all placeholder:text-slate-200 font-syne font-bold uppercase text-[10px] tracking-[0.2em]">
+            <div class="relative bg-slate-50 rounded-[40px] md:rounded-[60px] p-8 md:p-16 border border-slate-100 shadow-2xl shadow-slate-200/50 overflow-hidden group">
+                <!-- Premium Background Decorations -->
+                <div class="absolute -top-24 -right-24 w-64 h-64 bg-[#c9a227]/10 rounded-full blur-[80px]"></div>
+                <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-slate-200/50 rounded-full blur-[80px]"></div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
+                    <!-- Column 1: Impact Message -->
+                    <div class="space-y-8" data-aos="fade-right">
+                        <div>
+                            <span class="text-[#c9a227] font-black uppercase tracking-[0.4em] text-[10px] block mb-4 italic">Next Step</span>
+                            <h2 class="text-4xl md:text-5xl lg:text-6xl font-syne font-black text-slate-950 tracking-tighter leading-none mb-6">
+                                Ready to <span class="text-[#c9a227] italic">Work</span> Together?
+                            </h2>
+                            <p class="text-slate-500 font-dm text-lg leading-relaxed italic opacity-90">
+                                Join the thousands of global brands and families who trusted us for their most precious milestones. Let's make your next event legendary.
+                            </p>
                         </div>
-                        <div class="space-y-4 text-left">
-                            <label class="text-[10px] font-black uppercase tracking-widest text-[#c9a227] ml-4 italic">Phone Number</label>
-                            <input type="tel" name="phone" placeholder="+91 00000 00000" required class="w-full px-8 py-5 rounded-3xl bg-slate-50 border-none focus:ring-4 focus:ring-[#c9a227]/10 outline-none transition-all placeholder:text-slate-200 font-syne font-bold uppercase text-[10px] tracking-[0.2em]">
+
+                        <!-- Direct Reach -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6">
+                            <a href="tel:{{ config('site.phone') }}" class="flex items-center gap-4 p-4 bg-white rounded-2xl border border-slate-100 group/link hover:border-[#c9a227] transition-all">
+                                <div class="w-10 h-10 rounded-xl bg-[#c9a227] text-slate-950 flex items-center justify-center text-sm"><i class="bi bi-telephone-fill"></i></div>
+                                <div>
+                                    <span class="block text-[8px] font-black uppercase tracking-widest text-slate-400">Direct Line</span>
+                                    <span class="text-[10px] font-black uppercase text-slate-950 tracking-tighter">{{ config('site.phone_display') }}</span>
+                                </div>
+                            </a>
+                            <a href="mailto:{{ config('site.email') }}" class="flex items-center gap-4 p-4 bg-white rounded-2xl border border-slate-100 group/link hover:border-[#c9a227] transition-all">
+                                <div class="w-10 h-10 rounded-xl bg-slate-950 text-white flex items-center justify-center text-sm"><i class="bi bi-envelope-heart-fill"></i></div>
+                                <div>
+                                    <span class="block text-[8px] font-black uppercase tracking-widest text-slate-400">Write Us</span>
+                                    <span class="text-[10px] font-black uppercase text-slate-950 tracking-tighter lowercase">{{ config('site.email') }}</span>
+                                </div>
+                            </a>
                         </div>
-                        <div class="md:col-span-2 space-y-4 text-left">
-                            <label class="text-[10px] font-black uppercase tracking-widest text-[#c9a227] ml-4 italic">Message</label>
-                            <textarea name="message" rows="3" placeholder="Describe your dream event..." required class="w-full px-8 py-5 rounded-3xl bg-slate-50 border-none focus:ring-4 focus:ring-[#c9a227]/10 outline-none transition-all placeholder:text-slate-300 font-dm text-sm"></textarea>
-                        </div>
-                        <div class="md:col-span-2 pt-4">
-                            <button type="submit" class="w-full py-6 bg-slate-950 text-white font-syne font-black uppercase tracking-[0.3em] text-[10px] rounded-3xl hover:bg-[#c9a227] hover:text-slate-950 transition-all active:scale-95 leading-none shadow-xl shadow-black/20">Complete Booking Request</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="flex flex-wrap items-center justify-center gap-10 mt-16 relative z-10 px-4">
-                    <a href="tel:{{ config('site.phone') }}" class="text-white flex items-center gap-3 font-syne font-black uppercase text-[10px] tracking-widest hover:text-[#c9a227] transition-colors"><i class="bi bi-telephone-fill"></i> {{ config('site.phone_display') }}</a>
-                    <a href="mailto:{{ config('site.email') }}" class="text-white flex items-center gap-3 font-syne font-black uppercase text-[10px] tracking-widest hover:text-[#c9a227] transition-colors"><i class="bi bi-envelope-fill"></i> {{ config('site.email') }}</a>
+                    </div>
+
+                    <!-- Column 2: Compact Form -->
+                    <div class="bg-white p-8 md:p-12 rounded-[40px] shadow-xl border border-slate-50" data-aos="fade-left">
+                        <form action="{{ route('book.submit') }}" method="POST" class="space-y-6">
+                            @csrf
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="space-y-2">
+                                    <label class="text-[9px] font-black uppercase tracking-widest text-slate-400 ml-2">Name</label>
+                                    <input type="text" name="name" placeholder="Full Name" required class="w-full px-6 py-4 rounded-2xl bg-slate-50 border border-slate-100 focus:border-[#c9a227] focus:ring-4 focus:ring-[#c9a227]/5 outline-none transition-all font-syne text-[11px] font-bold uppercase tracking-widest">
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-[9px] font-black uppercase tracking-widest text-slate-400 ml-2">Phone</label>
+                                    <input type="tel" name="phone" placeholder="Mobile No." required class="w-full px-6 py-4 rounded-2xl bg-slate-50 border border-slate-100 focus:border-[#c9a227] focus:ring-4 focus:ring-[#c9a227]/5 outline-none transition-all font-syne text-[11px] font-bold uppercase tracking-widest">
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-[9px] font-black uppercase tracking-widest text-slate-400 ml-2">Your Message</label>
+                                <textarea name="message" rows="3" placeholder="Tell us about your event..." required class="w-full px-6 py-4 rounded-2xl bg-slate-50 border border-slate-100 focus:border-[#c9a227] focus:ring-4 focus:ring-[#c9a227]/5 outline-none transition-all font-dm text-sm italic"></textarea>
+                            </div>
+                            <button type="submit" class="w-full py-5 bg-slate-950 text-white font-syne font-black uppercase tracking-[0.3em] text-[10px] rounded-2xl hover:bg-[#c9a227] hover:text-slate-950 transition-all active:scale-95 leading-none shadow-xl shadow-slate-950/10">
+                                Send Inquiry
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
