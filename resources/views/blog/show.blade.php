@@ -117,15 +117,15 @@
                 <!-- Right Sidebar: Author & Related (XL+) -->
                 <aside class="hidden xl:block xl:col-span-3 space-y-8 sticky top-32" data-aos="fade-left" data-aos-delay="200">
                     
-                    <!-- Trending Categories Block -->
-                    <div class="bg-white p-6 rounded-[35px] border border-slate-100 shadow-sm">
-                        <h3 class="text-[8px] font-black uppercase tracking-[0.4em] text-slate-400 mb-6 flex items-center gap-2">
-                             Categories
+                    <!-- Trending Categories Block (Expanded) -->
+                    <div class="bg-white p-8 rounded-[40px] border border-slate-100 shadow-sm">
+                        <h3 class="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-8 flex items-center gap-3">
+                             <span class="w-6 h-[1.5px] bg-[#c9a227]"></span> Categories
                         </h3>
-                        <div class="space-y-1.5 max-h-[250px] overflow-y-auto custom-scrollbar pr-2">
+                        <div class="space-y-2 max-h-[400px] overflow-y-auto custom-scrollbar pr-3">
                             @foreach($allCategories ?? [] as $cat)
-                                <a href="{{ route('blog.category', $cat->slug) }}" class="flex items-center justify-between p-3.5 rounded-xl bg-slate-50 border border-slate-50 hover:border-[#c9a227] hover:bg-white transition-all group">
-                                    <span class="text-[9px] font-black uppercase tracking-widest text-slate-950">{{ $cat->name }}</span>
+                                <a href="{{ route('blog.category', $cat->slug) }}" class="flex items-center justify-between p-4 rounded-xl bg-slate-50 border border-slate-50 hover:border-[#c9a227] hover:bg-white transition-all group">
+                                    <span class="text-[10px] font-black uppercase tracking-widest text-slate-950">{{ $cat->name }}</span>
                                     <span class="text-[8px] font-dm text-slate-400 group-hover:text-[#c9a227]">{{ $cat->posts_count ?? '' }}</span>
                                 </a>
                             @endforeach
@@ -160,14 +160,14 @@
                         </div>
                     </div>
 
-                    <!-- Discovery Cloud (Compact) -->
-                    <div class="bg-white p-6 rounded-[35px] border border-slate-100 shadow-sm">
-                        <h3 class="text-[8px] font-black uppercase tracking-[0.4em] text-slate-400 mb-4 flex items-center gap-2">
-                             Discovery
+                    <!-- Discovery Cloud (Expanded) -->
+                    <div class="bg-white p-8 rounded-[40px] border border-slate-100 shadow-sm">
+                        <h3 class="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-8 flex items-center gap-3">
+                             <span class="w-6 h-[1.5px] bg-[#c9a227]"></span> Discovery
                         </h3>
-                        <div class="flex flex-wrap gap-1.5 max-h-[180px] overflow-y-auto custom-scrollbar pr-2">
+                        <div class="flex flex-wrap gap-2 max-h-[350px] overflow-y-auto custom-scrollbar pr-3">
                             @foreach($allTags ?? [] as $tag)
-                                <a href="{{ route('blog.tag', $tag->slug) }}" class="px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-100 text-[8px] font-black uppercase tracking-widest text-slate-500 hover:bg-[#c9a227] hover:text-slate-950 hover:border-[#c9a227] transition-all">
+                                <a href="{{ route('blog.tag', $tag->slug) }}" class="px-4 py-2 rounded-xl bg-slate-50 border border-slate-100 text-[9px] font-black uppercase tracking-widest text-slate-500 hover:bg-[#c9a227] hover:text-slate-950 hover:border-[#c9a227] transition-all">
                                     #{{ $tag->name }}
                                 </a>
                             @endforeach
@@ -198,15 +198,15 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        /* Custom Gold Sidebar Scrollbar */
+        /* Refined Slim Gold Sidebar Scrollbar */
         .custom-scrollbar::-webkit-scrollbar {
-            width: 4px;
+            width: 3px;
         }
         .custom-scrollbar::-webkit-scrollbar-track {
-            @apply bg-slate-100 rounded-full;
+            @apply bg-slate-50 rounded-full;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb {
-            @apply bg-[#c9a227]/30 rounded-full hover:bg-[#c9a227]/60 transition-all;
+            @apply bg-[#c9a227]/40 rounded-full hover:bg-[#c9a227] transition-all;
         }
     </style>
 
