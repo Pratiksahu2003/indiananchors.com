@@ -41,11 +41,19 @@
         <!-- Categories List -->
         <div class="lg:col-span-2">
             <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
-                <div class="px-8 py-6 border-b border-slate-100 flex items-center justify-between">
-                    <h3 class="font-bold text-slate-950">Active Discovery Paths</h3>
-                    <span class="px-3 py-1 bg-slate-100 text-slate-600 rounded-lg text-[10px] font-black uppercase tracking-widest">
-                        Total: {{ $categories->count() }}
-                    </span>
+                <div class="px-8 py-6 border-b border-slate-100 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                    <div>
+                        <h3 class="font-bold text-slate-950">Active Discovery Paths</h3>
+                        <span class="text-[10px] text-slate-400 font-black uppercase tracking-widest mt-1 block">Total: {{ $categories->count() }}</span>
+                    </div>
+                    <div class="w-full md:w-64 relative group">
+                        <form action="{{ route('admin.categories.index') }}" method="GET">
+                            <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-indigo-500 transition-colors"></i>
+                            <input type="text" name="search" value="{{ request('search') }}" 
+                                   placeholder="Search paths..." 
+                                   class="w-full pl-11 pr-4 py-2.5 bg-slate-50 border border-slate-100 rounded-xl focus:ring-4 focus:ring-indigo-100 focus:border-indigo-500 transition-all outline-none text-sm">
+                        </form>
+                    </div>
                 </div>
                 <div class="p-0 overflow-x-auto">
                     <table class="w-full text-left">
@@ -71,7 +79,7 @@
                                     </span>
                                 </td>
                                 <td class="px-8 py-5 text-right flex items-center justify-end gap-3">
-                                    <button @click="openEdit({{ json_encode($category) }})" class="text-indigo-400 hover:text-indigo-600 p-2 transition-colors">
+                                    <button @click='openEdit(@json($category))' class="text-indigo-400 hover:text-indigo-600 p-2 transition-colors">
                                         <i class="fas fa-edit"></i>
                                     </button>
                                     <form action="{{ route('admin.categories.destroy', $category) }}" method="POST" onsubmit="return confirm('Remove category?')">
@@ -91,40 +99,43 @@
         </div>
     </div>
 
-    <!-- Edit Modal (Alpine JS Focused) -->
-    <template x-if="editMode">
-        <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
-            <div class="bg-white rounded-[40px] w-full max-w-md p-10 shadow-2xl overflow-hidden relative" @click.away="editMode = false">
-                <div class="absolute top-0 right-0 p-8">
-                    <button @click="editMode = false" class="text-slate-400 hover:text-slate-950 transition-colors">
-                        <i class="fas fa-times text-xl"></i>
-                    </button>
+    <!-- Edit Modal (Simplified Persistence) -->
+    <div x-show="editMode" 
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0 scale-95"
+         x-transition:enter-end="opacity-100 scale-100"
+         class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm"
+         x-cloak>
+        <div class="bg-white rounded-[40px] w-full max-w-md p-10 shadow-2xl overflow-hidden relative" @click.away="editMode = false">
+            <div class="absolute top-0 right-0 p-8">
+                <button @click="editMode = false" class="text-slate-400 hover:text-slate-950 transition-colors">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <h3 class="text-2xl font-syne font-black text-slate-950 mb-8 uppercase tracking-tighter">Update Content Path</h3>
+            
+            <form :action="'{{ url('admin/categories') }}/' + editCategory.id" method="POST" class="space-y-6">
+                @csrf
+                @method('PUT')
+                <div>
+                    <label class="block text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-3">Narrative Name</label>
+                    <input type="text" name="name" x-model="editCategory.name" required
+                           class="w-full px-6 py-4 rounded-2xl bg-slate-50 border border-slate-100 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all font-bold text-slate-950 uppercase tracking-tighter">
+                </div>
+                <div>
+                    <label class="block text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-3">Discovery Slug</label>
+                    <input type="text" name="slug" x-model="editCategory.slug" required
+                           class="w-full px-6 py-4 rounded-2xl bg-slate-50 border border-slate-100 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all text-slate-500 italic">
                 </div>
                 
-                <h3 class="text-2xl font-syne font-black text-slate-950 mb-8 uppercase tracking-tighter">Update Content Path</h3>
-                
-                <form :action="'{{ url('admin/categories') }}/' + editCategory.id" method="POST" class="space-y-6">
-                    @csrf
-                    @method('PUT')
-                    <div>
-                        <label class="block text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-3">Narrative Name</label>
-                        <input type="text" name="name" x-model="editCategory.name" required
-                               class="w-full px-6 py-4 rounded-2xl bg-slate-50 border border-slate-100 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all font-bold text-slate-950 uppercase tracking-tighter">
-                    </div>
-                    <div>
-                        <label class="block text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-3">Discovery Slug</label>
-                        <input type="text" name="slug" x-model="editCategory.slug" required
-                               class="w-full px-6 py-4 rounded-2xl bg-slate-50 border border-slate-100 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all text-slate-500 italic">
-                    </div>
-                    
-                    <div class="pt-4">
-                        <button type="submit" class="w-full py-5 bg-slate-950 text-white rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] hover:bg-indigo-600 transition-all shadow-xl">
-                            Save Changes
-                        </button>
-                    </div>
-                </form>
-            </div>
+                <div class="pt-4">
+                    <button type="submit" class="w-full py-5 bg-slate-950 text-white rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] hover:bg-indigo-600 transition-all shadow-xl">
+                        Save Changes
+                    </button>
+                </div>
+            </form>
         </div>
-    </template>
+    </div>
 </div>
 @endsection

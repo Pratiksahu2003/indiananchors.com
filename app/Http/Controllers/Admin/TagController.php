@@ -9,9 +9,15 @@ use Illuminate\Support\Str;
 
 class TagController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $tags = Tag::withCount('posts')->get();
+        $query = Tag::withCount('posts');
+        
+        if ($request->search) {
+            $query->where('name', 'like', "%{$request->search}%");
+        }
+
+        $tags = $query->get();
         return view('admin.tags.index', compact('tags'));
     }
 
