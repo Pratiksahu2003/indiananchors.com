@@ -4,6 +4,37 @@
 @section('page_title', isset($post) ? 'Edit Post' : 'Create New Post')
 
 @section('content')
+<style>
+    .ck-editor__editable {
+        min-height: 500px !important;
+        max-height: 700px !important;
+        overflow-y: auto !important;
+        border: none !important;
+        background: transparent !important;
+        padding: 0 !important;
+        font-family: 'Inter', sans-serif !important;
+        font-size: 1.1rem !important;
+        line-height: 1.8 !important;
+        color: #0f172a !important;
+    }
+    .ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
+        border: none !important;
+    }
+    .ck.ck-toolbar {
+        border: none !important;
+        background: #f8fafc !important;
+        border-radius: 20px !important;
+        margin-bottom: 20px !important;
+        padding: 10px !important;
+    }
+    .ck-content blockquote {
+        border-left: 4px solid #6366f1 !important;
+        background: #f5f3ff !important;
+        padding: 20px !important;
+        border-radius: 0 20px 20px 0 !important;
+        font-style: italic !important;
+    }
+</style>
 <form action="{{ isset($post) ? route('admin.posts.update', $post) : route('admin.posts.store') }}" 
       method="POST" 
       enctype="multipart/form-data" 
