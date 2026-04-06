@@ -19,10 +19,14 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 /*
 |--------------------------------------------------------------------------
-| Public Blog Routes
+| Public Routes
 |--------------------------------------------------------------------------
 */
-Route::get('/', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/', function () {
+    return view('welcome');
+})->name('home');
+
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 Route::get('/category/{category:slug}', [BlogController::class, 'category'])->name('blog.category');
 Route::get('/tag/{tag:slug}', [BlogController::class, 'tag'])->name('blog.tag');

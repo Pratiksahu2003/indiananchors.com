@@ -33,9 +33,9 @@
             </a>
             
             <div class="hidden md:flex items-center gap-8 font-semibold text-slate-600">
-                <a href="/" class="hover:text-indigo-600 transition-colors">Home</a>
-                <a href="#about" class="hover:text-indigo-600 transition-colors">Categories</a>
-                <a href="#services" class="hover:text-indigo-600 transition-colors">Our Story</a>
+                <a href="{{ route('home') }}" class="hover:text-indigo-600 transition-colors">Home</a>
+                <a href="{{ route('blog.index') }}" class="hover:text-indigo-600 transition-colors {{ request()->routeIs('blog.*') ? 'text-indigo-600' : '' }}">Blog</a>
+                <a href="{{ route('home') }}#corporate-event-anchors" class="hover:text-indigo-600 transition-colors">Services</a>
                 <a href="{{ route('admin.dashboard') }}" class="px-5 py-2.5 bg-slate-900 text-white rounded-xl hover:bg-indigo-600 transition-all font-bold">Admin Portal</a>
             </div>
         </div>
