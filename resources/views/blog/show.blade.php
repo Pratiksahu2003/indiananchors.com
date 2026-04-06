@@ -189,6 +189,45 @@
 
             </div>
         </div>
+
+        <!-- Cinematic Post-Article Discovery Ad (Full-Width Signature) -->
+        <section class="py-24 md:py-32 bg-slate-950 overflow-hidden relative border-t border-[#c9a227]/10">
+            <!-- Dynamic Background Elements -->
+            <div class="absolute -top-48 -left-48 w-[800px] h-[800px] bg-[#c9a227]/5 rounded-full blur-[150px] animate-pulse"></div>
+            <div class="absolute -bottom-48 -right-48 w-[800px] h-[800px] bg-[#c9a227]/5 rounded-full blur-[150px] animate-pulse"></div>
+            
+            <div class="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-center pointer-events-none select-none z-0 opacity-20 overflow-hidden">
+                <span class="text-[35vw] md:text-[20vw] font-syne font-black text-white uppercase leading-none transform rotate-12">LEGACY</span>
+            </div>
+
+            <div class="container relative z-10 px-4 md:px-0">
+                <div class="max-w-5xl mx-auto backdrop-blur-3xl bg-white/5 border border-white/10 rounded-[40px] md:rounded-[60px] p-10 md:p-24 text-center shadow-2xl overflow-hidden group">
+                    <!-- Subtle Glow -->
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-[#c9a227]/20 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
+                    
+                    <div class="inline-flex items-center gap-3 px-6 py-2.5 bg-[#c9a227]/10 border border-[#c9a227]/20 rounded-full text-[#c9a227] text-[10px] font-black uppercase tracking-[0.4em] mb-12">
+                        Professional Engagement
+                    </div>
+                    
+                    <h2 class="text-3xl md:text-5xl lg:text-7xl font-syne font-black text-white mb-12 uppercase leading-none tracking-tighter">
+                        Elevate Your Next <br><span class="text-[#c9a227]">Global Event</span>
+                    </h2>
+                    
+                    <p class="text-lg md:text-2xl text-slate-400 font-dm max-w-2xl mx-auto mb-16 leading-relaxed italic">
+                        Experience the gold standard of stage mastery with India’s elite anchors and corporate presenters.
+                    </p>
+                    
+                    <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+                        <a href="{{ route('pages.book') }}" class="w-full md:w-auto px-12 py-5 rounded-2xl bg-[#c9a227] text-slate-950 font-syne font-black text-xs uppercase tracking-widest hover:bg-white transition-all shadow-2xl hover:-translate-y-2 text-center">
+                            Secure The Stage
+                        </a>
+                        <a href="{{ route('pages.about') }}" class="w-full md:w-auto px-12 py-5 rounded-2xl border border-white/10 text-white font-syne font-black text-xs uppercase tracking-widest hover:bg-white hover:text-slate-950 transition-all text-center">
+                            Our Story
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </article>
 
     <style>
