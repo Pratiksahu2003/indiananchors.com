@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', $post->meta_title ?? $post->title)
+@section('title', ($post->meta_title ?? $post->title) . ' - IndianAnchors')
 
 @section('seo')
     <meta name="description" content="{{ $post->meta_description ?? Str::limit(strip_tags($post->content), 160) }}">
@@ -14,106 +14,155 @@
 @endsection
 
 @section('content')
-    <article class="bg-white pb-32">
-        <!-- Header Section -->
-        <header class="relative pt-32 pb-20 overflow-hidden bg-slate-900 border-b border-indigo-900/20">
-            <div class="absolute inset-0 bg-gradient-to-br from-indigo-950/80 to-slate-900 z-0"></div>
+    <article class="bg-white min-h-screen">
+        <!-- Cinematic Post Hero -->
+        <header class="relative min-h-[70vh] flex items-center justify-center pt-32 pb-24 overflow-hidden bg-slate-900">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent z-10"></div>
+            
+            <!-- Dynamic Background Image -->
             @if($post->featured_image)
-                <img src="{{ Storage::url($post->featured_image) }}" alt="Background Image" class="absolute inset-0 w-full h-full object-cover opacity-10 mix-blend-overlay blur-lg">
+                <img src="{{ Storage::url($post->featured_image) }}" alt="{{ $post->title }}" class="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-luminosity scale-110 blur-sm">
             @endif
 
-            <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
-                <div class="flex items-center justify-center gap-4 mb-10 text-sm font-bold text-indigo-400 uppercase tracking-widest animate-fade-in">
-                    <a href="{{ route('blog.category', $post->category->slug ?? '#') }}" class="hover:text-white transition-colors border-b border-indigo-500/30 pb-0.5">
-                        {{ $post->category->name ?? 'Update Required' }}
-                    </a>
-                    <span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
-                    <span class="text-slate-400">{{ $post->published_at->format('M d, Y') }}</span>
-                </div>
-                
-                <h1 class="text-4xl md:text-6xl font-black text-white leading-[1.1] mb-12 tracking-tight">
-                    {{ $post->title }}
-                </h1>
-                
-                <div class="flex flex-wrap items-center justify-center gap-3">
-                    @foreach($post->tags as $tag)
-                        <a href="{{ route('blog.tag', $tag->slug) }}" class="px-5 py-2 rounded-xl bg-white/5 border border-white/10 text-white/60 hover:bg-white hover:text-slate-900 font-bold text-[10px] uppercase tracking-widest transition-all backdrop-blur-lg">
-                            #{{ $tag->name }}
+            <!-- Background Accents -->
+            <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-indigo-500/10 rounded-full blur-[150px] animate-pulse"></div>
+            
+            <div class="container relative z-20">
+                <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
+                    <nav class="flex items-center justify-center gap-4 mb-10 text-[10px] font-black text-indigo-400 uppercase tracking-[0.3em]">
+                        <a href="{{ route('blog.index') }}" class="hover:text-white transition-colors">Journal</a>
+                        <span class="w-1 h-1 rounded-full bg-slate-700"></span>
+                        <a href="{{ route('blog.category', $post->category->slug ?? '#') }}" class="hover:text-white transition-colors">
+                            {{ $post->category->name ?? 'Story' }}
                         </a>
-                    @endforeach
+                        <span class="w-1 h-1 rounded-full bg-slate-700"></span>
+                        <span class="text-slate-400">{{ $post->published_at->format('d M Y') }}</span>
+                    </nav>
+
+                    <h1 class="text-5xl md:text-7xl font-syne font-extrabold text-white mb-12 tracking-tighter leading-[1.05] drop-shadow-2xl">
+                        {{ $post->title }}
+                    </h1>
+
+                    <!-- Author Info -->
+                    <div class="flex items-center justify-center gap-4">
+                        <div class="w-12 h-12 rounded-full border-2 border-indigo-500/30 p-1">
+                            <div class="w-full h-full rounded-full bg-slate-800 flex items-center justify-center text-xs font-bold text-white tracking-widest">IA</div>
+                        </div>
+                        <div class="text-left leading-tight">
+                            <p class="text-white font-black uppercase tracking-widest text-[10px]">Team Indian Anchors</p>
+                            <p class="text-slate-400 font-dm text-[10px] italic">Professional Curators</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </header>
 
-        <!-- Post Content Grid -->
-        <div class="max-w-7xl mx-auto px-6 mt-20 grid grid-cols-1 lg:grid-cols-12 gap-20">
-            <!-- Main Content Left (8 cols) -->
-            <div class="lg:col-span-8">
-                <!-- YouTube Highlight -->
-                @if($post->youtube_url)
-                    <div class="mb-16 aspect-video rounded-3xl overflow-hidden shadow-2xl shadow-indigo-900/10 border border-slate-100 p-2 bg-white">
-                        <iframe class="w-full h-full rounded-2xl" 
-                                src="https://www.youtube.com/embed/{{ preg_replace('/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/', '$2', $post->youtube_url) }}" 
-                                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <!-- Main Content Area -->
+        <div class="container py-24 lg:py-32">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
+                
+                <!-- Sidebar Left: Share Tools (Visible on LG) -->
+                <aside class="hidden lg:block lg:col-span-1 sticky top-32" data-aos="fade-right">
+                    <div class="flex flex-col items-center gap-6">
+                        <span class="text-[9px] font-black uppercase leading-none text-slate-300 -rotate-90 origin-center translate-y-8 mb-8 whitespace-nowrap tracking-[0.4em]">Share Article</span>
+                        <a href="#" class="w-12 h-12 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:bg-slate-900 hover:text-white transition-all shadow-sm"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:bg-slate-900 hover:text-white transition-all shadow-sm"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:bg-slate-900 hover:text-white transition-all shadow-sm"><i class="bi bi-whatsapp"></i></a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:bg-slate-900 hover:text-white transition-all shadow-sm"><i class="bi bi-link-45deg text-xl"></i></a>
                     </div>
-                @endif
+                </aside>
 
-                <!-- Rich Text Content -->
-                <div class="prose prose-slate max-w-none blog-content">
-                    {!! $post->content !!}
-                </div>
+                <!-- Core Article Content -->
+                <div class="lg:col-span-11 xl:col-span-8 space-y-16" data-aos="fade-up" data-aos-delay="100">
+                    
+                    @if($post->youtube_url)
+                        <div class="rounded-[40px] overflow-hidden shadow-2xl bg-black border-4 border-white p-1">
+                            <div class="aspect-video">
+                                <iframe class="w-full h-full rounded-[34px]" 
+                                        src="https://www.youtube.com/embed/{{ preg_replace('/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/', '$2', $post->youtube_url) }}" 
+                                        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    @endif
 
-                <!-- Shared Section -->
-                <div class="mt-24 p-12 bg-slate-50 rounded-3xl border border-slate-100 flex flex-col items-center justify-center text-center">
-                    <h4 class="text-2xl font-bold mb-4">Did you enjoy this article?</h4>
-                    <p class="text-slate-500 mb-8 max-w-md">Join our newsletter to receive the latest updates, tips, and stories directly in your inbox every week.</p>
-                    <div class="flex flex-col sm:flex-row gap-3 w-full max-w-lg">
-                        <input type="email" placeholder="Enter your email address" class="flex-1 px-6 py-4 rounded-2xl border border-slate-200 outline-none focus:ring-4 focus:ring-indigo-100 transition-all font-medium">
-                        <button class="px-8 py-4 bg-indigo-600 text-white font-bold rounded-2xl shadow-lg shadow-indigo-100 hover:bg-indigo-700 transition-all">Subscribe</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Sidebar (4 cols) -->
-            <aside class="lg:col-span-4 space-y-12">
-                <!-- Related Posts Widget -->
-                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm sticky top-32">
-                    <h3 class="text-xl font-bold mb-8 flex items-center gap-3">
-                        <span class="w-8 h-1.5 bg-indigo-500 rounded-full"></span> Read More
-                    </h3>
-                    <div class="space-y-8">
-                        @forelse($relatedPosts ?? [] as $rp)
-                            <a href="{{ route('blog.show', $rp->slug) }}" class="group block">
-                                <div class="flex gap-4">
-                                    <div class="w-20 h-20 rounded-2xl overflow-hidden bg-slate-100 flex-shrink-0 group-hover:scale-95 transition-transform">
-                                        @if($rp->featured_image)
-                                            <img src="{{ Storage::url($rp->featured_image) }}" class="w-full h-full object-cover">
-                                        @endif
-                                    </div>
-                                    <div class="flex-1">
-                                        <h4 class="font-bold text-slate-900 group-hover:text-indigo-600 line-clamp-2 leading-snug mb-2 transition-colors">{{ $rp->title }}</h4>
-                                        <div class="text-[10px] font-black uppercase tracking-widest text-slate-400">{{ $rp->published_at->format('M d') }}</div>
-                                    </div>
-                                </div>
-                            </a>
-                        @empty
-                            <p class="text-slate-400 italic text-sm">No related articles found.</p>
-                        @endforelse
+                    <!-- Rich Content -->
+                    <div class="article-body prose prose-slate max-w-none prose-h2:font-syne prose-h2:text-4xl prose-h2:font-bold prose-h2:tracking-tight prose-h2:text-slate-900 prose-p:text-slate-600 prose-p:text-xl prose-p:leading-relaxed prose-p:font-dm prose-strong:text-slate-900 prose-blockquote:border-l-4 prose-blockquote:border-indigo-600 prose-blockquote:italic prose-blockquote:text-2xl prose-blockquote:bg-indigo-50 prose-blockquote:p-10 prose-blockquote:rounded-r-3xl">
+                        {!! $post->content !!}
                     </div>
 
-                    <hr class="my-10 border-slate-100">
+                    <!-- Post Tags Decor -->
+                    <div class="pt-12 border-t border-slate-100">
+                        <div class="flex flex-wrap items-center gap-3">
+                            <span class="text-[10px] font-black uppercase text-slate-400 tracking-widest mr-4">Tags:</span>
+                            @foreach($post->tags as $tag)
+                                <a href="{{ route('blog.tag', $tag->slug) }}" class="px-5 py-2 rounded-full bg-slate-50 border border-slate-100 text-[10px] font-bold uppercase tracking-wider text-slate-600 hover:bg-indigo-600 hover:text-white transition-all">
+                                    #{{ $tag->name }}
+                                </a>
+                            @endforeach
+                        </div>
+                    </div>
 
-                    <!-- Social Icons -->
-                    <div class="text-center">
-                        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6">Share Story</p>
-                        <div class="flex items-center justify-center gap-4">
-                            <a href="#" class="w-12 h-12 rounded-full bg-slate-50 text-slate-600 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-all shadow-sm"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="w-12 h-12 rounded-full bg-slate-50 text-slate-600 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-all shadow-sm"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="w-12 h-12 rounded-full bg-slate-50 text-slate-600 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-all shadow-sm"><i class="fab fa-linkedin-in"></i></a>
+                    <!-- Newsletter Glass Card -->
+                    <div class="relative p-12 lg:p-16 rounded-[50px] overflow-hidden bg-slate-900 shadow-2xl text-center">
+                        <div class="absolute inset-0 bg-gradient-to-br from-indigo-900/40 to-slate-900 z-0"></div>
+                        <div class="relative z-10">
+                            <h3 class="text-3xl lg:text-4xl font-syne font-bold text-white mb-6">Stay Ahead of the Stage.</h3>
+                            <p class="text-slate-400 font-dm text-lg mb-12 max-w-md mx-auto leading-relaxed">Join 10,000+ event professionals who receive our weekly curated industry insights.</p>
+                            <form class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+                                <input type="email" placeholder="Your best email address" class="flex-1 px-8 py-4 rounded-2xl bg-white/10 border border-white/10 text-white placeholder:text-slate-500 outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all font-medium text-sm">
+                                <button type="submit" class="px-10 py-4 bg-white text-slate-900 font-syne font-bold rounded-2xl hover:bg-indigo-400 hover:text-white transition-all active:scale-95 shadow-lg">Subscribe</button>
+                            </form>
                         </div>
                     </div>
                 </div>
-            </aside>
+
+                <!-- Right Sidebar: Author & Related (XL+) -->
+                <aside class="hidden xl:block xl:col-span-3 space-y-16 sticky top-32" data-aos="fade-left" data-aos-delay="200">
+                    <div class="bg-slate-50 p-10 rounded-[40px] border border-slate-100">
+                        <h3 class="text-xs font-black uppercase tracking-[0.2em] text-slate-400 mb-8 flex items-center gap-4">
+                            <span class="w-8 h-[2px] bg-indigo-500"></span> More Stories
+                        </h3>
+                        <div class="space-y-10">
+                            @forelse($relatedPosts ?? [] as $rp)
+                                <a href="{{ route('blog.show', $rp->slug) }}" class="group block">
+                                    <div class="space-y-4">
+                                        @if($rp->featured_image)
+                                            <div class="aspect-[16/9] rounded-2xl overflow-hidden bg-slate-200">
+                                                <img src="{{ Storage::url($rp->featured_image) }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                                            </div>
+                                        @endif
+                                        <h4 class="font-syne font-bold text-slate-900 group-hover:text-indigo-600 leading-snug transition-colors line-clamp-2">
+                                            {{ $rp->title }}
+                                        </h4>
+                                        <p class="text-[9px] font-black uppercase tracking-[0.3em] text-slate-400">{{ $rp->published_at->format('d M Y') }}</p>
+                                    </div>
+                                </a>
+                            @empty
+                                <p class="text-slate-400 italic text-xs">Awaiting more chapters...</p>
+                            @endforelse
+                        </div>
+                        
+                        <div class="mt-12 pt-10 border-t border-slate-200">
+                            <a href="{{ route('blog.index') }}" class="flex items-center justify-center gap-3 w-full py-4 rounded-2xl bg-white border border-slate-200 text-[10px] font-black uppercase tracking-widest text-slate-700 hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-all">
+                                View Journal Index
+                            </a>
+                        </div>
+                    </div>
+                </aside>
+
+            </div>
         </div>
     </article>
+
+    <style>
+        .article-body p:first-of-type {
+            @apply text-2xl font-medium text-slate-800 leading-relaxed capitalize tracking-tight mb-12;
+            content-visibility: auto;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #a5b4fc 0%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
 @endsection
