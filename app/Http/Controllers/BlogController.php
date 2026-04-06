@@ -29,6 +29,12 @@ class BlogController extends Controller
             ->published()
             ->firstOrFail();
 
+        $relatedPosts = Post::where('category_id', $post->category_id)
+            ->where('id', '!=', $post->id)
+            ->published()
+            ->take(3)
+            ->get();
+
         $allCategories = Category::all();
         $allTags = Tag::all();
 
