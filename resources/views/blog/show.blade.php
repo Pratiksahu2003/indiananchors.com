@@ -19,72 +19,59 @@
         <div id="reading-progress" class="h-full bg-[#c9a227] w-0 transition-all duration-150"></div>
     </div>
 
-    <article class="bg-white min-h-screen relative overflow-hidden">
-        <!-- Abstract Background Signature (Huge Outline Text) -->
-        <div class="absolute inset-x-0 top-1/4 -translate-y-1/2 flex justify-center pointer-events-none select-none overflow-hidden z-0 opacity-40">
-            <span class="text-[25vw] font-syne font-black text-slate-50 uppercase leading-none transform -rotate-6">STORY</span>
-        </div>
-        <!-- Cinematic Post Hero (Compact) -->
-        <header class="relative min-h-[50vh] flex items-center justify-center pt-24 pb-16 overflow-hidden bg-slate-950">
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent z-10"></div>
-            
-            <!-- Dynamic Background Image (Optimized LCP) -->
-            @if($post->featured_image)
-                <img src="{{ Storage::url($post->featured_image) }}" fetchpriority="high" alt="{{ $post->title }}" class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-luminosity scale-110 blur-[1px]">
-            @else
-                <img src="{{ asset('img/blog.avif') }}" fetchpriority="high" class="absolute inset-0 w-full h-full object-cover opacity-10 mix-blend-luminosity">
-            @endif
+    <article class="bg-slate-50 min-h-screen relative font-dm">
+        
+        <!-- Refined Light-Theme Header (Post-Hero Transition) -->
+        <header class="bg-white border-b border-slate-100 pt-32 pb-12">
+            <div class="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12">
+                <nav class="flex items-center gap-3 mb-6 text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">
+                    <a href="{{ route('blog.index') }}" class="hover:text-[#c9a227] transition-colors">Journal Index</a>
+                    <span class="text-slate-200">/</span>
+                    <a href="{{ route('blog.category', $post->category->slug ?? '#') }}" class="hover:text-[#c9a227] transition-colors">
+                        {{ $post->category->name ?? 'Story' }}
+                    </a>
+                </nav>
+                
+                <h1 class="text-3xl md:text-5xl lg:text-6xl font-syne font-black text-slate-950 mb-8 tracking-tighter leading-[1.1] uppercase">
+                    {{ $post->title }}
+                </h1>
 
-            <!-- Background Accents -->
-            <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-[#c9a227]/5 rounded-full blur-[120px] animate-pulse"></div>
-            
-            <div class="container relative z-20">
-                <div class="max-w-4xl mx-auto text-center px-4" data-aos="fade-up">
-                    <nav class="flex items-center justify-center gap-3 mb-8 text-[9px] font-black text-[#c9a227] uppercase tracking-[0.3em]">
-                        <a href="{{ route('blog.index') }}" class="hover:text-white transition-colors">Journal Index</a>
-                        <span class="w-1 h-1 rounded-full bg-slate-700"></span>
-                        <a href="{{ route('blog.category', $post->category->slug ?? '#') }}" class="hover:text-white transition-colors">
-                            {{ $post->category->name ?? 'Story' }}
-                        </a>
-                        <span class="w-1 h-1 rounded-full bg-slate-700"></span>
-                        <span class="text-slate-500 italic">{{ $post->published_at->format('M Y') }}</span>
-                    </nav>
-
-                    <h1 class="text-3xl md:text-5xl lg:text-6xl font-syne font-black text-white mb-10 tracking-tighter leading-none uppercase drop-shadow-2xl">
-                        {{ $post->title }}
-                    </h1>
-
-                    <!-- Author Info -->
-                    <div class="flex items-center justify-center gap-3">
-                        <div class="w-10 h-10 rounded-full border border-[#c9a227]/30 p-0.5">
-                            <div class="w-full h-full rounded-full bg-slate-800 flex items-center justify-center text-[8px] font-black text-white tracking-widest uppercase">IA</div>
-                        </div>
-                        <div class="text-left leading-none">
-                            <p class="text-white font-black uppercase tracking-widest text-[9px] mb-1">Team Indian Anchors</p>
-                            <p class="text-slate-500 font-dm text-[8px] italic">Stage Wisdom</p>
+                <div class="flex items-center gap-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-slate-950 flex items-center justify-center text-[10px] font-black text-[#c9a227] tracking-widest">IA</div>
+                        <div class="leading-none">
+                            <p class="text-slate-950 font-black uppercase tracking-widest text-[10px] mb-1">Indian Anchors</p>
+                            <p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest">{{ $post->published_at->format('d M Y') }}</p>
                         </div>
                     </div>
                 </div>
             </div>
         </header>
 
-        <!-- Main Content Area (Unified & Fully Responsive 8:4 Layout) -->
-        <div class="container py-12 md:py-20 lg:py-24">
-            
-            <!-- Strategic Share Discovery Bar -->
-            <div class="flex flex-wrap items-center gap-6 pb-12 mb-12 border-b border-slate-50" data-aos="fade-up">
-                <span class="text-[9px] font-black uppercase tracking-[0.4em] text-slate-400">Masterclass Insights:</span>
-                <div class="flex items-center gap-4">
-                    <a href="#" class="w-10 h-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:bg-slate-950 hover:text-white transition-all shadow-sm"><i class="bi bi-facebook"></i></a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:bg-slate-950 hover:text-white transition-all shadow-sm"><i class="bi bi-twitter-x"></i></a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:bg-slate-950 hover:text-white transition-all shadow-sm"><i class="bi bi-link-45deg text-lg"></i></a>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 lg:gap-16 items-start">
+        <!-- Main Discovery Architecture (Unified 8:4) -->
+        <div class="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12 py-12 md:py-16">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
                 
-                <!-- Core Article Content (Perfect 8-Column Pillar) -->
-                <main class="md:col-span-8 space-y-12 lg:space-y-16" data-aos="fade-up" data-aos-delay="100">
+                <!-- Core Article Narrative (8 Col) -->
+                <main class="lg:col-span-8 space-y-10" data-aos="fade-up">
+                    <!-- Featured Image Banner (Full Width of Column) -->
+                    <div class="rounded-[40px] overflow-hidden shadow-2xl bg-white p-2 border border-slate-100 group">
+                        @if($post->featured_image)
+                            <img src="{{ Storage::url($post->featured_image) }}" fetchpriority="high" alt="{{ $post->title }}" class="w-full aspect-[21/9] object-cover rounded-[34px] group-hover:scale-105 transition-transform duration-[2s]">
+                        @else
+                            <img src="{{ asset('img/blog.avif') }}" class="w-full aspect-[21/9] object-cover rounded-[34px]">
+                        @endif
+                    </div>
+                    
+                    <!-- Strategic Share Ribbon (Post-Hero Discovery) -->
+                    <div class="flex flex-wrap items-center gap-6 pb-10 mb-12 border-b border-slate-50">
+                        <span class="text-[9px] font-black uppercase tracking-[0.4em] text-slate-400">Masterclass Insights:</span>
+                        <div class="flex items-center gap-4">
+                            <a href="#" class="w-10 h-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:bg-slate-950 hover:text-white transition-all shadow-sm"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:bg-slate-950 hover:text-white transition-all shadow-sm"><i class="bi bi-twitter-x"></i></a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:bg-slate-950 hover:text-white transition-all shadow-sm"><i class="bi bi-link-45deg text-lg"></i></a>
+                        </div>
+                    </div>
                     
                     @if($post->youtube_url)
                         <div class="rounded-[40px] overflow-hidden shadow-2xl bg-black border-4 border-white p-1">
@@ -115,24 +102,44 @@
 
                 </main>
 
-                <!-- Right Discovery Center (Perfect 4-Column Sidebar) -->
-                <aside class="md:col-span-4 space-y-10 md:sticky md:top-32 mt-20 md:mt-0" data-aos="fade-left" data-aos-delay="200">
+                <!-- Discovery Intelligence Sidebar (4 Col) -->
+                <aside class="md:col-span-4 space-y-6 md:sticky md:top-32" data-aos="fade-left">
                     
-                    <!-- Trending Categories Block (Expanded & Responsive) -->
-                    <div class="bg-white p-8 md:p-10 rounded-[40px] border border-slate-100 shadow-sm overflow-hidden relative group">
-                        <!-- Subtle Background Glow -->
-                        <div class="absolute -top-24 -right-24 w-48 h-48 bg-[#c9a227]/5 rounded-full blur-[80px] group-hover:bg-[#c9a227]/10 transition-all duration-700"></div>
-                        
-                        <h3 class="text-[10px] md:text-[11px] font-black uppercase tracking-[0.4em] text-slate-400 mb-8 flex items-center gap-3 relative z-10">
-                             <span class="w-6 h-[1.5px] bg-[#c9a227]"></span> Categories
-                        </h3>
-                        <div class="space-y-2 max-h-[400px] overflow-y-auto custom-scrollbar pr-3">
-                            @foreach($allCategories ?? [] as $cat)
-                                <a href="{{ route('blog.category', $cat->slug) }}" class="flex items-center justify-between p-4 rounded-xl bg-slate-50 border border-slate-50 hover:border-[#c9a227] hover:bg-white transition-all group">
-                                    <span class="text-[10px] font-black uppercase tracking-widest text-slate-950">{{ $cat->name }}</span>
-                                    <span class="text-[8px] font-dm text-slate-400 group-hover:text-[#c9a227]">{{ $cat->posts_count ?? '' }}</span>
-                                </a>
-                            @endforeach
+                    <!-- Story Intelligence Module -->
+                    <div class="bg-white p-8 rounded-[40px] border border-slate-100 shadow-sm relative overflow-hidden">
+                        <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-950 mb-6 flex items-center gap-3">
+                             <i class="bi bi-info-circle-fill text-[#c9a227]"></i> Story Info
+                        </h4>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between py-2 border-b border-slate-50">
+                                <span class="text-[9px] font-bold uppercase text-slate-400 tracking-widest">Industry focus</span>
+                                <span class="text-[9px] font-black uppercase text-slate-950 tracking-widest">Entertainment</span>
+                            </div>
+                            <div class="flex items-center justify-between py-2 border-b border-slate-50">
+                                <span class="text-[9px] font-bold uppercase text-slate-400 tracking-widest">Mastery Level</span>
+                                <span class="text-[9px] font-black uppercase text-slate-950 tracking-widest">Expert</span>
+                            </div>
+                            <div class="flex items-center justify-between py-2">
+                                <span class="text-[9px] font-bold uppercase text-slate-400 tracking-widest">Reading Time</span>
+                                <span class="text-[9px] font-black uppercase text-slate-950 tracking-widest">~4 mins</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Journal Analytics Module -->
+                    <div class="bg-white p-8 rounded-[40px] border border-slate-100 shadow-sm relative overflow-hidden">
+                        <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-950 mb-6 flex items-center gap-3">
+                             <i class="bi bi-shield-check text-[#c9a227]"></i> Post Status
+                        </h4>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between py-2">
+                                <span class="text-[9px] font-bold uppercase text-slate-400 tracking-widest">Visibility</span>
+                                <span class="px-3 py-1 bg-green-50 text-green-600 rounded-full text-[8px] font-black uppercase tracking-widest">Published</span>
+                            </div>
+                            <div class="flex items-center justify-between py-2">
+                                <span class="text-[9px] font-bold uppercase text-slate-400 tracking-widest">Expert Insight</span>
+                                <span class="px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-[8px] font-black uppercase tracking-widest">Verified</span>
+                            </div>
                         </div>
                     </div>
 
@@ -232,11 +239,11 @@
 
     <style>
         .article-body p:first-of-type {
-            @apply text-2xl font-bold text-slate-950 leading-tight tracking-tighter uppercase mb-12 relative;
+            @apply text-xl md:text-3xl font-black text-slate-950 leading-tight tracking-tighter uppercase mb-12 relative;
         }
         .article-body p:first-of-type::before {
             content: "";
-            @apply absolute -left-4 top-0 w-1 h-full bg-[#c9a227] rounded-full;
+            @apply absolute -left-6 top-0 w-1.5 h-full bg-[#c9a227] rounded-full;
         }
         .gradient-text {
             background: linear-gradient(135deg, #c9a227 0%, #d4af37 100%);
