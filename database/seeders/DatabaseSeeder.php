@@ -85,6 +85,9 @@ class DatabaseSeeder extends Seeder
             );
         }
 
-        echo "Seeding Real categories and tags completed successfully.\n";
+        // 4. Seed Initial Blog Posts
+        $this->call(PostSeeder::class);
+
+        echo "Seeding Real categories, tags, and initial posts completed successfully.\n";
     }
 }
